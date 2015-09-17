@@ -1,12 +1,12 @@
-@prefix : <http://www.smartpersonhub.org/vocabulary/organization#> .
-@prefix ci: <http://www.smartpersonhub.org/vocabulary/ci#> .
+@prefix : <http://www.smartdeveloperhub.org/vocabulary/organization#> .
+@prefix ci: <http://www.smartdeveloperhub.org/vocabulary/ci#> .
 @prefix dc: <http://purl.org/dc/elements/1.1/> .
 @prefix vs: <http://www.w3.org/2003/06/sw-vocab-status/ns#> .
-@prefix org: <http://www.smartpersonhub.org/vocabulary/organization#> .
+@prefix org: <http://www.smartdeveloperhub.org/vocabulary/organization#> .
 @prefix owl: <http://www.w3.org/2002/07/owl#> .
 @prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
-@prefix scm: <http://www.smartpersonhub.org/vocabulary/scm#> .
-@prefix sdh: <http://www.smartpersonhub.org/vocabulary/sdh#> .
+@prefix scm: <http://www.smartdeveloperhub.org/vocabulary/scm#> .
+@prefix sdh: <http://www.smartdeveloperhub.org/vocabulary/sdh#> .
 @prefix wot: <http://xmlns.com/wot/0.1/> .
 @prefix xml: <http://www.w3.org/XML/1998/namespace> .
 @prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
@@ -15,28 +15,27 @@
 @prefix foaf: <http://xmlns.com/foaf/0.1/> .
 @prefix oslc: <http://open-services.net/ns/core#> .
 @prefix orgw3: <http://www.w3.org/ns/org#> . 
-@prefix org: <http://www.smartpersonhub.org/vocabulary/v1/organization#> .
 @prefix prov: <http://www.w3.org/ns/prov#> .
 @prefix rddl: <http://www.rddl.org/> .
 @prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
 @prefix dcterms: <http://purl.org/dc/terms/> .
-@prefix metrics: <http://www.smartpersonhub.org/vocabulary/metrics#> .
-@prefix platform: <http://www.smartpersonhub.org/vocabulary/platform#> .
+@prefix metrics: <http://www.smartdeveloperhub.org/vocabulary/metrics#> .
+@prefix platform: <http://www.smartdeveloperhub.org/vocabulary/platform#> .
 @prefix oslc_auto: <http://open-services.net/ns/auto#> .
 @prefix oslc_asset: <http://open-services.net/ns/asset#> .
 @prefix oslc_config: <http://open-services.net/ns/config#> .
-@base <http://www.smartpersonhub.org/vocabulary/organization> .
+@base <http://www.smartdeveloperhub.org/vocabulary/organization> .
 
-<http://www.smartpersonhub.org/vocabulary/organization-individuals> rdf:type owl:Ontology ;
+<http://www.smartdeveloperhub.org/vocabulary/organization-individuals> rdf:type owl:Ontology ;
                                                            
-                                                            owl:imports <http://www.smartpersonhub.org/vocabulary/external/doap/doap.rdf> ,
-                                                                       <http://www.smartpersonhub.org/vocabulary/external/org/org.ttl> ,
-                                                                       <http://www.smartpersonhub.org/vocabulary/external/swo/swo_core.ttl>,
-                                                                       <http://www.smartpersonhub.org/vocabulary/external/skos/skos.rdf> ,
-                                                                       <http://www.smartpersonhub.org/vocabulary/v1/platform> ,
-                                                                       <http://www.smartpersonhub.org/vocabulary/v1/organization.ttl> ;
+                                                            owl:imports <http://www.smartdeveloperhub.org/vocabulary/external/doap/doap.rdf> ,
+                                                                       <http://www.smartdeveloperhub.org/vocabulary/external/org/org.ttl> ,
+                                                                       <http://www.smartdeveloperhub.org/vocabulary/external/swo/swo_core.ttl>,
+                                                                       <http://www.smartdeveloperhub.org/vocabulary/external/skos/skos.rdf> ,
+                                                                       <http://www.smartdeveloperhub.org/vocabulary/v1/platform> ;
+                                                                       #<http://www.smartdeveloperhub.org/vocabulary/v1/organization.ttl> ;
                                                            
-                                                            owl:versionIRI <http://www.smartpersonhub.org/vocabulary/v1/organization-individuals> ;
+                                                            owl:versionIRI <http://www.smartdeveloperhub.org/vocabulary/v1/organization-individuals> ;
                                                                                                                         
                                                             rdfs:label "Organization individuals for the smart person hub project"@en;
                               rdfs:label "Instancias para la ontologia de organización del proyecto smart person hub"@es;
@@ -60,19 +59,19 @@ org:technologyTransferType a skos:Concept;
   skos:prefLabel "Financial Institution"@en.  
 
  #-- Organization chart
-org:upm a org:FormalOrganization ;
+org:upm a org:FormalOrganization, org:Organization ;
     skos:prefLabel "UPM" ;
-    orgw3:identifier "organization01"^^xsd:string;
-    org:classification org:universityType.
+    org:id "organization01"^^xsd:string;
+    orgw3:classification org:universityType.
 
-org:isban a org:FormalOrganization ;
+org:isban a org:FormalOrganization, org:Organization ;
     skos:prefLabel "ISBAN" ;
-    orgw3:identifier "organization02"^^xsd:string;
-    org:classification org:financialInstitutionType.    
+    org:id "organization02"^^xsd:string;
+    orgw3:classification org:financialInstitutionType.    
 
-org:com a org:OrganizationalCollaboration ;
+org:com a org:OrganizationalCollaboration, org:Organization ;
     skos:prefLabel "Center for Open Middleware" ;
-    org:identifier "organization03"^^xsd:string;
+    org:id "organization03"^^xsd:string;
     orgw3:classification org:technologyTransferType;
     orgw3:purpose "R+D activities"@en;
     org:hasMemberOrganization org:isban;
@@ -148,7 +147,7 @@ org:person02 a org:Person ;
     org:id "person02";
     foaf:name "Alejandro Vera";
     foaf:nick "AlejandroVera" ;
-    foaf:mbox "" ;
+    foaf:mbox "xafilox@gmail.com" ;
     org:memberOf org:com ;
     org:hasMembership org:membership02 ;
     org:isAffiliated org:affiliation02 .
