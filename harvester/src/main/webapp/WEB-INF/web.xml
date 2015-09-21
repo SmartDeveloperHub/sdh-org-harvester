@@ -22,46 +22,24 @@
       See the License for the specific language governing permissions and
       limitations under the License.
     #-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=#
-      Artifact    : org.smartdeveloperhub.harvester.org:org-harvester-container:0.2.0-SNAPSHOT
-      Bundle      : org-harvester-container-0.2.0-SNAPSHOT.pom
+      Artifact    : org.smartdeveloperhub.harvester.org:org-harvester-ldp4j:0.2.0-SNAPSHOT
+      Bundle      : org-harvester.war
     #-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=#
 
 -->
-<assembly
-	xmlns="http://maven.apache.org/plugins/maven-assembly-plugin/assembly/1.1.3"
+<web-app
+	metadata-complete="false"
+	version="3.0"
+	xmlns="http://java.sun.com/xml/ns/javaee"
 	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
 	xsi:schemaLocation="
-		http://maven.apache.org/plugins/maven-assembly-plugin/assembly/1.1.3
-		http://maven.apache.org/xsd/assembly-1.1.3.xsd">
-
-	<id>bin</id>
-
-	<formats>
-		<format>zip</format>
-	</formats>
-
-	<baseDirectory>sdh-org-harvester-${project.version}</baseDirectory>
-
-	<includeBaseDirectory>false</includeBaseDirectory>
-
-	<fileSets>
-		<fileSet>
-			<outputDirectory></outputDirectory>
-			<includes>
-				<include>**/*</include>
-			</includes>
-			<directory>src${file.separator}main${file.separator}resources</directory>
-			<filtered>false</filtered>
-		</fileSet>
-		<fileSet>
-			<outputDirectory></outputDirectory>
-			<includes>
-				<include>LICENSE</include>
-				<include>NOTICE</include>
-			</includes>
-			<directory>${basedir}${file.separator}target${file.separator}config${file.separator}legal</directory>
-			<filtered>true</filtered>
-		</fileSet>
-	</fileSets>
-
-</assembly>
+		http://java.sun.com/xml/ns/javaee
+		http://java.sun.com/xml/ns/javaee/web-app_3_0.xsd">
+  <display-name>ORG Harvester Web Application</display-name>
+  
+  <context-param>
+		<param-name>ldp4jTargetApplication</param-name>
+		<param-value>org.smartdeveloperhub.harvester.org.frontend.core.HarvesterApplication</param-value>
+	</context-param>
+	
+</web-app>

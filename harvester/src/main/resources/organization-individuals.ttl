@@ -1,8 +1,35 @@
-@prefix : <http://www.smartdeveloperhub.org/vocabulary/organization#> .
+#
+# #-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=#
+#   This file is part of the Smart Developer Hub Project:
+#     http://www.smartdeveloperhub.org/
+#
+#   Center for Open Middleware
+#     http://www.centeropenmiddleware.com/
+# #-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=#
+#   Copyright (C) 2015 Center for Open Middleware.
+# #-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=#
+#   Licensed under the Apache License, Version 2.0 (the "License");
+#   you may not use this file except in compliance with the License.
+#   You may obtain a copy of the License at
+#
+#             http://www.apache.org/licenses/LICENSE-2.0
+#
+#   Unless required by applicable law or agreed to in writing, software
+#   distributed under the License is distributed on an "AS IS" BASIS,
+#   WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+#   See the License for the specific language governing permissions and
+#   limitations under the License.
+# #-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=#
+#   Artifact    : org.smartdeveloperhub.harvester.org:org-harvester-ldp4j:0.2.0-SNAPSHOT
+#   Bundle      : org-harvester.war
+# #-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=#
+#
+
+@prefix : <http://www.smartdeveloperhub.org/vocabulary/org#> .
 @prefix ci: <http://www.smartdeveloperhub.org/vocabulary/ci#> .
 @prefix dc: <http://purl.org/dc/elements/1.1/> .
 @prefix vs: <http://www.w3.org/2003/06/sw-vocab-status/ns#> .
-@prefix org: <http://www.smartdeveloperhub.org/vocabulary/organization#> .
+@prefix org: <http://www.smartdeveloperhub.org/vocabulary/org#> .
 @prefix owl: <http://www.w3.org/2002/07/owl#> .
 @prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
 @prefix scm: <http://www.smartdeveloperhub.org/vocabulary/scm#> .
@@ -61,19 +88,23 @@ org:technologyTransferType a skos:Concept;
  #-- Organization chart
 org:upm a org:FormalOrganization, org:Organization ;
     skos:prefLabel "UPM" ;
+    org:title "Universidad Politécnica de Madrid" ;
     org:id "organization01"^^xsd:string;
     orgw3:classification org:universityType.
 
 org:isban a org:FormalOrganization, org:Organization ;
     skos:prefLabel "ISBAN" ;
+    org:title "Ingeniería de Software Bancario";
     org:id "organization02"^^xsd:string;
     orgw3:classification org:financialInstitutionType.    
 
 org:com a org:OrganizationalCollaboration, org:Organization ;
-    skos:prefLabel "Center for Open Middleware" ;
+    skos:prefLabel "COM" ;
+    org:title "Center for Open Middleware" ;
     org:id "organization03"^^xsd:string;
     orgw3:classification org:technologyTransferType;
     orgw3:purpose "R+D activities"@en;
+    org:description "R+D activities"@en;
     org:hasMemberOrganization org:isban;
     org:hasMemberOrganization org:upm ;
     org:hasProject org:sdh ;
@@ -237,49 +268,64 @@ org:person09 a org:Person ;
     org:hasMembership org:membership11 ;
     org:isAffiliated org:affiliation15 .        
 
+# -- Positions and Role Types ---------------------------------
+org:FirstLevelPosition a skos:Concept;
+   skos:prefLabel "Top level position"@en .
 
-# -- Role Types ---------------------------------
+org:SecondLevelPosition a skos:Concept;
+   skos:prefLabel "Second level position"@en .
 
-org:comPosition a skos:Concept;
-   skos:prefLabel "Employee Position in the Organization"@en .
+org:ThirdLevelPosition a skos:Concept;
+   skos:prefLabel "Third level position"@en .
 
-org:softwareProjectRole a skos:Concept;
-   skos:prefLabel "Employee Role in the Project"@en .
+org:FourthLevelPosition a skos:Concept;
+   skos:prefLabel "Four level position"@en .
+
+org:FirstLevelRole a skos:Concept;
+   skos:prefLabel "Top level role"@en .
+
+org:SecondLevelRole a skos:Concept;
+   skos:prefLabel "Second level role"@en .
+
+org:ThirdLevelRole a skos:Concept;
+   skos:prefLabel "Third level role"@en .
+
+org:FourthLevelRole a skos:Concept;
+   skos:prefLabel "Four level role"@en .
 
 
  # -- Positions
 
 org:softwareEngineer a org:Position;
     rdfs:label "Software Engineer"@en;    
-    org:positionType org:comPosition. 
+    org:positionType org:SecondLevelPosition. 
    
 org:professor a org:Position;
     rdfs:label "University Professor"@en;
-   org:positionType org:comPosition .
+   org:positionType org:FirstLevelPosition .
 
 org:external a org:Position;
     rdfs:label "External advisor"@en;
-   org:positionType org:comPosition .
+   org:positionType org:FirstLevelPosition .
    
  # -- Project Roles
 org:softwarepDeveloper a org:Role;
     rdfs:label "Software Develeoper"@en;
-    org:roleType org:softwareProjectRole .
+    org:roleType org:ThirdLevelRole.
 
 org:softwareArchitect a org:Role;
     rdfs:label "Software Architect"@en;
-    org:roleType org:softwareProjectRole.
+    org:roleType org:SecondLevelRole.
 
 org:projectManager a org:Role;
     rdfs:label "Project Manager"@en;
     rdfs:comment "Project Managers manage the project from a technical point of view"@en ;
-    org:roleType org:softwareProjectRole.
-
+    org:roleType org:FirstLevelRole.
 
 org:stakeholder a org:Role;
     rdfs:label "stakeholder"@en;
     rdfs:comment "stakeholder define the project goals and requirements and provide resources and funding to carry it out."@en ;
-    org:roleType org:softwareProjectRole.    
+    org:roleType org:FirstLevelRole.    
 
 # Memberships    .
 #alejandro carrera
