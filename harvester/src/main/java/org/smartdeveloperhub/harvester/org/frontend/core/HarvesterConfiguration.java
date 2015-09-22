@@ -56,6 +56,7 @@ public class HarvesterConfiguration extends Configuration {
 				withPrefix("orgw3", "http://www.w3.org/ns/org#").					
 				withPrefix("platform", "http://www.smartdeveloperhub.org/vocabulary/platform#").				
 				withPrefix("doap", "http://usefulinc.com/ns/doap#").
+				withPrefix("skos", "http://www.w3.org/2004/02/skos/core#").
 				withPrefix("foaf", "http://xmlns.com/foaf/0.1/");
 	}
 	

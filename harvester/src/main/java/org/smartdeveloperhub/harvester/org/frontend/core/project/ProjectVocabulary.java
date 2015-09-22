@@ -24,26 +24,19 @@
  *   Bundle      : org-harvester.war
  * #-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=#
  */
-package org.smartdeveloperhub.harvester.org.frontend.core;
+package org.smartdeveloperhub.harvester.org.frontend.core.project;
 
-import java.util.ArrayList;
-
-public class Test {
-
-	public static void main(String[] args) {
-//		OrganizationIndividuals onto = new OrganizationIndividuals();
-//		onto.loadIndividuals();
-//		onto.getOrganizations();
-		
-		BackendController bk = new BackendController();
-		 
-		long startTime = System.currentTimeMillis();
-		
-		ArrayList<String> orgs=bk.getOrganizationPublisher().getOrganizations();
-		
-		long stopTime = System.currentTimeMillis();
-	    long elapsedTime = stopTime - startTime;
-	    System.out.println(elapsedTime);
-	}
-
+public interface ProjectVocabulary {
+	
+	static final String TYPE       = "http://www.w3.org/1999/02/22-rdf-syntax-ns#type";
+	static final String PROJECT_CLASS = "http://www.smartdeveloperhub.org/vocabulary/org#Project";
+	static final String ORGANIZATION_CLASS = "http://www.smartdeveloperhub.org/vocabulary/org#Organization";
+	static final String PROJECTID = "http://www.smartdeveloperhub.org/vocabulary/org#id";
+	
+	static final String DOAPNAME = "http://usefulinc.com/ns/doap#name";
+	static final String DOAPDESCRIPTION = "http://usefulinc.com/ns/doap#description";
+	static final String DOAPREPOSITORY = "http://usefulinc.com/ns/doap#repository";
+	
+	static final String AFFILIATION = "http://www.smartdeveloperhub.org/vocabulary/org#affiliation";
+	
 }

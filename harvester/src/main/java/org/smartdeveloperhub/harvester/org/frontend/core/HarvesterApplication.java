@@ -40,9 +40,11 @@ import org.slf4j.LoggerFactory;
 import org.smartdeveloperhub.harvester.org.frontend.core.Organization.OrganizationContainerHandler;
 import org.smartdeveloperhub.harvester.org.frontend.core.Organization.OrganizationHandler;
 import org.smartdeveloperhub.harvester.org.frontend.core.harvester.HarvesterHandler;
+import org.smartdeveloperhub.harvester.org.frontend.core.project.ProjectContainerHandler;
+import org.smartdeveloperhub.harvester.org.frontend.core.project.ProjectHandler;
 
 
-   public final class HarvesterApplication extends Application<HarvesterConfiguration> {
+public final class HarvesterApplication extends Application<HarvesterConfiguration> {
 
 		private static final Logger LOGGER=LoggerFactory.getLogger(HarvesterApplication.class);
 
@@ -68,6 +70,8 @@ import org.smartdeveloperhub.harvester.org.frontend.core.harvester.HarvesterHand
 				bootstrap.addHandler(new HarvesterHandler(controller));				
 		 	    bootstrap.addHandler(new OrganizationHandler(controller));
 		 	    bootstrap.addHandlerClass(OrganizationContainerHandler.class);
+		 	    bootstrap.addHandler(new ProjectHandler(controller));
+		 	    bootstrap.addHandlerClass(ProjectContainerHandler.class);
 //				bootstrap.addHandler(new UserHandler(controller));
 //				bootstrap.addHandlerClass(UserContainerHandler.class);
 //				bootstrap.addHandler(new BranchHandler(this.controller));

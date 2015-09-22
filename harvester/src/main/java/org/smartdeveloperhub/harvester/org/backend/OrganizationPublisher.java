@@ -28,7 +28,10 @@ package org.smartdeveloperhub.harvester.org.backend;
 
 import java.util.ArrayList;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.smartdeveloperhub.harvester.org.backend.pojo.Organization;
+import org.smartdeveloperhub.harvester.org.frontend.core.HarvesterApplication;
 import org.smartdeveloperhub.harvester.org.frontend.core.Organization.OrganizationVocabulary;
 
 import com.hp.hpl.jena.ontology.OntModel;
@@ -36,17 +39,22 @@ import com.hp.hpl.jena.rdf.model.Property;
 import com.hp.hpl.jena.rdf.model.RDFNode;
 import com.hp.hpl.jena.rdf.model.ResIterator;
 import com.hp.hpl.jena.rdf.model.Resource;
+import com.hp.hpl.jena.rdf.model.StmtIterator;
 import com.hp.hpl.jena.vocabulary.RDF;
+import com.hp.hpl.jena.rdf.model.Statement;
 
 public class OrganizationPublisher extends OntologyInstanceReader implements OrganizationVocabulary{
 
+	private static final Logger LOGGER=LoggerFactory.getLogger(OrganizationPublisher.class);
+	
 	public OrganizationPublisher(OntModel ontModel) {
 		super(ontModel);
 		// TODO Auto-generated constructor stub
 	}
 
 	public ArrayList<String> getOrganizations() {
-	    
+		long startTime = System.currentTimeMillis();
+		
 		ArrayList<String> organizations=new ArrayList<String>();
 		
 		Resource organization=ontModel.getResource(ORGANIZATION_CLASS);		                                            
@@ -59,7 +67,7 @@ public class OrganizationPublisher extends OntologyInstanceReader implements Org
 		    	Resource organizationResource = iter.nextResource();
 		    	String organizationUri= organizationResource.getURI();		        
 		        System.out.println("  " + organizationUri);
-		        String organizationId = organizationResource.getProperty(ontModel.getProperty(ID)).getString();
+		        String organizationId = organizationResource.getProperty(ontModel.getProperty(ORGID)).getString();
 		        System.out.println("  " + organizationId);
 		        organizations.add(organizationId);
 		        //System.out.println("   -" + iter.nextResource().getProperty(ontModel.getProperty("http://www.smartdeveloperhub.org/vocabulary/organization#id")).getString());
@@ -69,26 +77,78 @@ public class OrganizationPublisher extends OntologyInstanceReader implements Org
 		    System.out.println("No organizations were found in the database");
 		}
 		
+		long stopTime = System.currentTimeMillis();
+		long elapsedTime = stopTime - startTime;
+		//System.out.println("Load organizations, elapsed time (ms):"+elapsedTime);
+		LOGGER.info("- Load organizations, elapsed time (ms)..: {}",elapsedTime);
+		
 		return organizations;
 	}
 	
 
 	public Organization getOrganization(String organizationId) {
+		long startTime = System.currentTimeMillis();
 		Organization org = new Organization();		
-		ResIterator iter = ontModel.listSubjectsWithProperty(ontModel.getProperty(ID),organizationId);
+		ResIterator iter = ontModel.listSubjectsWithProperty(ontModel.getProperty(ORGID),organizationId);
 		while (iter.hasNext()) {
 		    Resource r = iter.nextResource();
-		    org.setId(organizationId);
-		    org.setTitle(r.getProperty(ontModel.getProperty(TITLE)).getString());
-		    org.setPrefLabel(r.getProperty(ontModel.getProperty(PREFLABEL)).getString());
-		    org.setPurpose(r.getProperty(ontModel.getProperty(PURPOSE)).getString());
-		    org.setDescription(r.getProperty(ontModel.getProperty(DESCRIPTION)).getString());
 		    
-		    if (r.getProperty(ontModel.getProperty(CLASSIFICATION))!=null){
-		    	Resource classificationObj=r.getProperty(ontModel.getProperty(CLASSIFICATION)).getObject().asResource();
-		    	org.setClassification(classificationObj.getProperty(ontModel.getProperty(PREFLABEL)).getString());		    			    			    	
+		    org.setId(organizationId);
+		    
+		    Statement title = r.getProperty(ontModel.getProperty(TITLE));
+		    if (title !=null)
+		    	org.setTitle(title.getString());
+		    
+		    Statement preflabel = r.getProperty(ontModel.getProperty(PREFLABEL));
+		    if (preflabel!=null)
+		    	org.setPrefLabel(preflabel.getString());	    
+		    
+		    Statement purpose = r.getProperty(ontModel.getProperty(PURPOSE));
+		    if (purpose!=null)
+		    	org.setPurpose(purpose.getString());
+		   
+		    Statement description = r.getProperty(ontModel.getProperty(DESCRIPTION)) ;
+		    if (description!=null)
+		    	org.setDescription(description.getString());
+		    
+		    Statement classification = r.getProperty(ontModel.getProperty(CLASSIFICATION));
+		    if (classification != null ){
+		    	Resource classificationObj=classification.getObject().asResource();
+		    	Statement preflabelClassification= classificationObj.getProperty(ontModel.getProperty(PREFLABEL));
+		    	org.setClassification(preflabelClassification.getString());		    			    			    	
 		    }
 		    
+		    //memberOrganizations
+		    StmtIterator memberOrgIter = r.listProperties(ontModel.getProperty(HASMEMBERORGANIZATION));
+		    ArrayList<String> hasMemberOrganization = new ArrayList<String>();
+		    while (memberOrgIter.hasNext()) {
+			    Statement stmtMembOrg = memberOrgIter.next();
+			    Resource memberOrgRes= stmtMembOrg.getResource();
+			    if (memberOrgRes!=null){
+			    	Statement memberOrgStmt = memberOrgRes.getProperty(ontModel.getProperty(ORGID));
+			    	if (memberOrgStmt!=null)
+			    	    hasMemberOrganization.add(memberOrgStmt.getString());
+			    }
+		    }
+		    org.setHasMemberOrganization(hasMemberOrganization);
+		    		    
+		  //hasProject
+		    StmtIterator projectOrgIter = r.listProperties(ontModel.getProperty(HASPROJECT));
+		    ArrayList<String> hasProject = new ArrayList<String>();
+		    while (projectOrgIter.hasNext()) {
+			    Statement stmtProjOrg = projectOrgIter.next();
+			    Resource projRes= stmtProjOrg.getResource();
+			    if (projRes!=null){
+			    	Statement stmtProjectId = projRes.getProperty(ontModel.getProperty(ORGID));
+			    	if (stmtProjectId!=null)
+			    		hasProject.add(stmtProjectId.getString());
+			    }
+		    }
+		    org.setHasProject(hasProject);
+		    
+		    long stopTime = System.currentTimeMillis();
+			long elapsedTime = stopTime - startTime;
+			LOGGER.info("- Load the organization, elapsed time (ms)..: {}",elapsedTime);
 		}
 		return org;
 		

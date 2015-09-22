@@ -31,7 +31,7 @@ public interface OrganizationVocabulary {
 	static final String TYPE       = "http://www.w3.org/1999/02/22-rdf-syntax-ns#type";
 	static final String ORGANIZATION_CLASS = "http://www.smartdeveloperhub.org/vocabulary/org#Organization";
 	static final String PREFLABEL = "http://www.w3.org/2004/02/skos/core#prefLabel";
-	static final String ID = "http://www.smartdeveloperhub.org/vocabulary/org#id";
+	static final String ORGID = "http://www.smartdeveloperhub.org/vocabulary/org#id";
 	static final String TITLE = "http://www.smartdeveloperhub.org/vocabulary/org#title";
 	static final String DESCRIPTION = "http://www.smartdeveloperhub.org/vocabulary/org#description";
 	static final String CLASSIFICATION = "http://www.w3.org/ns/org#classification";

@@ -24,11 +24,10 @@
  *   Bundle      : org-harvester.war
  * #-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=#
  */
-package org.smartdeveloperhub.harvester.org.frontend.core.Organization;
+package org.smartdeveloperhub.harvester.org.frontend.core.project;
 
 import java.net.URI;
 
-import org.joda.time.DateTime;
 import org.ldp4j.application.data.DataSet;
 import org.ldp4j.application.data.DataSetHelper;
 import org.ldp4j.application.data.DataSetUtils;
@@ -38,40 +37,23 @@ import org.ldp4j.application.data.NamingScheme;
 import org.ldp4j.application.ext.ApplicationRuntimeException;
 import org.ldp4j.application.ext.ResourceHandler;
 import org.ldp4j.application.ext.UnknownResourceException;
-import org.ldp4j.application.ext.annotations.Attachment;
 import org.ldp4j.application.ext.annotations.Resource;
 import org.ldp4j.application.session.ResourceSnapshot;
 import org.smartdeveloperhub.harvester.org.backend.pojo.Organization;
+import org.smartdeveloperhub.harvester.org.backend.pojo.Project;
 import org.smartdeveloperhub.harvester.org.frontend.core.BackendController;
-import org.smartdeveloperhub.harvester.org.frontend.core.project.ProjectContainerHandler;
-import org.smartdeveloperhub.harvester.org.frontend.core.project.ProjectHandler;
+import org.smartdeveloperhub.harvester.org.frontend.core.Organization.OrganizationHandler;
+import org.smartdeveloperhub.harvester.org.frontend.core.Organization.OrganizationVocabulary;
 
+@Resource(id=ProjectHandler.ID)
+public class ProjectHandler implements ResourceHandler, ProjectVocabulary{
 
-@Resource(id=OrganizationHandler.ID
-	,attachments={
-		@Attachment(
-			id=OrganizationHandler.ORGANIZATION_PROJECTS,
-			path="hasProject/",
-			handler=ProjectContainerHandler.class
-		)
-//		@Attachment(
-//				id=RepositoryHandler.REPOSITORY_COMMITS,
-//				path="commits/",
-//				handler=CommitContainerHandler.class
-//			)
-	}
-)
-
-public class OrganizationHandler implements ResourceHandler, OrganizationVocabulary{
-	
-	public static final String ID="OrganizationHandler";
-	public static final String ORGANIZATION_PROJECTS="ORGANIZATIONPROJECTS";
-	
+	public static final String ID="ProjectHandler";
 	BackendController backendController;
 	
-	private static final URI CLASSIFICATION_PATH = URI.create("#classification");
+	//private static final URI CLASSIFICATION_PATH = URI.create("#classification");
 	
-	public OrganizationHandler(BackendController backendController){
+	public ProjectHandler(BackendController backendController){
 		this.backendController=backendController;
 	}
 
@@ -81,8 +63,8 @@ public class OrganizationHandler implements ResourceHandler, OrganizationVocabul
 		
 		Name<String> name = (Name<String>)resource.name();						
 		try{
-			Organization organization = backendController.getOrganizationPublisher().getOrganization(name.id().toString());		
-			return maptoDataSet(organization,name);	
+			Project project = backendController.getProjectPublisher().getProject(name.id().toString());		
+			return maptoDataSet(project,name);	
 		}
 		catch(Exception e){
 			 throw new ApplicationRuntimeException(e);
@@ -91,28 +73,28 @@ public class OrganizationHandler implements ResourceHandler, OrganizationVocabul
 	
 						
 
-	private DataSet maptoDataSet(Organization organization, Name<String> organizationName) {
+	private DataSet maptoDataSet(Project project, Name<String> projectName) {
 					
-		DataSet dataSet=DataSets.createDataSet(organizationName);
+		DataSet dataSet=DataSets.createDataSet(projectName);
 		DataSetHelper helper=DataSetUtils.newHelper(dataSet);
 		
 	
 		//Name<String> ownerName = NamingScheme.getDefault().name(repository.getOwner().getId().toString());	
 	
 		helper.
-		managedIndividual(organizationName, OrganizationHandler.ID).
+		managedIndividual(projectName, ProjectHandler.ID).
 			property(TYPE).
 				withIndividual(ORGANIZATION_CLASS).
-			property(ORGID).			
-				withLiteral(organization.getId()).
-			property(PREFLABEL).
-				withLiteral(organization.getPrefLabel()).
-			property(TITLE).
-				withLiteral(organization.getTitle()).
+			property(PROJECTID).			
+				withLiteral(project.getId()).
+			property(DOAPNAME).
+				withLiteral(project.getName()).
+			property(DOAPDESCRIPTION).
+				withLiteral(project.getDescription());
 //			property(FIRSTCOMMIT).
 //				withLiteral(Mapper.toLiteral(new DateTime(repository.getFirstCommitAt()).toDate())).
-			property(PURPOSE).
-				withLiteral(organization.getPurpose());
+//			property(PURPOSE).
+//				withLiteral(organization.getPurpose());
 //			property(ARCHIVED).
 //				withLiteral(new Boolean(repository.getArchived())).
 //			property(PUBLIC).
@@ -126,21 +108,13 @@ public class OrganizationHandler implements ResourceHandler, OrganizationVocabul
 	//			property(DEFAULTBRANCH).
 	//			withIndividual(repository.getDefaultBranch());
 
-	for (String organizationId:organization.getHasMemberOrganization()){
-		Name<String> memberOrgName = NamingScheme.getDefault().name(organizationId);
-		helper.
-		managedIndividual(organizationName, OrganizationHandler.ID).
-				property(HASMEMBERORGANIZATION).
-					withIndividual(memberOrgName,OrganizationHandler.ID);
-	}
-	
-	for (String projectId:organization.getHasProject()){
-		Name<String> projectOrgName = NamingScheme.getDefault().name(projectId);
-		helper.
-		managedIndividual(organizationName, OrganizationHandler.ID).
-				property(HASPROJECT).
-					withIndividual(projectOrgName,ProjectHandler.ID);
-	}
+//	for (String organizationId:organization.getHasMemberOrganization()){
+//		Name<String> memberOrgName = NamingScheme.getDefault().name(organizationId);
+//		helper.
+//		managedIndividual(organizationName, OrganizationHandler.ID).
+//				property(HASMEMBERORGANIZATION).
+//					withIndividual(memberOrgName,OrganizationHandler.ID);
+//	}
 		
 //		for (Integer userId:repository.getContributors()){
 //			Name<String> userName = NamingScheme.getDefault().name(Integer.toString(userId));
@@ -159,20 +133,20 @@ public class OrganizationHandler implements ResourceHandler, OrganizationVocabul
 	//	}
 	//	
 
-		if ( organization.getClass()!=null){
-			helper.
-			managedIndividual(organizationName, OrganizationHandler.ID).
-				property(CLASSIFICATION).
-					withIndividual(organizationName, OrganizationHandler.ID,CLASSIFICATION_PATH);
-			helper.
-			relativeIndividual(organizationName,OrganizationHandler.ID,CLASSIFICATION_PATH).
-				property(TYPE).
-					withIndividual(SKOSCONCEPT).
-				property(PREFLABEL).
-					withLiteral(organization.getClassification()).
-				property(LABEL).
-					withLiteral(organization.getClassification());		
-		}
+//		if ( organization.getClass()!=null){
+//			helper.
+//			managedIndividual(organizationName, OrganizationHandler.ID).
+//				property(CLASSIFICATION).
+//					withIndividual(organizationName, OrganizationHandler.ID,CLASSIFICATION_PATH);
+//			helper.
+//			relativeIndividual(organizationName,OrganizationHandler.ID,CLASSIFICATION_PATH).
+//				property(TYPE).
+//					withIndividual(SKOSCONCEPT).
+//				property(PREFLABEL).
+//					withLiteral(organization.getClassification()).
+//				property(LABEL).
+//					withLiteral(organization.getClassification());		
+//		}
 
 				
 //		if ( repository.getAvatarUrl() !=null){
@@ -191,4 +165,5 @@ public class OrganizationHandler implements ResourceHandler, OrganizationVocabul
 		return dataSet;
 	}
 	
+
 }

@@ -88,13 +88,13 @@ org:technologyTransferType a skos:Concept;
  #-- Organization chart
 org:upm a org:FormalOrganization, org:Organization ;
     skos:prefLabel "UPM" ;
-    org:title "Universidad Politécnica de Madrid" ;
+    org:title "Universidad Politecnica de Madrid" ;
     org:id "organization01"^^xsd:string;
     orgw3:classification org:universityType.
 
 org:isban a org:FormalOrganization, org:Organization ;
     skos:prefLabel "ISBAN" ;
-    org:title "Ingeniería de Software Bancario";
+    org:title "Ingenieria de Software Bancario";
     org:id "organization02"^^xsd:string;
     orgw3:classification org:financialInstitutionType.    
 
@@ -158,8 +158,6 @@ org:ldp4j a org:Project ;
     doap:description "Java implementation of the LDP specification";
     doap:repository  [ a scm:Repository ;    
                          doap:name "git repo FrontEnd Project 01" ] ;    
-    org:hasMember org:person06 ;
-    org:hasMember org:person08 ;
     org:affiliation org:affiliation08 ;
     org:affiliation org:affiliation09 ;
     org:affiliation org:affiliation12 .

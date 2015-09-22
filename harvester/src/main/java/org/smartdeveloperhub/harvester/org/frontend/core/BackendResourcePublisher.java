@@ -37,8 +37,11 @@ import org.ldp4j.application.session.WriteSession;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.smartdeveloperhub.harvester.org.backend.OrganizationPublisher;
+import org.smartdeveloperhub.harvester.org.backend.pojo.Organization;
 import org.smartdeveloperhub.harvester.org.frontend.core.Organization.OrganizationContainerHandler;
+import org.smartdeveloperhub.harvester.org.frontend.core.Organization.OrganizationHandler;
 import org.smartdeveloperhub.harvester.org.frontend.core.harvester.HarvesterHandler;
+import org.smartdeveloperhub.harvester.org.frontend.core.project.ProjectContainerHandler;
 //import org.smartdeveloperhub.harvesters.scm.backend.pojos.Repository;
 
 
@@ -69,11 +72,18 @@ public class BackendResourcePublisher {
 	}
 	
 	private void addOrganizationMembersToHarvester(URI target, ContainerSnapshot organizationContainerSnapshot) throws Exception{
+		
 		OrganizationPublisher organizationPublisher = controller.getOrganizationPublisher();	
 		for (String organizationId:organizationPublisher.getOrganizations()){
 			Name<String> organizationName = NamingScheme.getDefault().name(organizationId);	
 			
-			ResourceSnapshot repositorySnapshot = organizationContainerSnapshot.addMember(organizationName);
+			ResourceSnapshot organizationSnapshot = organizationContainerSnapshot.addMember(organizationName);
+			
+			//Project container for each organization
+			ContainerSnapshot projectContainerSnapshot = organizationSnapshot.createAttachedResource( ContainerSnapshot.class, OrganizationHandler.ORGANIZATION_PROJECTS,
+					organizationName, ProjectContainerHandler.class);
+			
+			addProjectsToOrganization(projectContainerSnapshot, organizationId);
 			
 //			ContainerSnapshot branchContainerSnapshot = repositorySnapshot.createAttachedResource( ContainerSnapshot.class, RepositoryHandler.REPOSITORY_BRANCHES,
 //					repositoryName, BranchContainerHandler.class);
@@ -89,6 +99,20 @@ public class BackendResourcePublisher {
 			
 			LOGGER.debug("Published resource for repository {} @ {} ({})",organizationId, organizationContainerSnapshot.name(),organizationContainerSnapshot.templateId());
 		}
+	}
+
+	private void addProjectsToOrganization(ContainerSnapshot projectContainerSnapshot, String organizationId) {
+		
+	    OrganizationPublisher organizationPublisher = controller.getOrganizationPublisher();	
+	    Organization org = organizationPublisher.getOrganization(organizationId);
+	    
+	    for (String projectId:org.getHasProject()){
+	    	Name<String> projectName = NamingScheme.getDefault().name(projectId);	
+			
+			ResourceSnapshot organizationSnapshot = projectContainerSnapshot.addMember(projectName);
+	    }
+	    
+		
 	}
 	
 //	private void addBranchMemberstToRepository(Repository repository, ContainerSnapshot branchContainerSnapshot) throws Exception{		

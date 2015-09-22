@@ -24,26 +24,47 @@
  *   Bundle      : org-harvester.war
  * #-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=#
  */
-package org.smartdeveloperhub.harvester.org.frontend.core;
+package org.smartdeveloperhub.harvester.org.backend.pojo;
 
 import java.util.ArrayList;
 
-public class Test {
+public class Project {
 
-	public static void main(String[] args) {
-//		OrganizationIndividuals onto = new OrganizationIndividuals();
-//		onto.loadIndividuals();
-//		onto.getOrganizations();
-		
-		BackendController bk = new BackendController();
-		 
-		long startTime = System.currentTimeMillis();
-		
-		ArrayList<String> orgs=bk.getOrganizationPublisher().getOrganizations();
-		
-		long stopTime = System.currentTimeMillis();
-	    long elapsedTime = stopTime - startTime;
-	    System.out.println(elapsedTime);
+	String id="";
+	String name="";
+	String description="";
+	ArrayList<String> affiliation = new ArrayList<String>();
+	ArrayList<String> repository = new ArrayList<String>();
+	
+	public String getId() {
+		return id;
 	}
-
+	public void setId(String id) {
+		this.id = id;
+	}
+	public String getName() {
+		return name;
+	}
+	public void setName(String name) {
+		this.name = name;
+	}
+	public String getDescription() {
+		return description;
+	}
+	public void setDescription(String description) {
+		this.description = description;
+	}
+	public ArrayList<String> getAffiliation() {
+		return affiliation;
+	}
+	public void setAffiliation(ArrayList<String> affiliation) {
+		this.affiliation = affiliation;
+	}
+	public ArrayList<String> getRepository() {
+		return repository;
+	}
+	public void setRepository(ArrayList<String> repository) {
+		this.repository = repository;
+	}
+	
 }

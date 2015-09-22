@@ -28,23 +28,33 @@ package org.smartdeveloperhub.harvester.org.frontend.core;
 
 import java.io.InputStream;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.smartdeveloperhub.harvester.org.backend.OrganizationPublisher;
+import org.smartdeveloperhub.harvester.org.backend.ProjectPublisher;
 
 import com.hp.hpl.jena.ontology.OntModel;
 import com.hp.hpl.jena.rdf.model.ModelFactory;
 
 public class BackendController {
-	OrganizationPublisher orgPublisher;		 
+	
+	private static final Logger LOGGER=LoggerFactory.getLogger(BackendController.class);
+		
 	OntModel ontModel;
 	OrganizationPublisher orgPub;
+	ProjectPublisher projPub;
+	
 	
 	public BackendController(){
 		loadOntologyIndividuals();
 		orgPub = new OrganizationPublisher(ontModel);
+		projPub = new ProjectPublisher(ontModel);
 	}
 	
 	public void loadOntologyIndividuals(){
 						
+		long startTime = System.currentTimeMillis();
+		
 		String inputFileName = "organization-individuals.ttl";
 		InputStream in=
 			Thread.
@@ -69,7 +79,11 @@ public class BackendController {
 		ontModel.read(in, null, "TTL" );
 		// write it to standard out
 		//ontModel.writeAll(System.out, "TTL");
-		//ontModel.write(System.out, "TTL");					
+		//ontModel.write(System.out, "TTL");			
+		long stopTime = System.currentTimeMillis();
+		long elapsedTime = stopTime - startTime;
+
+		LOGGER.info("- Load Ontology, elapsed time (ms)..: {}",elapsedTime);
 	}
 	
 	public OrganizationPublisher getOrganizationPublisher() {
@@ -78,6 +92,9 @@ public class BackendController {
 	}
 
 
-	
+	public ProjectPublisher getProjectPublisher() {
+		// TODO Auto-generated method stub
+		return projPub;
+	}
 
 }
