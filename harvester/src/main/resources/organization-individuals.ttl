@@ -82,8 +82,8 @@ org:financialInstitutionType a skos:Concept;
  	skos:prefLabel "Financial Institution"@en. 	
 
 org:technologyTransferType a skos:Concept;
-  rdfs:label "Financial Institution"@en;
-  skos:prefLabel "Financial Institution"@en.  
+  rdfs:label "Thechnology transfer institution"@en;
+  skos:prefLabel "Thechnology transfer institution"@en.  
 
  #-- Organization chart
 org:upm a org:FormalOrganization, org:Organization ;
@@ -328,56 +328,67 @@ org:stakeholder a org:Role;
 # Memberships    .
 #alejandro carrera
 org:membership01 a org:Membership ; 
+  org:id "membership01";
   org:member org:person01 ;
   org:membershipOn org:com ;
   org:role org:softwareEngineer.
 #alejandro
 org:membership02 a org:Membership ; 
+  org:id "membership02";
   org:member org:person02 ;
   org:membershipOn org:com ;
   org:role org:softwareEngineer.
 #Andrés
 org:membership03 a org:Membership ; 
+  org:id "membership03";
   org:member org:person03 ;
   org:membershipOn org:com ;
   org:role org:softwareEngineer.
 #Carlos
 org:membership04 a org:Membership ; 
+  org:id "membership04";
   org:member org:person04 ;
   org:membershipOn org:com ;
   org:role org:softwareEngineer.  
 #fserena
 org:membership05 a org:Membership ; 
+  org:id "membership05";
   org:member org:person05 ;
   org:membershipOn org:com ;
   org:role org:softwareEngineer.    
 #mesteban
 org:membership06 a org:Membership ; 
+  org:id "membership06";
   org:member org:person06 ;
   org:membershipOn org:com ;
   org:role org:softwareEngineer.    
 #corcho
 org:membership07 a org:Membership ; 
+  org:id "membership07";
   org:member org:person07 ;
   org:membershipOn org:com ;
   org:role org:professor.
 #asun
 org:membership08 a org:Membership ; 
+  org:id "membership08";
   org:member org:person08 ;
   org:membershipOn org:com ;
   org:role org:professor.
 #soriano
 org:membership09 a org:Membership ; 
+  org:id "membership09";
   org:member org:person09 ;
   org:membershipOn org:com ;
   org:role org:professor.
 #maria jose
 org:membership10 a org:Membership ; 
+  org:id "membership10";
   org:member org:person10 ;
   org:membershipOn org:com ;
   org:role org:external.
 #Ruben
 org:membership11 a org:Membership ; 
+  org:id "membership11";
   org:member org:person11 ;
   org:membershipOn org:com ;
   org:role org:external.
@@ -386,76 +397,91 @@ org:membership11 a org:Membership ;
 #Affiliations
 #alejandro carrera
 org:affiliation01 a org:Affiliation ; 
+  org:id "affiliation01";
   org:affiliate org:person01 ;
   org:affiliationWith org:sdh ;
   org:role org:softwarepDeveloper.
 #alejandro
 org:affiliation02 a org:Affiliation ; 
+  org:id "affiliation02";
   org:affiliate org:person02 ;
   org:affiliationWith org:sdh ;
   org:role org:softwarepDeveloper.
 #andres
 org:affiliation03 a org:Affiliation ; 
+  org:id "affiliation03";
   org:affiliate org:person03 ;
   org:affiliationWith org:sdh ;
   org:role org:softwarepDeveloper.
 #carlos
 org:affiliation04 a org:Affiliation ; 
+  org:id "affiliation04";
   org:affiliate org:person04 ;
   org:affiliationWith org:sdh ;
   org:role org:softwarepDeveloper.
 #fserena
 org:affiliation05 a org:Affiliation ; 
+  org:id "affiliation05";
   org:affiliate org:person05 ;
   org:affiliationWith org:sdh ;
   org:role org:softwarepDeveloper.  
 
 org:affiliation06 a org:Affiliation ; 
+  org:id "affiliation06";
   org:affiliate org:person05 ;
   org:affiliationWith org:sdh ;
   org:role org:softwareArchitect.
 #mesteban
 org:affiliation07 a org:Affiliation ; 
+  org:id "affiliation07";
   org:affiliate org:person06 ;
   org:affiliationWith org:sdh ;
   org:role org:softwarepDeveloper.
 
 org:affiliation08 a org:Affiliation ; 
+  org:id "affiliation08";
   org:affiliate org:person06 ;
   org:affiliationWith org:ldp4j ;
   org:role org:softwarepDeveloper.
 
 org:affiliation09 a org:Affiliation ; 
+  org:id "affiliation09";
   org:affiliate org:person06 ;
   org:affiliationWith org:ldp4j ;
   org:role org:softwareArchitect.
 #corcho
 org:affiliation10 a org:Affiliation ; 
+  org:id "affiliation10";
   org:affiliate org:person07 ;
   org:affiliationWith org:sdh ;
   org:role org:projectManager.
 #asun
 org:affiliation11 a org:Affiliation ; 
+  org:id "affiliation11";
   org:affiliate org:person08 ;
   org:affiliationWith org:sdh ;
   org:role org:projectManager.
 
 org:affiliation12 a org:Affiliation ; 
+  org:id "affiliation12";
   org:affiliate org:person08 ;
   org:affiliationWith org:ldp4j ;
   org:role org:projectManager.  
 #soriano
 org:affiliation13 a org:Affiliation ; 
+  org:id "affiliation13";
   org:affiliate org:person09 ;
   org:affiliationWith org:sdh ;
   org:role org:projectManager.
 #mariajose
 org:affiliation14 a org:Affiliation ; 
+  org:id "affiliation14";
   org:affiliate org:person10 ;
   org:affiliationWith org:sdh ;
   org:role org:stakeholder.
 #ruben
 org:affiliation15 a org:Affiliation ; 
+  org:id "affiliation15";
   org:affiliate org:person11 ;
   org:affiliationWith org:sdh ;
   org:role org:stakeholder.

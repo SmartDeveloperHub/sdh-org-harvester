@@ -24,27 +24,30 @@
  *   Bundle      : org-harvester.war
  * #-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=#
  */
-package org.smartdeveloperhub.harvester.org.frontend.core.Organization;
+package org.smartdeveloperhub.harvester.org.frontend.core.person;
 
-public interface OrganizationVocabulary {
-
+public interface PersonVocabulary {
+	
 	static final String TYPE       = "http://www.w3.org/1999/02/22-rdf-syntax-ns#type";
-	static final String ORGANIZATION_CLASS = "http://www.smartdeveloperhub.org/vocabulary/org#Organization";
-	static final String PREFLABEL = "http://www.w3.org/2004/02/skos/core#prefLabel";
-	static final String ORGID = "http://www.smartdeveloperhub.org/vocabulary/org#id";
-	static final String TITLE = "http://www.smartdeveloperhub.org/vocabulary/org#title";
-	static final String DESCRIPTION = "http://www.smartdeveloperhub.org/vocabulary/org#description";
-	static final String CLASSIFICATION = "http://www.w3.org/ns/org#classification";
-	static final String PURPOSE = "http://www.w3.org/ns/org#purpose";
-	static final String HASMEMBERORGANIZATION="http://www.smartdeveloperhub.org/vocabulary/org#hasMemberOrganization";
-	static final String HASPROJECT="http://www.smartdeveloperhub.org/vocabulary/org#hasProject";
-	static final String HASMEMBER ="http://www.smartdeveloperhub.org/vocabulary/org#hasMember";
-	static final String MEMBERSHIP = "http://www.smartdeveloperhub.org/vocabulary/org#membership";
-	
-	static final String SKOSCONCEPT = "http://www.w3.org/2004/02/skos/core#Concept";
-	static final String LABEL = "http://www.w3.org/2000/01/rdf-schema#label";
-	
-	static final String PROJECTID = "http://www.smartdeveloperhub.org/vocabulary/org#id";
+	static final String PERSONCLASS = "http://www.smartdeveloperhub.org/vocabulary/org#Person";
 	static final String PERSONID = "http://www.smartdeveloperhub.org/vocabulary/org#id";
+
+	static final String FOAFNAME = "http://xmlns.com/foaf/0.1/name";
+	static final String FOAFNICK ="http://xmlns.com/foaf/0.1/nick";
+	static final String FOAFMBOX = "http://xmlns.com/foaf/0.1/mbox";
+	static final String FOAFIMG = "http://xmlns.com/foaf/0.1/img";
+	static final String FOAFIMAGE = "http://xmlns.com/foaf/0.1/Image";
+	static final String FOAFDEPICTS = "http://xmlns.com/foaf/0.1/depicts";
+	static final String FOAFHOMEPAGE = "http://xmlns.com/foafhomepage";
+	static final String FOAFDOCUMENT = "http://xmlns.com/Document";
 	
+	
+	
+	static final String MEMBEROF = "http://www.smartdeveloperhub.org/vocabulary/org#memberOf";
+	static final String ORGID = "http://www.smartdeveloperhub.org/vocabulary/org#id";
+	static final String HASMEMBERSHIP = "http://www.smartdeveloperhub.org/vocabulary/org#hasMembership";
+	static final String MEMBERSHIPID = "http://www.smartdeveloperhub.org/vocabulary/org#id";
+	static final String ISAFFILIATED = "http://www.smartdeveloperhub.org/vocabulary/org#isAffiliated";
+	static final String AFFILIATIONID = "http://www.smartdeveloperhub.org/vocabulary/org#id";
+	    
 }

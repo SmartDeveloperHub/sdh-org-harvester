@@ -34,6 +34,7 @@ import org.smartdeveloperhub.harvester.org.backend.pojo.Organization;
 import org.smartdeveloperhub.harvester.org.backend.pojo.Project;
 import org.smartdeveloperhub.harvester.org.frontend.core.Organization.OrganizationVocabulary;
 import org.smartdeveloperhub.harvester.org.frontend.core.project.ProjectVocabulary;
+import org.smartdeveloperhub.harvester.org.backend.OntologyInstanceReader;
 
 import com.hp.hpl.jena.ontology.OntModel;
 import com.hp.hpl.jena.rdf.model.ResIterator;

@@ -31,6 +31,7 @@ import java.io.InputStream;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.smartdeveloperhub.harvester.org.backend.OrganizationPublisher;
+import org.smartdeveloperhub.harvester.org.backend.PersonPublisher;
 import org.smartdeveloperhub.harvester.org.backend.ProjectPublisher;
 
 import com.hp.hpl.jena.ontology.OntModel;
@@ -43,12 +44,14 @@ public class BackendController {
 	OntModel ontModel;
 	OrganizationPublisher orgPub;
 	ProjectPublisher projPub;
+	PersonPublisher perPub;
 	
 	
 	public BackendController(){
 		loadOntologyIndividuals();
 		orgPub = new OrganizationPublisher(ontModel);
 		projPub = new ProjectPublisher(ontModel);
+		perPub = new PersonPublisher(ontModel);
 	}
 	
 	public void loadOntologyIndividuals(){
@@ -95,6 +98,11 @@ public class BackendController {
 	public ProjectPublisher getProjectPublisher() {
 		// TODO Auto-generated method stub
 		return projPub;
+	}
+
+	public PersonPublisher getPersonPublisher() {
+		// TODO Auto-generated method stub
+		return perPub;
 	}
 
 }

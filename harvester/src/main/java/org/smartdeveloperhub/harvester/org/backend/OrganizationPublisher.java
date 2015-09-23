@@ -31,6 +31,7 @@ import java.util.ArrayList;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.smartdeveloperhub.harvester.org.backend.pojo.Organization;
+import org.smartdeveloperhub.harvester.org.backend.OntologyInstanceReader;
 import org.smartdeveloperhub.harvester.org.frontend.core.HarvesterApplication;
 import org.smartdeveloperhub.harvester.org.frontend.core.Organization.OrganizationVocabulary;
 
@@ -139,12 +140,26 @@ public class OrganizationPublisher extends OntologyInstanceReader implements Org
 			    Statement stmtProjOrg = projectOrgIter.next();
 			    Resource projRes= stmtProjOrg.getResource();
 			    if (projRes!=null){
-			    	Statement stmtProjectId = projRes.getProperty(ontModel.getProperty(ORGID));
+			    	Statement stmtProjectId = projRes.getProperty(ontModel.getProperty(PROJECTID));
 			    	if (stmtProjectId!=null)
 			    		hasProject.add(stmtProjectId.getString());
 			    }
 		    }
 		    org.setHasProject(hasProject);
+		    
+		  //hasMember
+		    StmtIterator hasMemberIter = r.listProperties(ontModel.getProperty(HASMEMBER));
+		    ArrayList<String> hasMember = new ArrayList<String>();
+		    while (hasMemberIter.hasNext()) {
+			    Statement stmtHasMember = hasMemberIter.next();
+			    Resource personRes= stmtHasMember.getResource();
+			    if (personRes!=null){
+			    	Statement personIdStmt = personRes.getProperty(ontModel.getProperty(PERSONID));
+			    	if (personIdStmt!=null)
+			    	    hasMember.add(personIdStmt.getString());
+			    }
+		    }
+		    org.setHasMember(hasMember);
 		    
 		    long stopTime = System.currentTimeMillis();
 			long elapsedTime = stopTime - startTime;

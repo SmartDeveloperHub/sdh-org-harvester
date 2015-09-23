@@ -26,7 +26,6 @@
  */
 package org.smartdeveloperhub.harvester.org.frontend.core;
 
-import java.io.IOException;
 import java.net.URI;
 
 import org.ldp4j.application.data.NamingScheme;
@@ -40,6 +39,8 @@ import org.slf4j.LoggerFactory;
 import org.smartdeveloperhub.harvester.org.frontend.core.Organization.OrganizationContainerHandler;
 import org.smartdeveloperhub.harvester.org.frontend.core.Organization.OrganizationHandler;
 import org.smartdeveloperhub.harvester.org.frontend.core.harvester.HarvesterHandler;
+import org.smartdeveloperhub.harvester.org.frontend.core.person.PersonContainerHandler;
+import org.smartdeveloperhub.harvester.org.frontend.core.person.PersonHandler;
 import org.smartdeveloperhub.harvester.org.frontend.core.project.ProjectContainerHandler;
 import org.smartdeveloperhub.harvester.org.frontend.core.project.ProjectHandler;
 
@@ -72,8 +73,8 @@ public final class HarvesterApplication extends Application<HarvesterConfigurati
 		 	    bootstrap.addHandlerClass(OrganizationContainerHandler.class);
 		 	    bootstrap.addHandler(new ProjectHandler(controller));
 		 	    bootstrap.addHandlerClass(ProjectContainerHandler.class);
-//				bootstrap.addHandler(new UserHandler(controller));
-//				bootstrap.addHandlerClass(UserContainerHandler.class);
+				bootstrap.addHandler(new PersonHandler(controller));
+				bootstrap.addHandlerClass(PersonContainerHandler.class);
 //				bootstrap.addHandler(new BranchHandler(this.controller));
 //				bootstrap.addHandlerClass(BranchContainerHandler.class);
 //				bootstrap.addHandler(new CommitHandler(this.controller));

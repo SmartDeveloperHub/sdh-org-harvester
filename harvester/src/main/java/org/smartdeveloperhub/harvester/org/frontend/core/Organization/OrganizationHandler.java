@@ -45,20 +45,22 @@ import org.smartdeveloperhub.harvester.org.backend.pojo.Organization;
 import org.smartdeveloperhub.harvester.org.frontend.core.BackendController;
 import org.smartdeveloperhub.harvester.org.frontend.core.project.ProjectContainerHandler;
 import org.smartdeveloperhub.harvester.org.frontend.core.project.ProjectHandler;
+import org.smartdeveloperhub.harvester.org.frontend.core.person.PersonContainerHandler;
+import org.smartdeveloperhub.harvester.org.frontend.core.person.PersonHandler;
 
 
 @Resource(id=OrganizationHandler.ID
 	,attachments={
 		@Attachment(
 			id=OrganizationHandler.ORGANIZATION_PROJECTS,
-			path="hasProject/",
+			path="projects/",
 			handler=ProjectContainerHandler.class
+		),
+		@Attachment(
+			id=OrganizationHandler.ORGANIZATION_MEMBERS,
+			path="members/",
+			handler=PersonContainerHandler.class
 		)
-//		@Attachment(
-//				id=RepositoryHandler.REPOSITORY_COMMITS,
-//				path="commits/",
-//				handler=CommitContainerHandler.class
-//			)
 	}
 )
 
@@ -66,6 +68,7 @@ public class OrganizationHandler implements ResourceHandler, OrganizationVocabul
 	
 	public static final String ID="OrganizationHandler";
 	public static final String ORGANIZATION_PROJECTS="ORGANIZATIONPROJECTS";
+	public static final String ORGANIZATION_MEMBERS="ORGANIZATIONMEMBERS";
 	
 	BackendController backendController;
 	
@@ -142,14 +145,15 @@ public class OrganizationHandler implements ResourceHandler, OrganizationVocabul
 					withIndividual(projectOrgName,ProjectHandler.ID);
 	}
 		
-//		for (Integer userId:repository.getContributors()){
-//			Name<String> userName = NamingScheme.getDefault().name(Integer.toString(userId));
-//			helper.
-//			managedIndividual(repoName, RepositoryHandler.ID).
-//					property(DEVELOPER).
-//						withIndividual(userName,UserHandler.ID);
-//		}
-		
+	for (String personId:organization.getHasMember()){
+		Name<String> personName = NamingScheme.getDefault().name(personId);
+		helper.
+		managedIndividual(organizationName, OrganizationHandler.ID).
+				property(HASMEMBER).
+					withIndividual(personName,PersonHandler.ID);
+	}
+
+	
 	//	for (String branchId:repository.getBranches().getBranchIds()){
 	//		Name<String> branchName = NamingScheme.getDefault().name(repository.getId().toString(),branchId);
 	//		helper.
@@ -159,7 +163,7 @@ public class OrganizationHandler implements ResourceHandler, OrganizationVocabul
 	//	}
 	//	
 
-		if ( organization.getClass()!=null){
+		if ( organization.getClassification()!=null){
 			helper.
 			managedIndividual(organizationName, OrganizationHandler.ID).
 				property(CLASSIFICATION).
