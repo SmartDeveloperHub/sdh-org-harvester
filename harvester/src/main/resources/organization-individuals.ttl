@@ -213,7 +213,7 @@ org:person02 a org:Person ;
     org:id "person06";
     foaf:name "Miguel Esteban Gutiérrez";
     foaf:nick "mestebangutierrez" ;
-    foaf:mbox "mestebangutierrez@gmail.com" ;
+    foaf:mbox "m.esteban.gutierrez@gmail.com" ;
     org:memberOf org:com ;
     org:hasMembership org:membership06 ;
     org:isAffiliated org:affiliation07 ;
@@ -331,67 +331,67 @@ org:membership01 a org:Membership ;
   org:id "membership01";
   org:member org:person01 ;
   org:membershipOn org:com ;
-  org:role org:softwareEngineer.
+  org:position org:softwareEngineer.
 #alejandro
 org:membership02 a org:Membership ; 
   org:id "membership02";
   org:member org:person02 ;
   org:membershipOn org:com ;
-  org:role org:softwareEngineer.
+  org:position org:softwareEngineer.
 #Andrés
 org:membership03 a org:Membership ; 
   org:id "membership03";
   org:member org:person03 ;
   org:membershipOn org:com ;
-  org:role org:softwareEngineer.
+  org:position org:softwareEngineer.
 #Carlos
 org:membership04 a org:Membership ; 
   org:id "membership04";
   org:member org:person04 ;
   org:membershipOn org:com ;
-  org:role org:softwareEngineer.  
+  org:position org:softwareEngineer.  
 #fserena
 org:membership05 a org:Membership ; 
   org:id "membership05";
   org:member org:person05 ;
   org:membershipOn org:com ;
-  org:role org:softwareEngineer.    
+  org:position org:softwareEngineer.    
 #mesteban
 org:membership06 a org:Membership ; 
   org:id "membership06";
   org:member org:person06 ;
   org:membershipOn org:com ;
-  org:role org:softwareEngineer.    
+  org:position org:softwareEngineer.    
 #corcho
 org:membership07 a org:Membership ; 
   org:id "membership07";
   org:member org:person07 ;
   org:membershipOn org:com ;
-  org:role org:professor.
+  org:position org:professor.
 #asun
 org:membership08 a org:Membership ; 
   org:id "membership08";
   org:member org:person08 ;
   org:membershipOn org:com ;
-  org:role org:professor.
+  org:position org:professor.
 #soriano
 org:membership09 a org:Membership ; 
   org:id "membership09";
   org:member org:person09 ;
   org:membershipOn org:com ;
-  org:role org:professor.
+  org:position org:professor.
 #maria jose
 org:membership10 a org:Membership ; 
   org:id "membership10";
   org:member org:person10 ;
   org:membershipOn org:com ;
-  org:role org:external.
+  org:position org:external.
 #Ruben
 org:membership11 a org:Membership ; 
   org:id "membership11";
   org:member org:person11 ;
   org:membershipOn org:com ;
-  org:role org:external.
+  org:position org:external.
 
 
 #Affiliations

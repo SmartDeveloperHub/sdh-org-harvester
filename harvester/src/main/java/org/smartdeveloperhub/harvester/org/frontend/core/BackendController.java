@@ -30,9 +30,13 @@ import java.io.InputStream;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.smartdeveloperhub.harvester.org.backend.AffiliationPublisher;
+import org.smartdeveloperhub.harvester.org.backend.MembershipPublisher;
 import org.smartdeveloperhub.harvester.org.backend.OrganizationPublisher;
 import org.smartdeveloperhub.harvester.org.backend.PersonPublisher;
+import org.smartdeveloperhub.harvester.org.backend.PositionPublisher;
 import org.smartdeveloperhub.harvester.org.backend.ProjectPublisher;
+import org.smartdeveloperhub.harvester.org.backend.RolePublisher;
 
 import com.hp.hpl.jena.ontology.OntModel;
 import com.hp.hpl.jena.rdf.model.ModelFactory;
@@ -45,13 +49,20 @@ public class BackendController {
 	OrganizationPublisher orgPub;
 	ProjectPublisher projPub;
 	PersonPublisher perPub;
-	
+	MembershipPublisher memPub;
+	AffiliationPublisher affPub;
+	PositionPublisher posPub;
+	RolePublisher rolePub;
 	
 	public BackendController(){
 		loadOntologyIndividuals();
 		orgPub = new OrganizationPublisher(ontModel);
 		projPub = new ProjectPublisher(ontModel);
 		perPub = new PersonPublisher(ontModel);
+		memPub = new MembershipPublisher(ontModel);
+		affPub =new AffiliationPublisher(ontModel);
+		posPub = new PositionPublisher(ontModel);
+		rolePub = new RolePublisher(ontModel);
 	}
 	
 	public void loadOntologyIndividuals(){
@@ -94,7 +105,6 @@ public class BackendController {
 		return orgPub;
 	}
 
-
 	public ProjectPublisher getProjectPublisher() {
 		// TODO Auto-generated method stub
 		return projPub;
@@ -103,6 +113,24 @@ public class BackendController {
 	public PersonPublisher getPersonPublisher() {
 		// TODO Auto-generated method stub
 		return perPub;
+	}
+
+	public MembershipPublisher getMembershipPublisher() {
+		// TODO Auto-generated method stub
+		return memPub;
+	}
+	
+	public AffiliationPublisher getAffiliationPublisher() {
+		// TODO Auto-generated method stub
+		return affPub;
+	}
+
+	public RolePublisher getRolePublisher() {		
+		return rolePub;		
+	}
+	
+	public PositionPublisher getPositionPublisher() {
+		return posPub;		
 	}
 
 }

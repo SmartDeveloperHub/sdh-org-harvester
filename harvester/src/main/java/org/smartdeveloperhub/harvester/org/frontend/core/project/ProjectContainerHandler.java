@@ -27,6 +27,7 @@
 package org.smartdeveloperhub.harvester.org.frontend.core.project;
 
 import org.ldp4j.application.data.DataSet;
+import org.ldp4j.application.data.DataSets;
 import org.ldp4j.application.ext.ApplicationRuntimeException;
 import org.ldp4j.application.ext.ContainerHandler;
 import org.ldp4j.application.ext.UnknownResourceException;
@@ -50,8 +51,9 @@ public class ProjectContainerHandler implements ContainerHandler {
 	@Override
 	public DataSet get(ResourceSnapshot resource)
 			throws UnknownResourceException, ApplicationRuntimeException {
-		// TODO Auto-generated method stub
-		return null;
+		return
+				DataSets.
+					createDataSet(resource.name());
 	}
 
 	@Override
