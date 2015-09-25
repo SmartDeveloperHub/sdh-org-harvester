@@ -38,11 +38,16 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.smartdeveloperhub.harvester.org.backend.OrganizationPublisher;
 import org.smartdeveloperhub.harvester.org.backend.pojo.Organization;
+import org.smartdeveloperhub.harvester.org.backend.pojo.Project;
 import org.smartdeveloperhub.harvester.org.frontend.core.Organization.OrganizationContainerHandler;
 import org.smartdeveloperhub.harvester.org.frontend.core.Organization.OrganizationHandler;
 import org.smartdeveloperhub.harvester.org.frontend.core.harvester.HarvesterHandler;
+import org.smartdeveloperhub.harvester.org.frontend.core.membership.MembershipContainerHandler;
 import org.smartdeveloperhub.harvester.org.frontend.core.person.PersonContainerHandler;
+import org.smartdeveloperhub.harvester.org.frontend.core.position.PositionContainerHandler;
 import org.smartdeveloperhub.harvester.org.frontend.core.project.ProjectContainerHandler;
+import org.smartdeveloperhub.harvester.org.frontend.core.project.ProjectHandler;
+import org.smartdeveloperhub.harvester.org.frontend.core.role.RoleContainerHandler;
 //import org.smartdeveloperhub.harvesters.scm.backend.pojos.Repository;
 
 
@@ -97,20 +102,60 @@ public class BackendResourcePublisher {
 			
 			addMembersToOrganization(memberContainerSnapshot, org);
 			
-//			ContainerSnapshot branchContainerSnapshot = repositorySnapshot.createAttachedResource( ContainerSnapshot.class, RepositoryHandler.REPOSITORY_BRANCHES,
-//					repositoryName, BranchContainerHandler.class);
-//			
-//			Repository repo=controller.getRepository(Integer.toString(repositoryId));
-//			
-//			addBranchMemberstToRepository(repo, branchContainerSnapshot);
-//			
-//			ContainerSnapshot commitContainerSnapshot = repositorySnapshot.createAttachedResource( ContainerSnapshot.class, RepositoryHandler.REPOSITORY_COMMITS,
-//					repositoryName, CommitContainerHandler.class);
-//			
-//			addCommitMembersToRepository(repo, commitContainerSnapshot);
+			//Position container for each organization
+			ContainerSnapshot positionContainerSnapshot = organizationSnapshot.createAttachedResource( ContainerSnapshot.class, 
+					OrganizationHandler.ORGANIZATION_POSITIONS, organizationName, PositionContainerHandler.class);			
+			
+			addPositionsToOrganization(positionContainerSnapshot, org);
+			
+			//Role container for each organization
+			ContainerSnapshot roleContainerSnapshot = organizationSnapshot.createAttachedResource( ContainerSnapshot.class, OrganizationHandler.ORGANIZATION_ROLES,
+					organizationName, RoleContainerHandler.class);			
+			
+			addRolesToOrganization(roleContainerSnapshot, org);
+			
+			//Membership container for each organization
+			ContainerSnapshot membershipContainerSnapshot = organizationSnapshot.createAttachedResource( ContainerSnapshot.class,
+					OrganizationHandler.ORGANIZATION_MEMBERSSHIPS, organizationName, MembershipContainerHandler.class);			
+			
+			addMembershipsToOrganization(membershipContainerSnapshot, org);
+
 			
 			LOGGER.debug("Published resource for repository {} @ {} ({})",organizationId, organizationContainerSnapshot.name(),organizationContainerSnapshot.templateId());
 		}
+	}
+
+	private void addMembershipsToOrganization(
+			ContainerSnapshot membershipContainerSnapshot, Organization org) {
+		
+		for (String membershipId:org.getMembership()){
+	    	Name<String> membershipName = NamingScheme.getDefault().name(membershipId);	
+			
+			ResourceSnapshot membershipSnapshot = membershipContainerSnapshot.addMember(membershipName);
+	    }
+		
+	}
+
+	private void addRolesToOrganization(
+			ContainerSnapshot roleContainerSnapshot, Organization org) {
+		
+		for (String roleId:org.getRole()){
+	    	Name<String> roleName = NamingScheme.getDefault().name(roleId);	
+			
+			ResourceSnapshot roleSnapshot = roleContainerSnapshot.addMember(roleName);
+	    }
+		
+	}
+
+	private void addPositionsToOrganization(
+			ContainerSnapshot positionContainerSnapshot, Organization org) {
+		  
+		for (String positionId:org.getPosition()){
+		    	Name<String> positionName = NamingScheme.getDefault().name(positionId);	
+				
+				ResourceSnapshot positionSnapshot = positionContainerSnapshot.addMember(positionName);
+		    }
+		
 	}
 
 	private void addMembersToOrganization(
@@ -127,13 +172,29 @@ public class BackendResourcePublisher {
 	private void addProjectsToOrganization(ContainerSnapshot projectContainerSnapshot, Organization org) {	
 	    
 	    for (String projectId:org.getHasProject()){
-	    	Name<String> projectName = NamingScheme.getDefault().name(projectId);	
+	    	Project project = controller.getProjectPublisher().getProject(projectId);
+	    	Name<String> projectName = NamingScheme.getDefault().name(projectId);	    	
 			
 			ResourceSnapshot projectSnapshot = projectContainerSnapshot.addMember(projectName);
+			
+			//Role container for each project
+//			ContainerSnapshot roleContainerSnapshot = projectSnapshot.createAttachedResource( ContainerSnapshot.class, ProjectHandler.PROJECT_ROLES,
+//					projectName, RoleContainerHandler.class);
+//			
+//			addRolesToProject(roleContainerSnapshot, project);
 	    }
 	    
 		
 	}
+
+//	private void addRolesToProject(ContainerSnapshot roleContainerSnapshot,
+//			Project project) {
+//		for (String roleId:project.getRole()){
+//			Name<String> roleName = NamingScheme.getDefault().name(roleId);	    				
+//			ResourceSnapshot roleSnapshot = roleContainerSnapshot.addMember(roleName);
+//		}
+//		
+//	}
 	
 //	private void addBranchMemberstToRepository(Repository repository, ContainerSnapshot branchContainerSnapshot) throws Exception{		
 //		for (String branchId:repository.getBranches().getBranchIds()){

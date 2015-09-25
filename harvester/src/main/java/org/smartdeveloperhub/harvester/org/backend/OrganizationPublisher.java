@@ -161,6 +161,42 @@ public class OrganizationPublisher extends OntologyInstanceReader implements Org
 		    }
 		    org.setHasMember(hasMember);
 		    
+			  //organizationPosition
+		    StmtIterator orgPositionIter = r.listProperties(ontModel.getProperty(ORGPOSITION));
+		    ArrayList<String> position = new ArrayList<String>();
+		    while (orgPositionIter.hasNext()) {
+			    Statement stmtOrgPosition = orgPositionIter.next();
+			    Resource positionRes= stmtOrgPosition.getResource();
+			    if (positionRes!=null){
+			    	position.add(positionRes.getURI());
+			    }
+		    }
+		    org.setPosition(position);
+		    
+		    //organizationRole
+		    StmtIterator orgRoleIter = r.listProperties(ontModel.getProperty(ORGROLE));
+		    ArrayList<String> role = new ArrayList<String>();
+		    while (orgRoleIter.hasNext()) {
+			    Statement stmtOrgRole = orgRoleIter.next();
+			    Resource roleRes= stmtOrgRole.getResource();
+			    if (roleRes!=null){
+			    	role.add(roleRes.getURI());
+			    }
+		    }
+		    org.setRole(role);
+		    
+		    //membership
+		    StmtIterator membershipIter = r.listProperties(ontModel.getProperty(MEMBERSHIP));
+		    ArrayList<String> membership = new ArrayList<String>();
+		    while (membershipIter.hasNext()) {
+			    Statement stmtMembership = membershipIter.next();
+			    Resource membershipRes= stmtMembership.getResource();
+			    if (membershipRes!=null){
+			    	membership.add(membershipRes.getURI());
+			    }
+		    }
+		    org.setMembership(membership);
+		    
 		    long stopTime = System.currentTimeMillis();
 			long elapsedTime = stopTime - startTime;
 			LOGGER.info("- Load the organization, elapsed time (ms)..: {}",elapsedTime);

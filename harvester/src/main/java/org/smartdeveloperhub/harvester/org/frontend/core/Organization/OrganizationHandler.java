@@ -43,10 +43,16 @@ import org.ldp4j.application.ext.annotations.Resource;
 import org.ldp4j.application.session.ResourceSnapshot;
 import org.smartdeveloperhub.harvester.org.backend.pojo.Organization;
 import org.smartdeveloperhub.harvester.org.frontend.core.BackendController;
+import org.smartdeveloperhub.harvester.org.frontend.core.position.PositionHandler;
 import org.smartdeveloperhub.harvester.org.frontend.core.project.ProjectContainerHandler;
 import org.smartdeveloperhub.harvester.org.frontend.core.project.ProjectHandler;
 import org.smartdeveloperhub.harvester.org.frontend.core.person.PersonContainerHandler;
 import org.smartdeveloperhub.harvester.org.frontend.core.person.PersonHandler;
+import org.smartdeveloperhub.harvester.org.frontend.core.membership.MembershipContainerHandler;
+import org.smartdeveloperhub.harvester.org.frontend.core.membership.MembershipHandler;
+import org.smartdeveloperhub.harvester.org.frontend.core.position.PositionContainerHandler;
+import org.smartdeveloperhub.harvester.org.frontend.core.role.RoleContainerHandler;
+import org.smartdeveloperhub.harvester.org.frontend.core.role.RoleHandler;
 
 
 @Resource(id=OrganizationHandler.ID
@@ -60,7 +66,22 @@ import org.smartdeveloperhub.harvester.org.frontend.core.person.PersonHandler;
 			id=OrganizationHandler.ORGANIZATION_MEMBERS,
 			path="members/",
 			handler=PersonContainerHandler.class
-		)
+		),		
+		@Attachment(
+			id=OrganizationHandler.ORGANIZATION_MEMBERSSHIPS,
+			path="memberships/",
+			handler=MembershipContainerHandler.class
+		),			
+		@Attachment(
+			id=OrganizationHandler.ORGANIZATION_POSITIONS,
+			path="positions/",
+			handler=PositionContainerHandler.class
+		),
+		@Attachment(
+				id=OrganizationHandler.ORGANIZATION_ROLES,
+				path="roles/",
+				handler=RoleContainerHandler.class
+			)
 	}
 )
 
@@ -69,6 +90,9 @@ public class OrganizationHandler implements ResourceHandler, OrganizationVocabul
 	public static final String ID="OrganizationHandler";
 	public static final String ORGANIZATION_PROJECTS="ORGANIZATIONPROJECTS";
 	public static final String ORGANIZATION_MEMBERS="ORGANIZATIONMEMBERS";
+	public static final String ORGANIZATION_MEMBERSSHIPS="ORGANIZATIONMEMBERSSHIPS";
+	public static final String ORGANIZATION_POSITIONS="ORGANIZATIONPOSITIONS";
+	public static final String ORGANIZATION_ROLES="ORGANIZATIONROLES"; 
 	
 	BackendController backendController;
 	
@@ -151,6 +175,30 @@ public class OrganizationHandler implements ResourceHandler, OrganizationVocabul
 		managedIndividual(organizationName, OrganizationHandler.ID).
 				property(HASMEMBER).
 					withIndividual(personName,PersonHandler.ID);
+	}
+	
+	for (String positionId:organization.getPosition()){
+		Name<String> positionName = NamingScheme.getDefault().name(positionId);
+		helper.
+		managedIndividual(organizationName, OrganizationHandler.ID).
+				property(ORGPOSITION).
+					withIndividual(positionName,PositionHandler.ID);
+	}	
+	
+	for (String roleId:organization.getRole()){
+		Name<String> roleName = NamingScheme.getDefault().name(roleId);
+		helper.
+		managedIndividual(organizationName, OrganizationHandler.ID).
+				property(ORGROLE).
+					withIndividual(roleName,RoleHandler.ID);
+	}	
+	
+	for (String membershipId:organization.getMembership()){
+		Name<String> membershipName = NamingScheme.getDefault().name(membershipId);
+		helper.
+		managedIndividual(organizationName, OrganizationHandler.ID).
+				property(MEMBERSHIP).
+					withIndividual(membershipName,MembershipHandler.ID);
 	}
 
 	

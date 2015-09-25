@@ -69,34 +69,17 @@ public class ProjectPublisher extends OntologyInstanceReader implements ProjectV
 		    if (description!=null)
 		    	project.setDescription(description.getString());	    
 		    
-//		    Statement purpose = r.getProperty(ontModel.getProperty(PURPOSE));
-//		    if (purpose!=null)
-//		    	org.setPurpose(purpose.getString());
-//		   
-//		    Statement description = r.getProperty(ontModel.getProperty(DESCRIPTION)) ;
-//		    if (description!=null)
-//		    	org.setDescription(description.getString());
-//		    
-//		    Statement classification = r.getProperty(ontModel.getProperty(CLASSIFICATION));
-//		    if (classification != null ){
-//		    	Resource classificationObj=classification.getObject().asResource();
-//		    	Statement preflabelClassification= classificationObj.getProperty(ontModel.getProperty(PREFLABEL));
-//		    	org.setClassification(preflabelClassification.getString());		    			    			    	
-//		    }
-//		    
-//		    //memberOrganizations
-//		    StmtIterator memberOrgIter = r.listProperties(ontModel.getProperty(HASMEMBERORGANIZATION));
-//		    ArrayList<String> hasMemberOrganization = new ArrayList<String>();
-//		    while (memberOrgIter.hasNext()) {
-//			    Statement stmtMembOrg = memberOrgIter.next();
-//			    Resource memberOrgRes= stmtMembOrg.getResource();
-//			    if (memberOrgRes!=null){
-//			    	Statement memberOrgStmt = memberOrgRes.getProperty(ontModel.getProperty(ORGID));
-//			    	if (memberOrgStmt!=null)
-//			    	    hasMemberOrganization.add(memberOrgStmt.getString());
+//			//projectRole
+//		    StmtIterator projectRoleIter = r.listProperties(ontModel.getProperty(PROJECTROLE));
+//		    ArrayList<String> role = new ArrayList<String>();
+//		    while (projectRoleIter.hasNext()) {
+//			    Statement stmtProjectRole = projectRoleIter.next();
+//			    Resource roleRes= stmtProjectRole.getResource();
+//			    if (roleRes!=null){
+//			    	role.add(roleRes.getURI());
 //			    }
 //		    }
-//		    org.setHasMemberOrganization(hasMemberOrganization);
+//		   project.setRole(role);
 		    
 		    long stopTime = System.currentTimeMillis();
 			long elapsedTime = stopTime - startTime;

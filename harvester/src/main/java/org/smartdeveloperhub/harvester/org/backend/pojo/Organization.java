@@ -40,6 +40,8 @@ public class Organization {
 	ArrayList<String> hasProject = new ArrayList<String>();
 	ArrayList<String> hasMember = new ArrayList<String>();
 	ArrayList<String> membership = new ArrayList<String>();
+	ArrayList<String> position = new ArrayList<String>();
+	ArrayList<String> role = new ArrayList<String>();
 		
 	
 	public String getTitle() {
@@ -101,6 +103,19 @@ public class Organization {
 	}
 	public void setMembership(ArrayList<String> membership) {
 		this.membership = membership;
+	}
+	
+	public void setPosition(ArrayList<String> position) {
+		this.position = position;
+	}
+	public ArrayList<String> getPosition() {
+		return position;
+	}
+	public ArrayList<String> getRole() {
+		return role;
+	}
+	public void setRole(ArrayList<String> role) {
+		this.role = role;
 	}
 	
 

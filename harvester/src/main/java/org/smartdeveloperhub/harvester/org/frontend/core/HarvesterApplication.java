@@ -38,11 +38,19 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.smartdeveloperhub.harvester.org.frontend.core.Organization.OrganizationContainerHandler;
 import org.smartdeveloperhub.harvester.org.frontend.core.Organization.OrganizationHandler;
+import org.smartdeveloperhub.harvester.org.frontend.core.affiliation.AffiliationContainerHandler;
+import org.smartdeveloperhub.harvester.org.frontend.core.affiliation.AffiliationHandler;
 import org.smartdeveloperhub.harvester.org.frontend.core.harvester.HarvesterHandler;
+import org.smartdeveloperhub.harvester.org.frontend.core.membership.MembershipContainerHandler;
+import org.smartdeveloperhub.harvester.org.frontend.core.membership.MembershipHandler;
 import org.smartdeveloperhub.harvester.org.frontend.core.person.PersonContainerHandler;
 import org.smartdeveloperhub.harvester.org.frontend.core.person.PersonHandler;
+import org.smartdeveloperhub.harvester.org.frontend.core.position.PositionContainerHandler;
+import org.smartdeveloperhub.harvester.org.frontend.core.position.PositionHandler;
 import org.smartdeveloperhub.harvester.org.frontend.core.project.ProjectContainerHandler;
 import org.smartdeveloperhub.harvester.org.frontend.core.project.ProjectHandler;
+import org.smartdeveloperhub.harvester.org.frontend.core.role.RoleContainerHandler;
+import org.smartdeveloperhub.harvester.org.frontend.core.role.RoleHandler;
 
 
 public final class HarvesterApplication extends Application<HarvesterConfiguration> {
@@ -75,10 +83,15 @@ public final class HarvesterApplication extends Application<HarvesterConfigurati
 		 	    bootstrap.addHandlerClass(ProjectContainerHandler.class);
 				bootstrap.addHandler(new PersonHandler(controller));
 				bootstrap.addHandlerClass(PersonContainerHandler.class);
-//				bootstrap.addHandler(new BranchHandler(this.controller));
-//				bootstrap.addHandlerClass(BranchContainerHandler.class);
-//				bootstrap.addHandler(new CommitHandler(this.controller));
-//				bootstrap.addHandlerClass(CommitContainerHandler.class);
+				bootstrap.addHandler(new RoleHandler(controller));
+				bootstrap.addHandlerClass(RoleContainerHandler.class);
+				bootstrap.addHandler(new PositionHandler(controller));
+				bootstrap.addHandlerClass(PositionContainerHandler.class);
+				bootstrap.addHandler(new MembershipHandler(controller));
+				bootstrap.addHandlerClass(MembershipContainerHandler.class);
+				bootstrap.addHandler(new AffiliationHandler(controller));
+				bootstrap.addHandlerClass(AffiliationContainerHandler.class);
+
 					
 				environment.
 					publishResource(NamingScheme.getDefault().name(target),HarvesterHandler.class, SERVICE_PATH);

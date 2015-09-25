@@ -35,6 +35,7 @@ public class Project {
 	String description="";
 	ArrayList<String> affiliation = new ArrayList<String>();
 	ArrayList<String> repository = new ArrayList<String>();
+//	ArrayList<String> role = new ArrayList<String>();
 	
 	public String getId() {
 		return id;
@@ -66,5 +67,13 @@ public class Project {
 	public void setRepository(ArrayList<String> repository) {
 		this.repository = repository;
 	}
+	
+//	public ArrayList<String> getRole() {
+//		return role;
+//	}
+//	public void setRole(ArrayList<String> role) {
+//		this.role = role;
+//	}
+	
 	
 }

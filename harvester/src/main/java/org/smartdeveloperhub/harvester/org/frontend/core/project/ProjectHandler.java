@@ -26,8 +26,6 @@
  */
 package org.smartdeveloperhub.harvester.org.frontend.core.project;
 
-import java.net.URI;
-
 import org.ldp4j.application.data.DataSet;
 import org.ldp4j.application.data.DataSetHelper;
 import org.ldp4j.application.data.DataSetUtils;
@@ -37,18 +35,31 @@ import org.ldp4j.application.data.NamingScheme;
 import org.ldp4j.application.ext.ApplicationRuntimeException;
 import org.ldp4j.application.ext.ResourceHandler;
 import org.ldp4j.application.ext.UnknownResourceException;
+import org.ldp4j.application.ext.annotations.Attachment;
 import org.ldp4j.application.ext.annotations.Resource;
 import org.ldp4j.application.session.ResourceSnapshot;
-import org.smartdeveloperhub.harvester.org.backend.pojo.Organization;
 import org.smartdeveloperhub.harvester.org.backend.pojo.Project;
 import org.smartdeveloperhub.harvester.org.frontend.core.BackendController;
-import org.smartdeveloperhub.harvester.org.frontend.core.Organization.OrganizationHandler;
-import org.smartdeveloperhub.harvester.org.frontend.core.Organization.OrganizationVocabulary;
+import org.smartdeveloperhub.harvester.org.frontend.core.affiliation.AffiliationContainerHandler;
+import org.smartdeveloperhub.harvester.org.frontend.core.affiliation.AffiliationHandler;
+import org.smartdeveloperhub.harvester.org.frontend.core.role.RoleContainerHandler;
+import org.smartdeveloperhub.harvester.org.frontend.core.role.RoleHandler;
 
-@Resource(id=ProjectHandler.ID)
+@Resource(id=ProjectHandler.ID
+		,attachments={
+			@Attachment(
+					id=ProjectHandler.PROJECT_AFFILIATIONS,
+					path="affiliations/",
+					handler=AffiliationContainerHandler.class
+				)
+			})
+
 public class ProjectHandler implements ResourceHandler, ProjectVocabulary{
 
 	public static final String ID="ProjectHandler";
+	public static final String PROJECT_AFFILIATIONS="PROJECTAFFILIATIONS";
+	//public static final String PROJECT_ROLES="PROJECTROLES";
+	
 	BackendController backendController;
 	
 	//private static final URI CLASSIFICATION_PATH = URI.create("#classification");
@@ -108,13 +119,21 @@ public class ProjectHandler implements ResourceHandler, ProjectVocabulary{
 	//			property(DEFAULTBRANCH).
 	//			withIndividual(repository.getDefaultBranch());
 
-//	for (String organizationId:organization.getHasMemberOrganization()){
-//		Name<String> memberOrgName = NamingScheme.getDefault().name(organizationId);
-//		helper.
-//		managedIndividual(organizationName, OrganizationHandler.ID).
-//				property(HASMEMBERORGANIZATION).
-//					withIndividual(memberOrgName,OrganizationHandler.ID);
-//	}
+		for (String affiliationId:project.getAffiliation()){
+			Name<String> affiliationName = NamingScheme.getDefault().name(affiliationId);
+			helper.
+			managedIndividual(projectName, ProjectHandler.ID).
+					property(AFFILIATION).
+						withIndividual(affiliationName,AffiliationHandler.ID);
+		}
+		
+//		for (String roleId:project.getRole()){
+//			Name<String> roleName = NamingScheme.getDefault().name(roleId);
+//			helper.
+//			managedIndividual(projectName, ProjectHandler.ID).
+//					property(PROJECTROLE).
+//						withIndividual(roleName,RoleHandler.ID);
+//		}
 		
 //		for (Integer userId:repository.getContributors()){
 //			Name<String> userName = NamingScheme.getDefault().name(Integer.toString(userId));

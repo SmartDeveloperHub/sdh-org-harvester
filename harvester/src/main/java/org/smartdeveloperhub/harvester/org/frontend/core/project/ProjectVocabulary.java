@@ -39,4 +39,6 @@ public interface ProjectVocabulary {
 	
 	static final String AFFILIATION = "http://www.smartdeveloperhub.org/vocabulary/org#affiliation";
 	
+	static final String PROJECTROLE= "http://www.smartdeveloperhub.org/vocabulary/org#projectRole";
+	
 }

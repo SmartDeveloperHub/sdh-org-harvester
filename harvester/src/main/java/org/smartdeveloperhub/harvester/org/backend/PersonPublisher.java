@@ -106,9 +106,10 @@ public class PersonPublisher extends OntologyInstanceReader implements PersonVoc
 		    	Statement stmtMembership = membershipIter.next();
 			    Resource MembershipResource= stmtMembership.getResource();
 			    if (MembershipResource!=null){
-			    	Statement membershipIdStmt = MembershipResource.getProperty(ontModel.getProperty(MEMBERSHIPID));
-			    	if (membershipIdStmt!=null)
-			    		hasMembership.add(membershipIdStmt.getString());
+			    	hasMembership.add(MembershipResource.getURI());
+//			    	Statement membershipIdStmt = MembershipResource.getProperty(ontModel.getProperty(MEMBERSHIPID));
+//			    	if (membershipIdStmt!=null)
+//			    		hasMembership.add(membershipIdStmt.getString());
 			    }
 		    }
 		    person.setHasMembership(hasMembership);
@@ -119,10 +120,11 @@ public class PersonPublisher extends OntologyInstanceReader implements PersonVoc
 		    while (affiliationIter.hasNext()) {
 		    	Statement stmtisAffilited = affiliationIter.next();
 			    Resource AffiliationResource= stmtisAffilited.getResource();
-			    if (AffiliationResource!=null){ 
-			    	Statement affiliationIdStmt = AffiliationResource.getProperty(ontModel.getProperty(AFFILIATIONID));
-			    	if (affiliationIdStmt!=null)
-			    		isAffiliated.add(affiliationIdStmt.getString());
+			    if (AffiliationResource!=null){
+			    	isAffiliated.add(AffiliationResource.getURI());
+//			    	Statement affiliationIdStmt = AffiliationResource.getProperty(ontModel.getProperty(AFFILIATIONID));
+//			    	if (affiliationIdStmt!=null)
+//			    		isAffiliated.add(affiliationIdStmt.getString());
 			    }
 		    }
 		    person.setIsAffiliated(isAffiliated);

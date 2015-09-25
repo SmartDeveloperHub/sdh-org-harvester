@@ -130,7 +130,14 @@ org:com a org:OrganizationalCollaboration, org:Organization ;
     org:membership org:membership08 ;
     org:membership org:membership09 ;
     org:membership org:membership10 ;
-    org:membership org:membership11 .
+    org:membership org:membership11 ;
+    org:organizationPosition  org:softwareEngineer ;
+    org:organizationPosition  org:director ;
+    org:organizationPosition  org:external ;
+    org:organizationRole org:softwarepDeveloper ;
+    org:organizationRole org:softwareArchitect ;
+    org:organizationRole org:projectManager ;
+    org:organizationRole org:stakeholder .
 
 #projects
 org:sdh a org:Project ;
@@ -298,8 +305,8 @@ org:softwareEngineer a org:Position;
     rdfs:label "Software Engineer"@en;    
     org:positionType org:SecondLevelPosition. 
    
-org:professor a org:Position;
-    rdfs:label "University Professor"@en;
+org:director a org:Position;
+    rdfs:label "Project Director"@en;
    org:positionType org:FirstLevelPosition .
 
 org:external a org:Position;
@@ -308,7 +315,7 @@ org:external a org:Position;
    
  # -- Project Roles
 org:softwarepDeveloper a org:Role;
-    rdfs:label "Software Develeoper"@en;
+    rdfs:label "Software Developer"@en;
     org:roleType org:ThirdLevelRole.
 
 org:softwareArchitect a org:Role;
@@ -367,19 +374,19 @@ org:membership07 a org:Membership ;
   org:id "membership07";
   org:member org:person07 ;
   org:membershipOn org:com ;
-  org:position org:professor.
+  org:position org:director.
 #asun
 org:membership08 a org:Membership ; 
   org:id "membership08";
   org:member org:person08 ;
   org:membershipOn org:com ;
-  org:position org:professor.
+  org:position org:director.
 #soriano
 org:membership09 a org:Membership ; 
   org:id "membership09";
   org:member org:person09 ;
   org:membershipOn org:com ;
-  org:position org:professor.
+  org:position org:director.
 #maria jose
 org:membership10 a org:Membership ; 
   org:id "membership10";

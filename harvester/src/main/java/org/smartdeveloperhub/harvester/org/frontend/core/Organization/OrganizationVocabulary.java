@@ -47,4 +47,8 @@ public interface OrganizationVocabulary {
 	static final String PROJECTID = "http://www.smartdeveloperhub.org/vocabulary/org#id";
 	static final String PERSONID = "http://www.smartdeveloperhub.org/vocabulary/org#id";
 	
+	static final String ORGPOSITION = "http://www.smartdeveloperhub.org/vocabulary/org#organizationPosition";
+	static final String ORGROLE = "http://www.smartdeveloperhub.org/vocabulary/org#organizationRole";
+	
+	
 }

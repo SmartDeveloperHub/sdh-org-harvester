@@ -45,6 +45,8 @@ import org.smartdeveloperhub.harvester.org.backend.PersonPublisher;
 import org.smartdeveloperhub.harvester.org.backend.pojo.Person;
 import org.smartdeveloperhub.harvester.org.frontend.core.BackendController;
 import org.smartdeveloperhub.harvester.org.frontend.core.Organization.OrganizationHandler;
+import org.smartdeveloperhub.harvester.org.frontend.core.affiliation.AffiliationHandler;
+import org.smartdeveloperhub.harvester.org.frontend.core.membership.MembershipHandler;
 
 @Resource(id=PersonHandler.ID)
 public class PersonHandler implements ResourceHandler, PersonVocabulary{
@@ -103,36 +105,35 @@ public class PersonHandler implements ResourceHandler, PersonVocabulary{
 					withIndividual(OrganizationName,OrganizationHandler.ID);
 	}
 	
-//	for (String membershipId:person.getHasMembership()){
-//		Name<String> membershipName = NamingScheme.getDefault().name(membershipId);
-//		helper.
-//		managedIndividual(personName, PersonHandler.ID).
-//				property(HASMEMBERSHIP).
-//					withIndividual(membershipName,MembershipHandler.ID);
-//	}
-//	
-//	for (String affiliationId:person.getIsAffiliated()){
-//		Name<String> affiliationName = NamingScheme.getDefault().name(affiliationId);
-//		helper.
-//		managedIndividual(personName, PersonHandler.ID).
-//				property(ISAFFILIATED).
-//					withIndividual(affiliationName,AffiliationHandler.ID);
-//	}	
+	for (String membershipId:person.getHasMembership()){
+		Name<String> membershipName = NamingScheme.getDefault().name(membershipId);
+		helper.
+		managedIndividual(personName, PersonHandler.ID).
+				property(HASMEMBERSHIP).
+					withIndividual(membershipName,MembershipHandler.ID);
+	}
 	
-
-
-		if ( person.getImg()!=null){
-			helper.
-			managedIndividual(personName, PersonHandler.ID).
-				property(FOAFIMG).
-					withIndividual(personName, PersonHandler.ID,IMAGE_PATH);
-			helper.
-			relativeIndividual(personName,PersonHandler.ID,IMAGE_PATH).
-				property(TYPE).
-					withIndividual(FOAFIMG).
-				property(FOAFDEPICTS).
-					withLiteral(person.getImg());		
-		}
+	for (String affiliationId:person.getIsAffiliated()){
+		Name<String> affiliationName = NamingScheme.getDefault().name(affiliationId);
+		helper.
+		managedIndividual(personName, PersonHandler.ID).
+				property(ISAFFILIATED).
+					withIndividual(affiliationName,AffiliationHandler.ID);
+	}	
+	
+		if ( person.getImg()!=null)
+			if ( !person.getImg().isEmpty()){
+				helper.
+				managedIndividual(personName, PersonHandler.ID).
+					property(FOAFIMG).
+						withIndividual(personName, PersonHandler.ID,IMAGE_PATH);
+				helper.
+				relativeIndividual(personName,PersonHandler.ID,IMAGE_PATH).
+					property(TYPE).
+						withIndividual(FOAFIMG).
+					property(FOAFDEPICTS).
+						withLiteral(person.getImg());		
+			}
 						
 		return dataSet;
 	}
