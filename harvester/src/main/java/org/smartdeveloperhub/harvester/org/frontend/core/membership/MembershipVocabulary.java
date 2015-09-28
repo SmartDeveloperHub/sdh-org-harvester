@@ -42,4 +42,9 @@ public interface MembershipVocabulary {
 			
 	static final String POSITIONCLASS = "http://www.smartdeveloperhub.org/vocabulary/org#Position";
 	
+	static final String ORGID = "http://www.smartdeveloperhub.org/vocabulary/org#id";
+	static final String PERSONID = "http://www.smartdeveloperhub.org/vocabulary/org#id";
+	
+	
+	
 }

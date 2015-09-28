@@ -153,8 +153,8 @@ public class OrganizationHandler implements ResourceHandler, OrganizationVocabul
 	//			property(DEFAULTBRANCH).
 	//			withIndividual(repository.getDefaultBranch());
 
-	for (String organizationId:organization.getHasMemberOrganization()){
-		Name<String> memberOrgName = NamingScheme.getDefault().name(organizationId);
+	for (String organizationURI:organization.getHasMemberOrganization()){
+		Name<String> memberOrgName = NamingScheme.getDefault().name(organizationURI);
 		helper.
 		managedIndividual(organizationName, OrganizationHandler.ID).
 				property(HASMEMBERORGANIZATION).
@@ -169,8 +169,8 @@ public class OrganizationHandler implements ResourceHandler, OrganizationVocabul
 					withIndividual(projectOrgName,ProjectHandler.ID);
 	}
 		
-	for (String personId:organization.getHasMember()){
-		Name<String> personName = NamingScheme.getDefault().name(personId);
+	for (String personURI:organization.getHasMember()){
+		Name<String> personName = NamingScheme.getDefault().name(personURI);
 		helper.
 		managedIndividual(organizationName, OrganizationHandler.ID).
 				property(HASMEMBER).

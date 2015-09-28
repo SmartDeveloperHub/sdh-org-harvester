@@ -50,14 +50,20 @@ public class PersonPublisher extends OntologyInstanceReader implements PersonVoc
 		// TODO Auto-generated constructor stub
 	}
 
-	public Person getPerson(String personId) {
+	public Person getPerson(String personURI) {
 		long startTime = System.currentTimeMillis();
 		Person person = new Person();		
-		ResIterator iter = ontModel.listSubjectsWithProperty(ontModel.getProperty(PERSONID),personId);
-		while (iter.hasNext()) {
-		    Resource r = iter.nextResource();
-		    
-		    person.setId(personId);
+//		ResIterator iter = ontModel.listSubjectsWithProperty(ontModel.getProperty(PERSONID),personId);
+//		while (iter.hasNext()) {
+//				 Resource r = iter.nextResource();
+		Resource r  = ontModel.getResource(personURI);
+		if(r!=null){
+			
+			person.setUri(personURI);
+			
+//			Statement id = r.getProperty(ontModel.getProperty(PERSONID));
+//		    if (id !=null)
+//		    person.setId(id.getString());
 		    
 		    Statement name = r.getProperty(ontModel.getProperty(FOAFNAME));
 		    if (name !=null)
@@ -93,9 +99,10 @@ public class PersonPublisher extends OntologyInstanceReader implements PersonVoc
 		    	Statement stmtMembOf = memberOfIter.next();
 			    Resource orgResource= stmtMembOf.getResource();
 			    if (orgResource!=null){
-			    	Statement orgIdStmt = orgResource.getProperty(ontModel.getProperty(ORGID));
-			    	if (orgIdStmt!=null)
-			    	    memberOf.add(orgIdStmt.getString());
+//			    	Statement orgIdStmt = orgResource.getProperty(ontModel.getProperty(ORGID));
+//			    	if (orgIdStmt!=null)
+//			    	    memberOf.add(orgIdStmt.getString());
+			    	memberOf.add(orgResource.getURI());
 			    }
 		    }
 		    person.setMemberOf(memberOf);

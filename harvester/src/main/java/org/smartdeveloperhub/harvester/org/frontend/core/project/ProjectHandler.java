@@ -95,7 +95,7 @@ public class ProjectHandler implements ResourceHandler, ProjectVocabulary{
 		helper.
 		managedIndividual(projectName, ProjectHandler.ID).
 			property(TYPE).
-				withIndividual(ORGANIZATION_CLASS).
+				withIndividual(PROJECT_CLASS).
 			property(PROJECTID).			
 				withLiteral(project.getId()).
 			property(DOAPNAME).
@@ -127,59 +127,7 @@ public class ProjectHandler implements ResourceHandler, ProjectVocabulary{
 						withIndividual(affiliationName,AffiliationHandler.ID);
 		}
 		
-//		for (String roleId:project.getRole()){
-//			Name<String> roleName = NamingScheme.getDefault().name(roleId);
-//			helper.
-//			managedIndividual(projectName, ProjectHandler.ID).
-//					property(PROJECTROLE).
-//						withIndividual(roleName,RoleHandler.ID);
-//		}
-		
-//		for (Integer userId:repository.getContributors()){
-//			Name<String> userName = NamingScheme.getDefault().name(Integer.toString(userId));
-//			helper.
-//			managedIndividual(repoName, RepositoryHandler.ID).
-//					property(DEVELOPER).
-//						withIndividual(userName,UserHandler.ID);
-//		}
-		
-	//	for (String branchId:repository.getBranches().getBranchIds()){
-	//		Name<String> branchName = NamingScheme.getDefault().name(repository.getId().toString(),branchId);
-	//		helper.
-	//		managedIndividual(repoName, RepositoryHandler.ID).
-	//				property(HASBRANCH).
-	//					withIndividual(branchName,BranchHandler.ID);
-	//	}
-	//	
 
-//		if ( organization.getClass()!=null){
-//			helper.
-//			managedIndividual(organizationName, OrganizationHandler.ID).
-//				property(CLASSIFICATION).
-//					withIndividual(organizationName, OrganizationHandler.ID,CLASSIFICATION_PATH);
-//			helper.
-//			relativeIndividual(organizationName,OrganizationHandler.ID,CLASSIFICATION_PATH).
-//				property(TYPE).
-//					withIndividual(SKOSCONCEPT).
-//				property(PREFLABEL).
-//					withLiteral(organization.getClassification()).
-//				property(LABEL).
-//					withLiteral(organization.getClassification());		
-//		}
-
-				
-//		if ( repository.getAvatarUrl() !=null){
-//			helper.
-//			managedIndividual(repoName, RepositoryHandler.ID).
-//				property(DEPICTION).
-//					withIndividual(repoName, RepositoryHandler.ID,DEPICTION_PATH);
-//			helper.
-//			relativeIndividual(repoName,RepositoryHandler.ID,DEPICTION_PATH).
-//				property(TYPE).
-//					withIndividual(IMAGE).
-//				property(DEPICTS).
-//					withIndividual(repository.getAvatarUrl());		
-//		}
 		
 		return dataSet;
 	}

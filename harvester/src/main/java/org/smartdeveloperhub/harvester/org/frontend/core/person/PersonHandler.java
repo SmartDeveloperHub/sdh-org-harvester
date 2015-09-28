@@ -97,8 +97,8 @@ public class PersonHandler implements ResourceHandler, PersonVocabulary{
 			property(FOAFMBOX).
 				withLiteral(person.getMbox());
 
-	for (String organizationId:person.getMemberOf()){
-		Name<String> OrganizationName = NamingScheme.getDefault().name(organizationId);		
+	for (String organizationURI:person.getMemberOf()){
+		Name<String> OrganizationName = NamingScheme.getDefault().name(organizationURI);		
 		helper.
 		managedIndividual(personName, PersonHandler.ID).
 				property(MEMBEROF).

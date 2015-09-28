@@ -29,7 +29,8 @@ package org.smartdeveloperhub.harvester.org.backend.pojo;
 import java.util.ArrayList;
 
 public class Person {
-	String id="";
+	String uri="";
+//	String id="";
 	String name="";
 	String nick="";
 	String mbox="";
@@ -41,18 +42,30 @@ public class Person {
 	
 	public String toString(){
 		String newLine = System.getProperty("line.separator");
-		String str="id:"+id+",name:"+name+",nick:"+nick+",mbox:"+mbox+",homepage:"+homepage+",img:"+img+newLine
+		String str="uri:"+uri+",name:"+name+",nick:"+nick+",mbox:"+mbox+",homepage:"+homepage+",img:"+img+newLine
 				+ ",memberOf:"+ memberOf.toString() + newLine
 				+ ",hasMembershi:"+hasMembership.toString() + newLine
 				+ ",isAffiliated:"+isAffiliated.toString();
 		return str;
 	}
-	public String getId() {
-		return id;
+	
+	
+	public String getUri() {
+		return uri;
 	}
-	public void setId(String id) {
-		this.id = id;
+
+
+	public void setUri(String uri) {
+		this.uri = uri;
 	}
+
+
+//	public String getId() {
+//		return id;
+//	}
+//	public void setId(String id) {
+//		this.id = id;
+//	}
 	public String getName() {
 		return name;
 	}

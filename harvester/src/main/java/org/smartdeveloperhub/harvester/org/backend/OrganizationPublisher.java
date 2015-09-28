@@ -63,19 +63,19 @@ public class OrganizationPublisher extends OntologyInstanceReader implements Org
 		ResIterator iter =ontModel.listSubjectsWithProperty(RDF.type, organization);
 		
 		if (iter.hasNext()) {
-		    System.out.println("The database contains organizations:");
+		    System.out.println("The database contains these organizations:");
 		    while (iter.hasNext()) {
 		    	Resource organizationResource = iter.nextResource();
 		    	String organizationUri= organizationResource.getURI();		        
-		        System.out.println("  " + organizationUri);
-		        String organizationId = organizationResource.getProperty(ontModel.getProperty(ORGID)).getString();
-		        System.out.println("  " + organizationId);
-		        organizations.add(organizationId);
+		        LOGGER.info(organizationUri);
+//		        String organizationId = organizationResource.getProperty(ontModel.getProperty(ORGID)).getString();
+//		        System.out.println("  " + organizationId);
+		        organizations.add(organizationUri);
 		        //System.out.println("   -" + iter.nextResource().getProperty(ontModel.getProperty("http://www.smartdeveloperhub.org/vocabulary/organization#id")).getString());
 		        //System.out.println("   -" + iter.nextResource().getProperty(ontModel.getProperty("http://www.w3.org/ns/org#classification")).getResource().getURI());		        
 		    }
 		} else {
-		    System.out.println("No organizations were found in the database");
+			LOGGER.info("No organizations were found in the database");
 		}
 		
 		long stopTime = System.currentTimeMillis();
@@ -87,14 +87,21 @@ public class OrganizationPublisher extends OntologyInstanceReader implements Org
 	}
 	
 
-	public Organization getOrganization(String organizationId) {
+	public Organization getOrganization(String organizationUri) {
 		long startTime = System.currentTimeMillis();
 		Organization org = new Organization();		
-		ResIterator iter = ontModel.listSubjectsWithProperty(ontModel.getProperty(ORGID),organizationId);
-		while (iter.hasNext()) {
-		    Resource r = iter.nextResource();
+		//ResIterator iter = ontModel.listSubjectsWithProperty(ontModel.getProperty(ORGID),organizationId);
+		
+		Resource r  = ontModel.getResource(organizationUri);
+		if(r!=null){
+		    //Resource r = iter.nextResource();
 		    
-		    org.setId(organizationId);
+		    org.setUri(organizationUri);
+		    
+		    Statement id = r.getProperty(ontModel.getProperty(ORGID));
+		    if (id !=null)
+		    	org.setId(id.getString());
+		    
 		    
 		    Statement title = r.getProperty(ontModel.getProperty(TITLE));
 		    if (title !=null)
@@ -126,9 +133,10 @@ public class OrganizationPublisher extends OntologyInstanceReader implements Org
 			    Statement stmtMembOrg = memberOrgIter.next();
 			    Resource memberOrgRes= stmtMembOrg.getResource();
 			    if (memberOrgRes!=null){
-			    	Statement memberOrgStmt = memberOrgRes.getProperty(ontModel.getProperty(ORGID));
-			    	if (memberOrgStmt!=null)
-			    	    hasMemberOrganization.add(memberOrgStmt.getString());
+//			    	Statement memberOrgStmt = memberOrgRes.getProperty(ontModel.getProperty(ORGID));
+//			    	if (memberOrgStmt!=null)
+//			    	    hasMemberOrganization.add(memberOrgStmt.getString());
+			    	hasMemberOrganization.add(memberOrgRes.getURI());
 			    }
 		    }
 		    org.setHasMemberOrganization(hasMemberOrganization);
@@ -140,9 +148,10 @@ public class OrganizationPublisher extends OntologyInstanceReader implements Org
 			    Statement stmtProjOrg = projectOrgIter.next();
 			    Resource projRes= stmtProjOrg.getResource();
 			    if (projRes!=null){
-			    	Statement stmtProjectId = projRes.getProperty(ontModel.getProperty(PROJECTID));
-			    	if (stmtProjectId!=null)
-			    		hasProject.add(stmtProjectId.getString());
+//			    	Statement stmtProjectId = projRes.getProperty(ontModel.getProperty(PROJECTID));
+//			    	if (stmtProjectId!=null)
+//			    		hasProject.add(stmtProjectId.getString());
+			    	hasProject.add(projRes.getURI());
 			    }
 		    }
 		    org.setHasProject(hasProject);
@@ -154,9 +163,10 @@ public class OrganizationPublisher extends OntologyInstanceReader implements Org
 			    Statement stmtHasMember = hasMemberIter.next();
 			    Resource personRes= stmtHasMember.getResource();
 			    if (personRes!=null){
-			    	Statement personIdStmt = personRes.getProperty(ontModel.getProperty(PERSONID));
-			    	if (personIdStmt!=null)
-			    	    hasMember.add(personIdStmt.getString());
+//			    	Statement personIdStmt = personRes.getProperty(ontModel.getProperty(PERSONID));
+//			    	if (personIdStmt!=null)
+//			    	    hasMember.add(personIdStmt.getString());
+			    	hasMember.add(personRes.getURI());
 			    }
 		    }
 		    org.setHasMember(hasMember);

@@ -55,13 +55,26 @@ public class AffiliationPublisher extends OntologyInstanceReader implements Affi
 		    
 		    affiliation.setUri(affiliationId);
 		    
-		    Statement affiliationWith = affiliationResource.getProperty(ontModel.getProperty(AFFILIATIONWITH));
-		    if (affiliationWith !=null)
-		    	affiliation.setAffiliationWith(affiliationWith.getString());
+		    Statement affiliationWithStmt = affiliationResource.getProperty(ontModel.getProperty(AFFILIATIONWITH));
+		    if (affiliationWithStmt !=null){
+		    	Resource affiliationWithRes= affiliationWithStmt.getResource();
+		    	if (affiliationWithRes!=null){
+//		    		String projectId=affiliationWithRes.getProperty(ontModel.getProperty(PROJECTID)).getString();
+//		    		affiliation.setAffiliationWith(projectId);
+		    		affiliation.setAffiliationWith(affiliationWithRes.getURI());
+		    	}		    	 
+		    }
 		    
-		    Statement affiliate = affiliationResource.getProperty(ontModel.getProperty(AFFILIATE));
-		    if (affiliate !=null)
-		    	affiliation.setAffiliate(affiliate.getString());		    
+		    Statement affiliateStmt = affiliationResource.getProperty(ontModel.getProperty(AFFILIATE));
+		    if (affiliateStmt !=null){
+		    	Resource affiliateRes= affiliateStmt.getResource();
+		    	if (affiliateRes!=null){
+//		    		String personId=affiliateRes.getProperty(ontModel.getProperty(PERSONID)).getString();
+//		    		affiliation.setAffiliate(personId);
+		    		affiliation.setAffiliate(affiliateRes.getURI());
+		    	}		    	 
+		    }
+		    
 		    
 		    Statement roleStmt = affiliationResource.getProperty(ontModel.getProperty(ROLE));
 		    if (roleStmt!=null){

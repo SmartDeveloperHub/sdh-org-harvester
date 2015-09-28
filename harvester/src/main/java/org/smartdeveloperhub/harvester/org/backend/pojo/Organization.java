@@ -34,6 +34,7 @@ public class Organization {
 	String title="";
 	String description = "";
 	String id = "";
+	String uri="";
 	String classification="";
 	String purpose="";
 	ArrayList<String> hasMemberOrganization = new ArrayList<String>();
@@ -44,6 +45,12 @@ public class Organization {
 	ArrayList<String> role = new ArrayList<String>();
 		
 	
+	public String getUri() {
+		return uri;
+	}
+	public void setUri(String uri) {
+		this.uri = uri;
+	}
 	public String getTitle() {
 		return title;
 	}
@@ -116,6 +123,16 @@ public class Organization {
 	}
 	public void setRole(ArrayList<String> role) {
 		this.role = role;
+	}
+	@Override
+	public String toString() {
+		return "Organization [prefLabel=" + prefLabel + ", title=" + title
+				+ ", description=" + description + ", id=" + id + ", uri="
+				+ uri + ", classification=" + classification + ", purpose="
+				+ purpose + ", hasMemberOrganization=" + hasMemberOrganization
+				+ ", hasProject=" + hasProject + ", hasMember=" + hasMember
+				+ ", membership=" + membership + ", position=" + position
+				+ ", role=" + role + "]";
 	}
 	
 

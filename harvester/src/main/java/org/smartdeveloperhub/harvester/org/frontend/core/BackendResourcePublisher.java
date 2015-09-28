@@ -41,6 +41,7 @@ import org.smartdeveloperhub.harvester.org.backend.pojo.Organization;
 import org.smartdeveloperhub.harvester.org.backend.pojo.Project;
 import org.smartdeveloperhub.harvester.org.frontend.core.Organization.OrganizationContainerHandler;
 import org.smartdeveloperhub.harvester.org.frontend.core.Organization.OrganizationHandler;
+import org.smartdeveloperhub.harvester.org.frontend.core.affiliation.AffiliationContainerHandler;
 import org.smartdeveloperhub.harvester.org.frontend.core.harvester.HarvesterHandler;
 import org.smartdeveloperhub.harvester.org.frontend.core.membership.MembershipContainerHandler;
 import org.smartdeveloperhub.harvester.org.frontend.core.person.PersonContainerHandler;
@@ -80,14 +81,14 @@ public class BackendResourcePublisher {
 	private void addOrganizationMembersToHarvester(URI target, ContainerSnapshot organizationContainerSnapshot) throws Exception{
 		
 		OrganizationPublisher organizationPublisher = controller.getOrganizationPublisher();	
-		for (String organizationId:organizationPublisher.getOrganizations()){
+		for (String organizationURI:organizationPublisher.getOrganizations()){
 			
-			Name<String> organizationName = NamingScheme.getDefault().name(organizationId);	
+			Name<String> organizationName = NamingScheme.getDefault().name(organizationURI);	
 			
 			ResourceSnapshot organizationSnapshot = organizationContainerSnapshot.addMember(organizationName);
 			
 			//retrieve organization informationj			
-		    Organization org = organizationPublisher.getOrganization(organizationId);
+		    Organization org = organizationPublisher.getOrganization(organizationURI);
 			
 			//Project container for each organization
 			ContainerSnapshot projectContainerSnapshot = organizationSnapshot.createAttachedResource( ContainerSnapshot.class, OrganizationHandler.ORGANIZATION_PROJECTS,
@@ -121,15 +122,15 @@ public class BackendResourcePublisher {
 			addMembershipsToOrganization(membershipContainerSnapshot, org);
 
 			
-			LOGGER.debug("Published resource for repository {} @ {} ({})",organizationId, organizationContainerSnapshot.name(),organizationContainerSnapshot.templateId());
+			LOGGER.debug("Published resource for repository {} @ {} ({})",organizationURI, organizationContainerSnapshot.name(),organizationContainerSnapshot.templateId());
 		}
 	}
 
 	private void addMembershipsToOrganization(
 			ContainerSnapshot membershipContainerSnapshot, Organization org) {
 		
-		for (String membershipId:org.getMembership()){
-	    	Name<String> membershipName = NamingScheme.getDefault().name(membershipId);	
+		for (String membershipURI:org.getMembership()){
+	    	Name<String> membershipName = NamingScheme.getDefault().name(membershipURI);	
 			
 			ResourceSnapshot membershipSnapshot = membershipContainerSnapshot.addMember(membershipName);
 	    }
@@ -139,8 +140,8 @@ public class BackendResourcePublisher {
 	private void addRolesToOrganization(
 			ContainerSnapshot roleContainerSnapshot, Organization org) {
 		
-		for (String roleId:org.getRole()){
-	    	Name<String> roleName = NamingScheme.getDefault().name(roleId);	
+		for (String roleURI:org.getRole()){
+	    	Name<String> roleName = NamingScheme.getDefault().name(roleURI);	
 			
 			ResourceSnapshot roleSnapshot = roleContainerSnapshot.addMember(roleName);
 	    }
@@ -150,8 +151,8 @@ public class BackendResourcePublisher {
 	private void addPositionsToOrganization(
 			ContainerSnapshot positionContainerSnapshot, Organization org) {
 		  
-		for (String positionId:org.getPosition()){
-		    	Name<String> positionName = NamingScheme.getDefault().name(positionId);	
+		for (String positionURI:org.getPosition()){
+		    	Name<String> positionName = NamingScheme.getDefault().name(positionURI);	
 				
 				ResourceSnapshot positionSnapshot = positionContainerSnapshot.addMember(positionName);
 		    }
@@ -161,8 +162,8 @@ public class BackendResourcePublisher {
 	private void addMembersToOrganization(
 			ContainerSnapshot memberContainerSnapshot, Organization org) {		
 	    
-	    for (String memberId:org.getHasMember()){
-	    	Name<String> personName = NamingScheme.getDefault().name(memberId);	
+	    for (String memberURI:org.getHasMember()){
+	    	Name<String> personName = NamingScheme.getDefault().name(memberURI);	
 			
 			ResourceSnapshot personSnapshot = memberContainerSnapshot.addMember(personName);
 	    }
@@ -171,21 +172,30 @@ public class BackendResourcePublisher {
 
 	private void addProjectsToOrganization(ContainerSnapshot projectContainerSnapshot, Organization org) {	
 	    
-	    for (String projectId:org.getHasProject()){
-	    	Project project = controller.getProjectPublisher().getProject(projectId);
-	    	Name<String> projectName = NamingScheme.getDefault().name(projectId);	    	
+	    for (String projectURI:org.getHasProject()){
+	    	Project project = controller.getProjectPublisher().getProject(projectURI);
+	    	Name<String> projectName = NamingScheme.getDefault().name(projectURI);	    	
 			
 			ResourceSnapshot projectSnapshot = projectContainerSnapshot.addMember(projectName);
 			
-			//Role container for each project
-//			ContainerSnapshot roleContainerSnapshot = projectSnapshot.createAttachedResource( ContainerSnapshot.class, ProjectHandler.PROJECT_ROLES,
-//					projectName, RoleContainerHandler.class);
-//			
-//			addRolesToProject(roleContainerSnapshot, project);
-	    }
-	    
-		
+			//Affiliation container for each project
+			ContainerSnapshot affiliationContainerSnapshot = projectSnapshot.createAttachedResource( ContainerSnapshot.class,
+					ProjectHandler.PROJECT_AFFILIATIONS, projectName, AffiliationContainerHandler.class);			
+			
+			addAffiliationsToProject(affiliationContainerSnapshot, project);
+	    }	    	
 	}
+	
+	private void addAffiliationsToProject(
+			ContainerSnapshot affiliationContainerSnapshot, Project project) {		
+	    
+	    for (String affiliationURI:project.getAffiliation()){
+	    	Name<String> affiliationName = NamingScheme.getDefault().name(affiliationURI);	
+			
+			ResourceSnapshot affiliationSnapshot = affiliationContainerSnapshot.addMember(affiliationName);
+	    }
+		
+	}	
 
 //	private void addRolesToProject(ContainerSnapshot roleContainerSnapshot,
 //			Project project) {

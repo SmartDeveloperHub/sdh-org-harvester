@@ -56,14 +56,27 @@ public class MembershipPublisher extends OntologyInstanceReader implements Membe
 		    
 		    membership.setUri(membershipId);
 		    
-		    Statement membershipOn = membershipResource.getProperty(ontModel.getProperty(MEMBERSHIPON));
-		    if (membershipOn !=null)
-		    	membership.setMembershipon(membershipOn.getString());
+		    Statement membershipOnStmt = membershipResource.getProperty(ontModel.getProperty(MEMBERSHIPON));
+		    if (membershipOnStmt !=null){
+		    	Resource membershipOnRes= membershipOnStmt.getResource();
+		    	if (membershipOnRes!=null){
+//		    		String orgId=membershipOnRes.getProperty(ontModel.getProperty(ORGID)).getString();
+//		    		membership.setMembershipon(orgId);
+		    	    membership.setMembershipon(membershipOnRes.getURI());
+		    	}		    	 
+		    }
 		    
-		    Statement member = membershipResource.getProperty(ontModel.getProperty(MEMBER));
-		    if (member !=null)
-		    	membership.setMember(member.getString());		    
+		    Statement memberStmt = membershipResource.getProperty(ontModel.getProperty(MEMBER));
 		    
+		    if (memberStmt !=null){
+		    	Resource memberRes= memberStmt.getResource();
+		    	if (memberRes!=null){
+//		    		String personId=memberRes.getProperty(ontModel.getProperty(PERSONID)).getString();
+//		    		membership.setMember(personId);
+		    		membership.setMember(memberRes.getURI());
+		    	}
+		    }
+	    		    
 		    Statement positionStmt = membershipResource.getProperty(ontModel.getProperty(POSITION));
 		    if (positionStmt!=null){		    	
 		    	PositionPublisher posPublisher = new PositionPublisher(ontModel);

@@ -52,14 +52,19 @@ public class ProjectPublisher extends OntologyInstanceReader implements ProjectV
 		// TODO Auto-generated constructor stub
 	}
 
-	public Project getProject(String projectId) {
+	public Project getProject(String projectURI) {
 		long startTime = System.currentTimeMillis();
 		Project project = new Project();		
-		ResIterator iter = ontModel.listSubjectsWithProperty(ontModel.getProperty(PROJECTID),projectId);
-		while (iter.hasNext()) {
-		    Resource r = iter.nextResource();
+//		ResIterator iter = ontModel.listSubjectsWithProperty(ontModel.getProperty(PROJECTID),projectId);
+//		while (iter.hasNext()) {
+//		    Resource r = iter.nextResource();
+		Resource r  = ontModel.getResource(projectURI);
+		if(r!=null){
+			project.setUri(projectURI);
 		    
-		    project.setId(projectId);
+			Statement projectId = r.getProperty(ontModel.getProperty(PROJECTID));
+		    if (projectId !=null)
+		    project.setId(projectId.getString());
 		    
 		    Statement name = r.getProperty(ontModel.getProperty(DOAPNAME));
 		    if (name !=null)
@@ -80,6 +85,18 @@ public class ProjectPublisher extends OntologyInstanceReader implements ProjectV
 //			    }
 //		    }
 //		   project.setRole(role);
+		    
+		    //membership
+		    StmtIterator affiliationIter = r.listProperties(ontModel.getProperty(AFFILIATION));
+		    ArrayList<String> affiliation = new ArrayList<String>();
+		    while (affiliationIter.hasNext()) {
+			    Statement stmtAffiliation = affiliationIter.next();
+			    Resource affiliationRes= stmtAffiliation.getResource();
+			    if (affiliationRes!=null){
+			    	affiliation.add(affiliationRes.getURI());
+			    }
+		    }
+		    project.setAffiliation(affiliation);		    
 		    
 		    long stopTime = System.currentTimeMillis();
 			long elapsedTime = stopTime - startTime;

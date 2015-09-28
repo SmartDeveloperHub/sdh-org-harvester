@@ -100,8 +100,8 @@ public class HarvesterHandler implements ResourceHandler, HarvesterVocabulary{
 					withIndividual(harvesterName,HarvesterHandler.ID,VOCABULARY_PATH);
 
 		//organizations
-		for (String organizationId:organizationPublisher.getOrganizations()){
-			Name<String> organizationName = NamingScheme.getDefault().name(organizationId);	
+		for (String organizationURI:organizationPublisher.getOrganizations()){
+			Name<String> organizationName = NamingScheme.getDefault().name(organizationURI);	
 			helper.
 			managedIndividual(harvesterName, ID).
 					property(ORGANIZATION).

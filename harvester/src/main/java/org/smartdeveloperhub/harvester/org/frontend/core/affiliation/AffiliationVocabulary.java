@@ -40,5 +40,7 @@ public interface AffiliationVocabulary {
 	static final String ROLETYPELABEL="http://www.w3.org/2004/02/skos/core#prefLabel";
 	static final String ROLECLASS = "http://www.smartdeveloperhub.org/vocabulary/org#Role";
 		
+	static final String PROJECTID = "http://www.smartdeveloperhub.org/vocabulary/org#id";
+	static final String PERSONID = "http://www.smartdeveloperhub.org/vocabulary/org#id";
 	
 }
