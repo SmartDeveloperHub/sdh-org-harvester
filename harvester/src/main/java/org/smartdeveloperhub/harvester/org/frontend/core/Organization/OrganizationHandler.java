@@ -152,6 +152,13 @@ public class OrganizationHandler implements ResourceHandler, OrganizationVocabul
 //				withLiteral(repository.getTags());		
 	//			property(DEFAULTBRANCH).
 	//			withIndividual(repository.getDefaultBranch());
+		
+	if(organization.isOrganizationalCollaboration()){
+		helper.
+		managedIndividual(organizationName, OrganizationHandler.ID).
+			property(TYPE).
+				withIndividual(ORGANIZATIONALCOLLABORATION);
+	}
 
 	for (String organizationURI:organization.getHasMemberOrganization()){
 		Name<String> memberOrgName = NamingScheme.getDefault().name(organizationURI);

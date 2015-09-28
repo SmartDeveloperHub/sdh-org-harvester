@@ -30,6 +30,7 @@ import java.util.ArrayList;
 
 public class Organization {
 
+	boolean organizationalCollaboration=false;
 	String prefLabel = "";
 	String title="";
 	String description = "";
@@ -123,6 +124,13 @@ public class Organization {
 	}
 	public void setRole(ArrayList<String> role) {
 		this.role = role;
+	}
+		
+	public boolean isOrganizationalCollaboration() {
+		return organizationalCollaboration;
+	}
+	public void setOrganizationalCollaboration(boolean organizationalCollaboration) {
+		this.organizationalCollaboration = organizationalCollaboration;
 	}
 	@Override
 	public String toString() {

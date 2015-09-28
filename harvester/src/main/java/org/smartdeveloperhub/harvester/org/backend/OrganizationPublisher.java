@@ -98,6 +98,19 @@ public class OrganizationPublisher extends OntologyInstanceReader implements Org
 		    
 		    org.setUri(organizationUri);
 		    
+		    StmtIterator typeStmtIter = r.listProperties(ontModel.getProperty(TYPE));
+		    Resource organizationalCollaboration= ontModel.getResource(ORGANIZATIONALCOLLABORATION);
+		    while (typeStmtIter.hasNext()){
+		    	Statement typeStmt=typeStmtIter.next();
+		    	if (typeStmt!=null){
+		    		String organizationClass=typeStmt.getResource().getURI();
+		    		if (organizationClass.equalsIgnoreCase(organizationalCollaboration.getURI()))
+		    			org.setOrganizationalCollaboration(true);
+		    	}
+		    	
+		    }
+		    	
+		    
 		    Statement id = r.getProperty(ontModel.getProperty(ORGID));
 		    if (id !=null)
 		    	org.setId(id.getString());
