@@ -1,0 +1,49 @@
+sudo: false
+cache:
+  directories:
+  - $HOME/.m2/repository
+  - $HOME/.sonar
+notifications:
+  slack: sdhub:ti8lMh7ERZIqLzWF4dHkcgwt
+language: java
+jdk:
+- oraclejdk7
+before_install:
+- if [[ -a .git/shallow ]]; then git fetch --unshallow; fi
+before_script:
+- openssl aes-256-cbc -pass pass:$ENCRYPTION_PASSWORD -in target/config/ci/secring.gpg.enc
+  -out local.secring.gpg -d
+- openssl aes-256-cbc -pass pass:$ENCRYPTION_PASSWORD -in target/config/ci/pubring.gpg.enc
+  -out local.pubring.gpg -d
+script:
+- if [ "${TRAVIS_PULL_REQUEST}" = "false" ];
+  then
+    if [ "${TRAVIS_BRANCH}" = "master" ] || [ "${TRAVIS_BRANCH}" = "develop" ];
+    then mvn clean deploy -B -Dcodebase.directory=`pwd` -Dcoverage.reports.dir=`pwd`/target/all --settings target/config/ci/settings.xml;
+    else mvn clean install -B -Dcoverage.reports.dir=`pwd`/target/all --settings target/config/ci/settings.xml;
+    fi
+  else
+    echo mvn clean install -B -Dcoverage.reports.dir=`pwd`/target/all --settings target/config/ci/settings.xml;
+  fi
+- if [ "${TRAVIS_PULL_REQUEST}" = "false" ];
+  then
+    case "${TRAVIS_BRANCH}" in
+      master)   mvn sonar:sonar -B -Dsonar.branch=$TRAVIS_BRANCH -Dcoverage.reports.dir=`pwd`/target/all --settings target/config/ci/settings.xml;;
+      develop)  mvn sonar:sonar -B -Dsonar.branch=$TRAVIS_BRANCH -Dcoverage.reports.dir=`pwd`/target/all --settings target/config/ci/settings.xml;;
+      feature*) mvn sonar:sonar -B -Dsonar.branch=$TRAVIS_BRANCH -Dcoverage.reports.dir=`pwd`/target/all --settings target/config/ci/settings.xml;;
+      *)        echo "Skip SonarQube analysis (${TRAVIS_BRANCH})";;
+    esac
+  fi
+- mkdir /tmp/cache-trick
+- mv $HOME/.m2/repository/org/smartdeveloperhub /tmp/cache-trick/
+env:
+  global:
+  - secure: AZh+OHAPcv7fNSGCrCyL5f45dL9718PwcGbDTKEoAltK+a1kM+P++KtPQO2clzkR+qZrm6O8zPg1xap2TlAT6i7j+5cOSZ1tZSmrudzPkUtSt8G/ii/UqkKLrnVewdsZP5NVdI8JQ3nGqDyUV1jW5bdvX7ZXcu12Ff1nzIQGL0NncLTBsS1cKD2aC8UIDK2HbMJYhlJhOt0dmaXYq9lYhvjnPHkBQ1Tyof8800qaKUyGFQ8UcNG3eGItDTC1U4AVDn/HOHrv0+LIYm+lF6UGpmqvmOdtSH3GgiatBozjik26Sw3bpORHC4Gc6/rf/tDa/n1UuS2cV3VXlrlZPPo/xJaxlv+Txl9AJpsRg+82qPFrlFljpiy/4mR1QTALQm60RvQyzkJk1JGJMONqaOXTTOkGKtQ6nBQYGj8ysipyXYRJGUWD6jDHyJJbhrhabr5jy2QNr5uxnzZ59dA1sdB0mjzD0Wk2bnaCL/oZ8a3Y2cZnwsKlOg/X0jui8fIx0Cb64T/AjbTRln0bJIQB5NWqUsFU9ujePY3ucuiMgiN7GAbY9FNobs1CyqPvf27aQWF7PkLAP0dkF1J6rEugpv9U+z6yunQpzgTANjeU18wHJBbc4b/1vNFBvBzJMb3nGRbRrIhTXnu9I6Sr3FgaC9cGee7EVk4BOdjhMy5Yjptnr+0=
+  - secure: DArjuoSOCmequapW4dxqTFevsok5aOwO9oWtOrgm0rHehgPgDz/gxMTKyLgwOfIeTaMnojGEZRQVwIEyfazfvukoByYcEmq56SsT6m/35iw+H5j6qbOQaCBK3EJRrPmsNIJB8OYpPrrNya+nICfmKAWvS4R3CWMKgCa5QMrluQM5TPr+6RHeXt5WsmYePOPkICHPYS/vF2B+EmZ4KxGP6pNKuqPdc551udKkTa8B6mAA+B2KDvOrjEDhWoLShH6BCtE+gXgncP3Mt/0XYeCkEtaBolp44PMfJ+QYAMbB3+xYc70oCIUbvVk8xUcjRk85dWLrks/zNExSXRruFBrxyoidQZNtpcS1dM32UnsDKwAEujIXlpRTcy1WqTvrL3+d3rwTpfe1ZHmWEOGYH+EvQFvVSgB8/bVFSbWK/BfGo8w0onUAPiFzujWyNvjRyHguntnabqiWpVsbCbB+fWPa3LaRP0aHPAyUUoNJBdPz43VfsqaVdRViUMSxDKLeykg6jxWBM/6SupWvnCyewDd0TAuyLxM5Urkx8HN4R7jT9sbOjrhEr0Qk1IvkCty9Wr4KHM3E3bWeyuMf4bDm6XXumx0wAc6VyTXlne2Tvk92LCpyycr5dW7wmFytBzGdX4oARE+dq4Y6L1BNLG33OwL7A3hdHT7dW6Oa0YyEYfk7I5o=
+  - secure: aWKPsN10WgWN0hxGdZdytVJMfqb8fJOONcfB0Hshe8bdlO7Ge2muYuOB70LT/1o73QuZVnolXprSw8w977awP8EXcDfPgEWybW4UBZz+LJyWhT4hvaxqD23xi67pgVZ6I6bJdMi8b9byvQPBAqy9kD5+qiQCp/RZYdBDl54ZW2Xd+BGgY0dA/u7zP2XaRdHmevnLYrWKk8jtGtS8dgKsihqI6Ktzx2JxhYvXlD4yquSG/Cpw1fConBoHSsee8wpyo8bgTFYh42I00DyGWxq73lwHHgqyv9a+zBz6KK4MPx1887yM3XxgmblJKvXa0/SQ2QLuXZpfyI5FDhM07BjyhA1aC4DCiTUuBJm6zJD/hEQZmRTCMkT3B+Lckq/lBs3cot9rVqYm4rLkwxSFP9KAjDdbtdy617NQ7eXqRveSPM96bTqFXSNLo7CX3CXf4AsHALu3Ii1II+5wt8WFMsrT7E6eYmxEsjuyg96I1GT8RoQ/74i5ff/yZs8rKVPK9sLisI/5AFmDLlfRRL8XiAyJhlcKolJ818P15BIrcmnxpBbF7xS+WCW639aIl8kpMk+hcbYmWFRsQZGyAmrrvISLqyRlr4oR8dDt32BM3ChMgjtqyFtEzbmcnVYWvhJQr60MwXTy9e/rqel/szJ5mBwI1VSoHRQujI23dQJP4b6mynU=
+  - secure: SLdTj09ob3Lo5PvMbnMcmwXsY2fpl3juVfJBCFcHPqK/+K5cFw6TIt35eOt3FqOBd6LTabnL+h3LBcMNr5hTpidWN7F5li340dqOQHJcfxWeTKhQk0eBQboODtiH+vkodk5n3Mxt4Q1DLLan9g/hqARpk55TQa2W8nlnTOqKqiAIvE+pZE0C1Vhbf0z2lhsj5FzdIoRWs14tox2rxTdoMBRtImf4/lyGy4CEFkBuxfvxZz5inS4rKtsp/4mgnVtiqnHzu+M1TY10oA66bWCvTRJLHQhHHOJCry1Q3hpLw0DGw7wd7GIH3XEpMO66ykOMTzp3X97/xFt3mSMUYyrWYvDArODxCXE0Jq6vyOATpVa32RA3862knLV6T+REz7kBewzbXjSVtCXND4du00Cg21RP/EVvR7Y2UAtw84P0Gx5loDoKfhWn0zJmLlcFAnnoiheIx3WveLvEmQJkikIp//T11WdOWYBmlYz9JAT2dRJgJE1rXY+L+ViAN/ol7lOF44jyXSSB3YQqzwnMXjn+8B9YVR9K2chsbkyEWPyTb2gNjlsx11lRWgALcetronUxLyIw9+/n0A+aRnrzoxaccK74Idk6YXa4QWpXbeICdbC4T3ryfzvD5myKwq+tkLv3WG9CbHG2b0sgXoqdNXwTBZaLvu7uT9mTFj8Sy39U+Z0=
+  - secure: hGSVw4ziFXqU64aUQlvs6L7hzRbTuJHoqo7KAK0Ji7WGHnsYmN3tVMAnKq3fFhzuKXBHEB3Yxdz9A1YN02nyL9Xo5K60ICU57rYGTtWKuOJNa9OUdYfQpaMQhC/RmP4VImUsHPpxyzp3BnxZlNBN2PGm0JdKvq1VFJmsvqtU2DZIQuR16YefPZ7P0tVP8CJubX7D66UzZ7IvbUQkH0X18Z4oEZJjnXVLlWntOs66Wq3rYBrRwB4IuMsJHOtwbttJgGwy6sS7N/6fYYF4VXxDuBdMhUrZMvMgWLRdklWM8Omkw5WvovlN5yirjG6jQnbZWB3Fa1P5zz7ltwOUX02ebRG6ZP86ZeNTv3RM8URdVdOoqdcr/RC/Shi7+XzOpDzq/pQKZGxdkiKGgRyVpNcYSltDGa+63zIkKL3C+C//48uYlOps/dDFE4MiZ96TcZjIjBP1VD96kHPC5dI4tY8AxDLOgoT0EcfPDM+lND3yGGZEpryHpqyDIkj9H6KZkP1K+Y0QeXzLe9IDVXKRZPXZr+D+cb5xrI2FvjsXVIgrdrgo27GKuOorH9Ns2/19tAlf26i1ZfGMe+nhz4CCq/rydYrOw6HuM1X1kUVFTJMghT5PXw/rC9rZUcn62nK9arbKUPheeb6YP1zRMgJyVRTj27XDGJfq1pMnHFq2yJnLZng=
+  - secure: kcl2CHwG11Dcwb+NtKEXQQJaizwAUft3khwF9yo4l0LEzg66UKQGpt/PLS6YH/iNaH7GfRZqBJMb93GlqfxfLh+D5s172c8xh6VuAF02aeP4yUA9LBSTxQ7DoTR9llXfmznYfoQX/K8bSpkIvCXXWQm1g3/w6SOJ7+9TY/jUmeY913cJM1qNlUZchCaNR2usx7qbluT8WPFcszMeTXNoEdwJvdZS48TsRxR1kn1wRQk/IdeQMMzAv4qwajR0AhmfYM1OGCdGqPPYks1wH7MDHIud3jmIKeyjaNJWMmOs2YeBq4FIRnxcEENKrCH8tutZJrZ5Sszx5wGLXvFZsTqdeKnX7IaF8ElqxzAR1qHhVx+x9YloiA1vkIWgKLjUchvSR/gu+N8MvZm+QaHTHuWez5swhrTbcQuy3gDRRjiCLAbx0um1oZftpS8QqXYAA5UdmwX/qNf0yTUz4/tFOBZ0maIUFxx+lS1aj3VBdu5dLnfowKYfIEP9hkS8kdIJWRoeJHN0mZgSyVrPBMzHBYxkuP6pbItFYLFKnajfOXpkrnV39MdmFfs7le6iY6KkGPYLTvX5mJU54A5DQBAbjfDSoVbsbisj5dxMw43LZEk5xO5mbJJ3GmGbmfIa7Rmk21J0lmrbkHIjN5eziVUp3IE+q7fjMSoMRcRwl+DoehKpOvk=
+  - secure: GXFn6YefRo3VJSS088SuRdOfHNBhmbWvS/LFWGjfTd5y+gap8404wdgkfxHEKe/qNGGOMLx1FsSxEjCmAWsEXS6Tn1hu0tIA/dX2cbmymnTLWe/EdhZcnyxbD9WtcERchu/doRE4JhHJRjBeHD09smrnvm5H7JPp+bDsL3eV5OJQ4MbgLn5OgeeTRjUT2fal765tgWAFcFdxV+JvxupOTozB6o/oDFYpm7sNmEEuLE8ieCW8sX1xy0cN9PnLEvNpaW8qdPu+jCbiUkseWIBf2o+GFGoFU/RhIjvcHRmmxfirX5j4pbebw8xG8v3FLvbxF2x+64WuMWMLYwA1cISvAZnUyyTCjXO7FHRAbrwHbB3AzWFll5mZwQEkKzqtW+MCnfiQTUWUNTHN6kMMtVkYbnpFnSeZcoy3xLme2QaUqGEskfriYOUKlKPB9DpQR3j/pKQf4INIb1wj/Us97HjLKlxxEb6iCpiHzMzZ05A3gN2ezwl4MikDec71mOeqHA95GZZmB1W+qlsZKHev7V6qVQiw6XTJLw7wzjnOgpQO1iQcDg5Xlv+PvIJ+Rk8KcPSPncEj0wBYXgEyMUxty6b4Za9WtZJf+JtHJSi/+XpRdB23sK2fKT5fq/mHG3NYlVZWtfiYnrkKSEHdfhtQdjmkj5NtBotQ1sR3RWVVHeHdGgc=
+  - secure: QprofTcFwItQGizHGhKaHMPGPhR0m3Ain/ZJypv6KYVFIGddUTsiTSqB5QXHJ4sC95GzEt23lRIiHOrNcjB9zV/q++bYYYYcpYPk3rqFY7NXLCnau4pnnUoECppFFHW20wOTxRpHre/OWELKQ8l5iAmHzCECwZrKCA0c3+WXYKhSGw8xLhvMKF0N/aw73vGDe3dMFzT9Ia6AO4d68xsv2TVLbzir8UzTBfilYelm+VNc0Mt2dp5VdSydZ7WyOIcd1AFlHVyfupJIFjcm4KcraAt8dtkxx2mkagzEznKDXwQplLKIKC2QL8KNyA+DJ5YhBG09vjsVx2UpJsj2pY8V95iieeECUah7NtEkNaGV1vaJuBF01ryf5zt5gYj56/rlR6ZHlCS+IODBAeFAhe9X0gefpQRnghRt50/OcK7PVuDs871j03Ih1ZcHq/oT2Sra5sCxzW7ha3A2pPTGv2QHpSps7Z2/Mu5l/Y8DOZQ4R6pPSJrX74pEvIGZqpIZuBpAdC/W+fERA0tJiJE7qpzwUZjjVZGTEAcJmXeC7z7A/g4iyDl2KE/WjNMrBLh48WhJwRvtEMuCh32FHrofN1XWHKAKeSCNHCETrUjyICmuGIV559cuDJXORGc2JcxTBv7wchAIpX8mzLjZIgNKpYz7XIoFqiikXHrCdh12ajyaYWA=
+  - secure: tpcbEZ9NAux67FxFG1kieyt4+YNc0XPKbDvwq9V8nO/NB4VdiLFQxrU1O12j4HCJO4bAiOAq7jejH/wCwIcKFukJj0wXycWb0gcbzsVykwbRyO/w5bV0+mn8p0WBB7t8kMaAAU4f9mq+o/FEu1xj1+UUA4n+Wi5kaGAZDtEKKYjNbh8LNuN1z9Se1Av/+WR1iX1+F2A266OxumFA2S/lz/4+L639dUAI7dWXdtTCSsdgiTettYDzFKb3Q7B2Wt8+UTBLwSwb9KbmgGjEzsJR2ucZpHo1vtBCxKpxOxI4J8v30HaLy1jUn44bVrnfljTYFNBu+sFSWhjEuWCe2xOdJvVleLeYNuTWLAEChOSFVP8jfDwkAl9SPKj08VcZiEYgfN9AN2m+Kn2DJevFaygF721Zan3iPC1B4IP1zZ5bk2sfdKfDGcJaKjK10FKHSUaET5EosMlYywmfNzntL0ZDoMXDP+Zvdmo2wUC38+0Q2ImoGgAb1Tf/o76oI68e+lVHHPighCZZ6G/xG1NYW9jdVztN4BaIgjLdF2+uv2gb7jo/Ul6HFxUS+YNnhI4uZ2Vtz784lr+zm+A+vezBV2YJVI2axQHQxzQ9yj4J65Zcv5j1bl4A1qDpQkcPZi4G0fzqSZg6mAGxXW6oXqeDpPFVMmumHIk+glCpiP5sOvroJ3w=
