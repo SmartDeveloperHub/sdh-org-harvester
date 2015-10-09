@@ -98,6 +98,30 @@ public class ProjectPublisher extends OntologyInstanceReader implements ProjectV
 		    }
 		    project.setAffiliation(affiliation);		    
 		    
+		    //doap:repository
+		    StmtIterator repoIter = r.listProperties(ontModel.getProperty(DOAPREPOSITORY));
+		    ArrayList<String> repositories = new ArrayList<String>();
+		    while (repoIter.hasNext()) {
+			    Statement stmtRepo = repoIter.next();
+			    Resource repoRes= stmtRepo.getResource();
+			    if (repoRes!=null){
+			    	repositories.add(repoRes.getURI());
+			    }
+		    }
+		    project.setRepository(repositories);		
+		    
+		  //scm:location
+		    StmtIterator locationIter = r.listProperties(ontModel.getProperty(SCMLOCATION));
+		    ArrayList<String> locations = new ArrayList<String>();
+		    while (locationIter.hasNext()) {
+			    Statement stmtLocation = locationIter.next();
+			    String location= stmtLocation.getString();
+			    if (location!=null){
+			    	locations.add(location);
+			    }
+		    }
+		    project.setLocation(locations);
+		    
 		    long stopTime = System.currentTimeMillis();
 			long elapsedTime = stopTime - startTime;
 			LOGGER.info("- Load the project, elapsed time (ms)..: {}",elapsedTime);

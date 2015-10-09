@@ -26,11 +26,12 @@
  */
 package org.smartdeveloperhub.harvester.org.frontend.core;
 
+import java.io.FileNotFoundException;
 import java.util.ArrayList;
 
 public class Test {
 
-	public static void main(String[] args) {
+	public static void main(String[] args) throws FileNotFoundException {
 //		OrganizationIndividuals onto = new OrganizationIndividuals();
 //		onto.loadIndividuals();
 //		onto.getOrganizations();

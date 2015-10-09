@@ -127,7 +127,19 @@ public class ProjectHandler implements ResourceHandler, ProjectVocabulary{
 						withIndividual(affiliationName,AffiliationHandler.ID);
 		}
 		
-
+		for (String location:project.getLocation()){		
+			helper.
+			managedIndividual(projectName, ProjectHandler.ID).
+					property(SCMLOCATION).
+						withLiteral(location);
+		}		
+		
+		for (String repositoryURI:project.getRepository()){			
+			helper.
+			managedIndividual(projectName, ProjectHandler.ID).
+					property(DOAPREPOSITORY).
+						withIndividual(repositoryURI);
+		}
 		
 		return dataSet;
 	}

@@ -26,7 +26,11 @@
  */
 package org.smartdeveloperhub.harvester.org.frontend.core;
 
+import java.io.File;
+import java.io.FileInputStream;
+import java.io.FileNotFoundException;
 import java.io.InputStream;
+import java.nio.file.Files;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -40,6 +44,7 @@ import org.smartdeveloperhub.harvester.org.backend.RolePublisher;
 
 import com.hp.hpl.jena.ontology.OntModel;
 import com.hp.hpl.jena.rdf.model.ModelFactory;
+import com.hp.hpl.jena.util.FileManager;
 
 public class BackendController {
 	
@@ -54,7 +59,7 @@ public class BackendController {
 	PositionPublisher posPub;
 	RolePublisher rolePub;
 	
-	public BackendController(){
+	public BackendController() throws FileNotFoundException{
 		loadOntologyIndividuals();
 		orgPub = new OrganizationPublisher(ontModel);
 		projPub = new ProjectPublisher(ontModel);
@@ -65,19 +70,23 @@ public class BackendController {
 		rolePub = new RolePublisher(ontModel);
 	}
 	
-	public void loadOntologyIndividuals(){
+	public void loadOntologyIndividuals() throws FileNotFoundException{
 						
 		long startTime = System.currentTimeMillis();
+		InputStream in;
 		
-		String inputFileName = "organization-individuals.ttl";
-		InputStream in=
-			Thread.
-				currentThread().
-					getContextClassLoader().
-						getResourceAsStream(inputFileName);		
-			
-	    
-//		InputStream in = FileManager.get().open(inputFileName);
+		 String inputFileName = System.getenv("ORG_INDIVIDUALS");
+		 if (inputFileName==null){
+			 inputFileName="organization-individuals.ttl";
+			  LOGGER.warn("ORG_INDIVIDUALS by default {}",inputFileName);		
+			  in= Thread.currentThread().getContextClassLoader().getResourceAsStream(inputFileName);
+		  }
+		  else{		 			 
+			  LOGGER.warn("ORG_INDIVIDUALS environment variable {}",inputFileName);	
+			  File file = new  File(inputFileName);
+			  in = new FileInputStream(file);
+		  }
+		 
 		
 		if (in == null) {
 		    throw new IllegalArgumentException(

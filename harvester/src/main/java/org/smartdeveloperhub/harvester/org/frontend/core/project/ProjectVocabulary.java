@@ -41,4 +41,7 @@ public interface ProjectVocabulary {
 	
 	static final String PROJECTROLE= "http://www.smartdeveloperhub.org/vocabulary/org#projectRole";
 	
+	static final String SCMLOCATION= "http://www.smartdeveloperhub.org/vocabulary/scm#location";
+	
+	
 }

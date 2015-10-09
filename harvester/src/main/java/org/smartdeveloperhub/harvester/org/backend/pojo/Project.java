@@ -35,7 +35,9 @@ public class Project {
 	String description="";
 	String uri="";
 	ArrayList<String> affiliation = new ArrayList<String>();
-	ArrayList<String> repository = new ArrayList<String>();
+	ArrayList<String> repository = new ArrayList<String>();	
+	ArrayList<String> location = new ArrayList<String>();
+	
 //	ArrayList<String> role = new ArrayList<String>();
 	
 	public String getUri() {
@@ -75,6 +77,14 @@ public class Project {
 	}
 	public void setRepository(ArrayList<String> repository) {
 		this.repository = repository;
+	}
+	
+	
+	public ArrayList<String> getLocation() {
+		return location;
+	}
+	public void setLocation(ArrayList<String> location) {
+		this.location = location;
 	}
 	@Override
 	public String toString() {
