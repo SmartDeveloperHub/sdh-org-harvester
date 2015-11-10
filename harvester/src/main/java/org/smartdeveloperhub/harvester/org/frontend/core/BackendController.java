@@ -78,11 +78,11 @@ public class BackendController {
 		 String inputFileName = System.getenv("ORG_INDIVIDUALS");
 		 if (inputFileName==null){
 			 inputFileName="organization-individuals.ttl";
-			  LOGGER.warn("ORG_INDIVIDUALS by default {}",inputFileName);		
+			  LOGGER.info("ORG_INDIVIDUALS by default {}",inputFileName);		
 			  in= Thread.currentThread().getContextClassLoader().getResourceAsStream(inputFileName);
 		  }
 		  else{		 			 
-			  LOGGER.warn("ORG_INDIVIDUALS environment variable {}",inputFileName);	
+			  LOGGER.info("ORG_INDIVIDUALS environment variable {}",inputFileName);	
 			  File file = new  File(inputFileName);
 			  in = new FileInputStream(file);
 		  }
