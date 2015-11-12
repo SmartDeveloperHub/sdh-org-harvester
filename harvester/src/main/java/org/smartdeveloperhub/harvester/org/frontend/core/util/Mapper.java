@@ -34,6 +34,10 @@ import java.util.Set;
 import javax.xml.datatype.DatatypeFactory;
 import javax.xml.datatype.XMLGregorianCalendar;
 
+import org.joda.time.DateTime;
+import org.joda.time.DateTimeZone;
+import org.joda.time.format.DateTimeFormatter;
+import org.joda.time.format.ISODateTimeFormat;
 import org.ldp4j.application.data.DataSetUtils;
 import org.ldp4j.application.data.ExternalIndividual;
 import org.ldp4j.application.data.Individual;
@@ -84,6 +88,24 @@ public final class Mapper {
 		try {
 			GregorianCalendar gc=new GregorianCalendar();
 			gc.setTime(date);
+			return DatatypeFactory.newInstance().newXMLGregorianCalendar(gc);
+		} catch (Exception e) {
+			throw new AssertionError("Could not create literal for date "+date,e);
+		}
+	}
+	
+	static final DateTimeFormatter  XML_DATE_TIME_FORMAT = ISODateTimeFormat.dateTimeNoMillis();
+	
+	public static XMLGregorianCalendar toLiteral(String date) {
+		if(date==null) {
+			return null;
+		}
+		try {
+			if (!(date.substring(date.length()-1)=="Z"))
+				date+="Z";
+			DateTime dt = XML_DATE_TIME_FORMAT.parseDateTime(date);		
+			GregorianCalendar gc=new GregorianCalendar();
+			gc.setTime(dt.toDate());
 			return DatatypeFactory.newInstance().newXMLGregorianCalendar(gc);
 		} catch (Exception e) {
 			throw new AssertionError("Could not create literal for date "+date,e);

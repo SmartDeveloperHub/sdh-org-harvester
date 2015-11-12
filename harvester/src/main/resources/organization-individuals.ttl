@@ -57,7 +57,6 @@
                                                            
                                                             owl:imports <http://www.smartdeveloperhub.org/vocabulary/external/doap/doap.rdf> ,
                                                                        <http://www.smartdeveloperhub.org/vocabulary/external/org/org.ttl> ,
-                                                                       <http://www.smartdeveloperhub.org/vocabulary/external/swo/swo_core.ttl>,
                                                                        <http://www.smartdeveloperhub.org/vocabulary/external/skos/skos.rdf> ,
                                                                        <http://www.smartdeveloperhub.org/vocabulary/v1/platform> ;
                                                                        #<http://www.smartdeveloperhub.org/vocabulary/v1/organization.ttl> ;
@@ -90,13 +89,19 @@ org:upm a org:FormalOrganization, org:Organization ;
     skos:prefLabel "UPM" ;
     org:title "Universidad Politecnica de Madrid" ;
     org:id "organization01"^^xsd:string;
+	foaf:depiction _:upmimg ;
     orgw3:classification org:universityType.
+	
+_:upmimg a foaf:Image ;	
+    foaf:depicts <http://www.geo.upm.es/imagenes/logo_upm.gif> .		
+
 
 org:isban a org:FormalOrganization, org:Organization ;
     skos:prefLabel "ISBAN" ;
     org:title "Ingenieria de Software Bancario";
     org:id "organization02"^^xsd:string;
     orgw3:classification org:financialInstitutionType.    
+	
 
 org:com a org:OrganizationalCollaboration, org:Organization ;
     skos:prefLabel "COM" ;
@@ -109,6 +114,9 @@ org:com a org:OrganizationalCollaboration, org:Organization ;
     org:hasMemberOrganization org:upm ;
     org:hasProject org:sdh ;
     org:hasProject org:ldp4j ;
+	org:hasProduct org:swdsupportproduct ;
+	org:hasProduct org:linkeddataproduct ;
+	foaf:depiction _:comimg ;	
     org:hasMember org:person01 ;
     org:hasMember org:person02 ;
     org:hasMember org:person03 ;
@@ -138,16 +146,21 @@ org:com a org:OrganizationalCollaboration, org:Organization ;
     org:organizationRole org:softwareArchitect ;
     org:organizationRole org:projectManager ;
     org:organizationRole org:stakeholder .
+	
+_:comimg a foaf:Image ;	
+    foaf:depicts <https://media.licdn.com/media/p/5/005/019/085/043a6b9.png> .		
 
 #projects
 org:sdh a org:Project ;
     org:id "project-sdh";
     doap:name "Smart Developer Hub";
     doap:description "Metrics to support the management of software development projects";
+	org:createdOn "2015-10-05T19:14:23"^^xsd:dateTime ;
     scm:location "scmRepoLocation1";
     scm:location "scmRepoLocation2";
     doap:repository  <http://www.scm.org/repo1> ;
-    doap:repository  <http://www.scm.org/repo2> ;                         
+    doap:repository  <http://www.scm.org/repo2> ;    
+	foaf:depiction _:sdhimg ;	
     org:affiliation org:affiliation01 ;
     org:affiliation org:affiliation02 ;
     org:affiliation org:affiliation03 ;
@@ -160,16 +173,49 @@ org:sdh a org:Project ;
     org:affiliation org:affiliation13 ;    
     org:affiliation org:affiliation14 ;    
     org:affiliation org:affiliation15 .
+	
+_:sdhimg a foaf:Image ;	
+    foaf:depicts <https://avatars1.githubusercontent.com/u/12413297?v=3&s=200> .		
 
 org:ldp4j a org:Project ;
     org:id "project-ldpj";
     doap:name "Linked Data Platform for Java";
     doap:description "Java implementation of the LDP specification";
+	org:createdOn "2015-10-05T19:14:23"^^xsd:dateTime ;
     doap:repository  [ a scm:Repository ;    
                          doap:name "git repo FrontEnd Project 01" ] ;    
+    foaf:depiction _:ldp4jimg ;
     org:affiliation org:affiliation08 ;
     org:affiliation org:affiliation09 ;
     org:affiliation org:affiliation12 .
+	
+_:ldp4jimg a foaf:Image ;	
+    foaf:depicts <https://pbs.twimg.com/profile_images/469428404131856384/s2sstWDb.jpeg> .	
+	
+#Products
+org:swdsupportproduct a org:Product;
+	org:id "product-sws" ;
+   	skos:prefLabel "Software Development Support Product" ;
+	org:description "Software Development Support helps to manage the performance of development teams"@en;
+	foaf:depiction  _:swdsupportproductimg;
+	org:createdOn "2015-10-05T19:14:23"^^xsd:dateTime ;
+	org:relatesToProject org:sdh .
+	
+_:swdsupportproductimg a foaf:Image ;	
+    foaf:depicts <http://www.icon.com.pk/images/soft-img.jpg> .
+
+
+org:linkeddataproduct a org:Product;
+	org:id "product-ld" ;
+   	skos:prefLabel "Linked Data Product" ;
+	org:description "Linked Data Product is a platform for publishing and consuming data in the web"@en;
+	foaf:depiction  _:linkeddataproductimg;
+	org:createdOn "2015-10-05T19:14:23"^^xsd:dateTime ;
+	org:relatesToProject org:ldp4j .
+	
+_:linkeddataproductimg a foaf:Image ;	
+    foaf:depicts <http://fgiasson.com/blog/wp-content/uploads/2008/06/triple_big.png> .
+	
 
 # Person instances
 org:person01 a org:Person ;    
@@ -178,23 +224,35 @@ org:person01 a org:Person ;
     foaf:mbox "alej4fc@gmail.com" ;
     org:memberOf org:com ;
     org:hasMembership org:membership01 ;
-    org:isAffiliated org:affiliation01 .
-    
+    org:isAffiliated org:affiliation01 ;
+	foaf:img _:person01avatar .  
+	
+_:person01avatar a foaf:Image ;	
+	foaf:depicts <https://avatars0.githubusercontent.com/u/2384152?v=3&s=460> .	
+	
 org:person02 a org:Person ;    
     foaf:name "Alejandro Vera";
     foaf:nick "AlejandroVera" ;
     foaf:mbox "xafilox@gmail.com" ;
     org:memberOf org:com ;
     org:hasMembership org:membership02 ;
-    org:isAffiliated org:affiliation02 .
-
+    org:isAffiliated org:affiliation02 ;
+	foaf:img _:person02avatar .  
+	
+_:person02avatar a foaf:Image ;	
+	foaf:depicts <https://avatars1.githubusercontent.com/u/196068?v=3&s=460> .	
+	
  org:person03 a org:Person ;    
     foaf:name "Andres Garcia Silva";
     foaf:nick "andresgs77" ;
-    foaf:mbox "andresgs77@hotmail.com" ;
+    foaf:mbox "andresgs77@hotmail.com" ;	
     org:memberOf org:com ;
     org:hasMembership org:membership03 ;
-    org:isAffiliated org:affiliation03 .  
+    org:isAffiliated org:affiliation03 ;
+	foaf:img _:person03avatar .  
+	
+_:person03avatar a foaf:Image ;	
+	foaf:depicts <https://avatars1.githubusercontent.com/u/5235697?v=3&s=460> .	
 
  org:person04 a org:Person ;    
     foaf:name "Carlos Blanco";
@@ -202,7 +260,11 @@ org:person02 a org:Person ;
     foaf:mbox "cblanco@conwet.com" ;
     org:memberOf org:com ;
     org:hasMembership org:membership04 ;
-    org:isAffiliated org:affiliation04 .  
+    org:isAffiliated org:affiliation04 ;
+	foaf:img _:person04avatar .  
+	
+_:person04avatar a foaf:Image ;	
+	foaf:depicts <https://avatars0.githubusercontent.com/u/3510628?v=3&s=460> .	  
 
  org:person05 a org:Person ;    
     foaf:name "Fernando Serena Acedo";
@@ -211,7 +273,11 @@ org:person02 a org:Person ;
     org:memberOf org:com ;
     org:hasMembership org:membership05 ;
     org:isAffiliated org:affiliation05 ;
-    org:isAffiliated org:affiliation06 .  
+    org:isAffiliated org:affiliation06 ;
+	foaf:img _:person05avatar .  
+	
+_:person05avatar a foaf:Image ;	
+	foaf:depicts <https://avatars2.githubusercontent.com/u/2788595?v=3&s=460> . 
 
  org:person06 a org:Person ;    
     foaf:name "Miguel Esteban Gutierrez";
@@ -221,7 +287,11 @@ org:person02 a org:Person ;
     org:hasMembership org:membership06 ;
     org:isAffiliated org:affiliation07 ;
     org:isAffiliated org:affiliation08 ;
-    org:isAffiliated org:affiliation09 .  
+    org:isAffiliated org:affiliation09 ;
+	foaf:img _:person06avatar .  
+	
+_:person06avatar a foaf:Image ;	
+	foaf:depicts <https://avatars2.githubusercontent.com/u/6214757?v=3&s=460> .  
 
  org:person07 a org:Person ;    
     foaf:name "Oscar Corcho";

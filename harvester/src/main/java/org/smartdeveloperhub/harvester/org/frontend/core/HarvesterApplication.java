@@ -51,6 +51,8 @@ import org.smartdeveloperhub.harvester.org.frontend.core.project.ProjectContaine
 import org.smartdeveloperhub.harvester.org.frontend.core.project.ProjectHandler;
 import org.smartdeveloperhub.harvester.org.frontend.core.role.RoleContainerHandler;
 import org.smartdeveloperhub.harvester.org.frontend.core.role.RoleHandler;
+import org.smartdeveloperhub.harvester.scm.frontend.core.product.ProductContainerHandler;
+import org.smartdeveloperhub.harvester.scm.frontend.core.product.ProductHandler;
 
 
 public final class HarvesterApplication extends Application<HarvesterConfiguration> {
@@ -81,6 +83,8 @@ public final class HarvesterApplication extends Application<HarvesterConfigurati
 		 	    bootstrap.addHandlerClass(OrganizationContainerHandler.class);
 		 	    bootstrap.addHandler(new ProjectHandler(controller));
 		 	    bootstrap.addHandlerClass(ProjectContainerHandler.class);
+		 	    bootstrap.addHandler(new ProductHandler(controller));
+		 	    bootstrap.addHandlerClass(ProductContainerHandler.class);
 				bootstrap.addHandler(new PersonHandler(controller));
 				bootstrap.addHandlerClass(PersonContainerHandler.class);
 				bootstrap.addHandler(new RoleHandler(controller));

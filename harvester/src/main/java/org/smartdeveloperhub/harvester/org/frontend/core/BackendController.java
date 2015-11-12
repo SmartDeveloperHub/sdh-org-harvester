@@ -39,9 +39,11 @@ import org.smartdeveloperhub.harvester.org.backend.MembershipPublisher;
 import org.smartdeveloperhub.harvester.org.backend.OrganizationPublisher;
 import org.smartdeveloperhub.harvester.org.backend.PersonPublisher;
 import org.smartdeveloperhub.harvester.org.backend.PositionPublisher;
+import org.smartdeveloperhub.harvester.org.backend.ProductPublisher;
 import org.smartdeveloperhub.harvester.org.backend.ProjectPublisher;
 import org.smartdeveloperhub.harvester.org.backend.RolePublisher;
 
+import com.hp.hpl.jena.ontology.OntDocumentManager;
 import com.hp.hpl.jena.ontology.OntModel;
 import com.hp.hpl.jena.rdf.model.ModelFactory;
 import com.hp.hpl.jena.util.FileManager;
@@ -58,6 +60,7 @@ public class BackendController {
 	AffiliationPublisher affPub;
 	PositionPublisher posPub;
 	RolePublisher rolePub;
+	ProductPublisher prodPub;
 	
 	public BackendController() throws FileNotFoundException{
 		loadOntologyIndividuals();
@@ -68,6 +71,7 @@ public class BackendController {
 		affPub =new AffiliationPublisher(ontModel);
 		posPub = new PositionPublisher(ontModel);
 		rolePub = new RolePublisher(ontModel);
+		prodPub = new ProductPublisher(ontModel);
 	}
 	
 	public void loadOntologyIndividuals() throws FileNotFoundException{
@@ -96,7 +100,8 @@ public class BackendController {
 				
 		//this option worked!
 		ontModel= ModelFactory.createOntologyModel();
-		//OntDocumentManager docMgr = ontModel.getDocumentManager();
+		OntDocumentManager docMgr = ontModel.getDocumentManager();
+		docMgr.setProcessImports(false);
 		
 		// read the RDF/XML file
 		ontModel.read(in, null, "TTL" );
@@ -140,6 +145,11 @@ public class BackendController {
 	
 	public PositionPublisher getPositionPublisher() {
 		return posPub;		
+	}
+
+	public ProductPublisher getProductPublisher() {
+		// TODO Auto-generated method stub
+		return prodPub;
 	}
 
 }

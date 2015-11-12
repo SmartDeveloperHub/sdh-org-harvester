@@ -39,6 +39,7 @@ public interface OrganizationVocabulary {
 	static final String PURPOSE = "http://www.w3.org/ns/org#purpose";
 	static final String HASMEMBERORGANIZATION="http://www.smartdeveloperhub.org/vocabulary/org#hasMemberOrganization";
 	static final String HASPROJECT="http://www.smartdeveloperhub.org/vocabulary/org#hasProject";
+	static final String HASPRODUCT="http://www.smartdeveloperhub.org/vocabulary/org#hasProduct";
 	static final String HASMEMBER ="http://www.smartdeveloperhub.org/vocabulary/org#hasMember";
 	static final String MEMBERSHIP = "http://www.smartdeveloperhub.org/vocabulary/org#membership";
 	

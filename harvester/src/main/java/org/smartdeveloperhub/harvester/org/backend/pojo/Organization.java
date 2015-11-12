@@ -40,6 +40,7 @@ public class Organization {
 	String purpose="";
 	ArrayList<String> hasMemberOrganization = new ArrayList<String>();
 	ArrayList<String> hasProject = new ArrayList<String>();
+	ArrayList<String> hasProduct = new ArrayList<String>();
 	ArrayList<String> hasMember = new ArrayList<String>();
 	ArrayList<String> membership = new ArrayList<String>();
 	ArrayList<String> position = new ArrayList<String>();
@@ -132,12 +133,21 @@ public class Organization {
 	public void setOrganizationalCollaboration(boolean organizationalCollaboration) {
 		this.organizationalCollaboration = organizationalCollaboration;
 	}
+		
+	public ArrayList<String> getHasProduct() {
+		return hasProduct;
+	}
+	public void setHasProduct(ArrayList<String> hasProduct) {
+		this.hasProduct = hasProduct;
+	}
+	
 	@Override
 	public String toString() {
 		return "Organization [prefLabel=" + prefLabel + ", title=" + title
 				+ ", description=" + description + ", id=" + id + ", uri="
 				+ uri + ", classification=" + classification + ", purpose="
 				+ purpose + ", hasMemberOrganization=" + hasMemberOrganization
+				+ ", hasProduct=" + hasProduct 
 				+ ", hasProject=" + hasProject + ", hasMember=" + hasMember
 				+ ", membership=" + membership + ", position=" + position
 				+ ", role=" + role + "]";

@@ -28,7 +28,6 @@ package org.smartdeveloperhub.harvester.org.frontend.core.Organization;
 
 import java.net.URI;
 
-import org.joda.time.DateTime;
 import org.ldp4j.application.data.DataSet;
 import org.ldp4j.application.data.DataSetHelper;
 import org.ldp4j.application.data.DataSetUtils;
@@ -43,16 +42,18 @@ import org.ldp4j.application.ext.annotations.Resource;
 import org.ldp4j.application.session.ResourceSnapshot;
 import org.smartdeveloperhub.harvester.org.backend.pojo.Organization;
 import org.smartdeveloperhub.harvester.org.frontend.core.BackendController;
+import org.smartdeveloperhub.harvester.org.frontend.core.membership.MembershipContainerHandler;
+import org.smartdeveloperhub.harvester.org.frontend.core.membership.MembershipHandler;
+import org.smartdeveloperhub.harvester.org.frontend.core.person.PersonContainerHandler;
+import org.smartdeveloperhub.harvester.org.frontend.core.person.PersonHandler;
+import org.smartdeveloperhub.harvester.org.frontend.core.position.PositionContainerHandler;
 import org.smartdeveloperhub.harvester.org.frontend.core.position.PositionHandler;
 import org.smartdeveloperhub.harvester.org.frontend.core.project.ProjectContainerHandler;
 import org.smartdeveloperhub.harvester.org.frontend.core.project.ProjectHandler;
-import org.smartdeveloperhub.harvester.org.frontend.core.person.PersonContainerHandler;
-import org.smartdeveloperhub.harvester.org.frontend.core.person.PersonHandler;
-import org.smartdeveloperhub.harvester.org.frontend.core.membership.MembershipContainerHandler;
-import org.smartdeveloperhub.harvester.org.frontend.core.membership.MembershipHandler;
-import org.smartdeveloperhub.harvester.org.frontend.core.position.PositionContainerHandler;
 import org.smartdeveloperhub.harvester.org.frontend.core.role.RoleContainerHandler;
 import org.smartdeveloperhub.harvester.org.frontend.core.role.RoleHandler;
+import org.smartdeveloperhub.harvester.scm.frontend.core.product.ProductContainerHandler;
+import org.smartdeveloperhub.harvester.scm.frontend.core.product.ProductHandler;
 
 
 @Resource(id=OrganizationHandler.ID
@@ -61,6 +62,11 @@ import org.smartdeveloperhub.harvester.org.frontend.core.role.RoleHandler;
 			id=OrganizationHandler.ORGANIZATION_PROJECTS,
 			path="projects/",
 			handler=ProjectContainerHandler.class
+		),
+		@Attachment(
+			id=OrganizationHandler.ORGANIZATION_PRODUCTS,
+			path="products/",
+			handler=ProductContainerHandler.class
 		),
 		@Attachment(
 			id=OrganizationHandler.ORGANIZATION_MEMBERS,
@@ -89,6 +95,7 @@ public class OrganizationHandler implements ResourceHandler, OrganizationVocabul
 	
 	public static final String ID="OrganizationHandler";
 	public static final String ORGANIZATION_PROJECTS="ORGANIZATIONPROJECTS";
+	public static final String ORGANIZATION_PRODUCTS="ORGANIZATIONPRODUCTS";
 	public static final String ORGANIZATION_MEMBERS="ORGANIZATIONMEMBERS";
 	public static final String ORGANIZATION_MEMBERSSHIPS="ORGANIZATIONMEMBERSSHIPS";
 	public static final String ORGANIZATION_POSITIONS="ORGANIZATIONPOSITIONS";
@@ -174,6 +181,14 @@ public class OrganizationHandler implements ResourceHandler, OrganizationVocabul
 		managedIndividual(organizationName, OrganizationHandler.ID).
 				property(HASPROJECT).
 					withIndividual(projectOrgName,ProjectHandler.ID);
+	}
+	
+	for (String productId:organization.getHasProduct()){
+		Name<String> productOrgName = NamingScheme.getDefault().name(productId);
+		helper.
+		managedIndividual(organizationName, OrganizationHandler.ID).
+				property(HASPRODUCT).
+					withIndividual(productOrgName,ProductHandler.ID);
 	}
 		
 	for (String personURI:organization.getHasMember()){

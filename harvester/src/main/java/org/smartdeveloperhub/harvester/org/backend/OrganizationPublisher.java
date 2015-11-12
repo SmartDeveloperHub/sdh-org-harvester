@@ -161,13 +161,22 @@ public class OrganizationPublisher extends OntologyInstanceReader implements Org
 			    Statement stmtProjOrg = projectOrgIter.next();
 			    Resource projRes= stmtProjOrg.getResource();
 			    if (projRes!=null){
-//			    	Statement stmtProjectId = projRes.getProperty(ontModel.getProperty(PROJECTID));
-//			    	if (stmtProjectId!=null)
-//			    		hasProject.add(stmtProjectId.getString());
 			    	hasProject.add(projRes.getURI());
 			    }
 		    }
 		    org.setHasProject(hasProject);
+		    
+		   //hasProduct
+		    StmtIterator productOrgIter = r.listProperties(ontModel.getProperty(HASPRODUCT));
+		    ArrayList<String> hasProduct = new ArrayList<String>();
+		    while (productOrgIter.hasNext()) {
+			    Statement stmtProdOrg = productOrgIter.next();
+			    Resource prodRes= stmtProdOrg.getResource();
+			    if (prodRes!=null){
+			    	hasProduct.add(prodRes.getURI());
+			    }
+		    }
+		    org.setHasProduct(hasProduct);		    
 		    
 		  //hasMember
 		    StmtIterator hasMemberIter = r.listProperties(ontModel.getProperty(HASMEMBER));
