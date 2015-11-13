@@ -140,7 +140,7 @@ public class ProjectPublisher extends OntologyInstanceReader implements ProjectV
 		    
 		    long stopTime = System.currentTimeMillis();
 			long elapsedTime = stopTime - startTime;
-			LOGGER.info("- Load the project, elapsed time (ms)..: {}",elapsedTime);
+			LOGGER.debug("- Load the project, elapsed time (ms)..: {}",elapsedTime);
 		}
 		return project;
 		

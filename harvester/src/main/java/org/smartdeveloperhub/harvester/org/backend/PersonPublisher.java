@@ -139,7 +139,7 @@ public class PersonPublisher extends OntologyInstanceReader implements PersonVoc
 		    
 		    long stopTime = System.currentTimeMillis();
 			long elapsedTime = stopTime - startTime;
-			LOGGER.info("- Load the person, elapsed time (ms)..: {}",elapsedTime);
+			LOGGER.debug("- Load the person, elapsed time (ms)..: {}",elapsedTime);
 		}
 		return person;
 		

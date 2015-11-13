@@ -74,7 +74,7 @@ public class AffiliationHandler implements ResourceHandler, AffiliationVocabular
 		Name<String> affiliationName = (Name<String>)resource.name();						
 		try{
 			Affiliation affiliation= backendController.getAffiliationPublisher().getAffiliation(affiliationName.id().toString());
-			LOGGER.info("- Affiliation Info loaded..: {}",affiliation);
+			LOGGER.debug("- Affiliation Info loaded..: {}",affiliation);
 			return maptoDataSet(affiliation ,affiliationName);	
 		}
 		catch(Exception e){

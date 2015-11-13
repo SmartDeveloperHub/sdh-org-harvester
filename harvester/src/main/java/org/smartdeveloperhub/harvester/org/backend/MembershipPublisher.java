@@ -89,7 +89,7 @@ public class MembershipPublisher extends OntologyInstanceReader implements Membe
 		}
 	    long stopTime = System.currentTimeMillis();
 		long elapsedTime = stopTime - startTime;
-		LOGGER.info("- Load the membership, elapsed time (ms)..: {}",elapsedTime);
+		LOGGER.debug("- Load the membership, elapsed time (ms)..: {}",elapsedTime);
 	   return membership;		
 	}
 }

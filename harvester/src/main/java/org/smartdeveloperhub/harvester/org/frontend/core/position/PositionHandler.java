@@ -67,7 +67,7 @@ public class PositionHandler  implements ResourceHandler, MembershipVocabulary{
 		Name<String> positionName = (Name<String>)resource.name();						
 		try{
 			Position position= backendController.getPositionPublisher().getPosition(positionName.id().toString());
-			LOGGER.info("- Position Info loaded..: {}",position);
+			LOGGER.debug("- Position Info loaded..: {}",position);
 			return maptoDataSet(position ,positionName);	
 		}
 		catch(Exception e){

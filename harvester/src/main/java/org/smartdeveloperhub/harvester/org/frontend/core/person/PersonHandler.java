@@ -71,7 +71,7 @@ public class PersonHandler implements ResourceHandler, PersonVocabulary{
 		Name<String> personName = (Name<String>)resource.name();						
 		try{
 			Person person = backendController.getPersonPublisher().getPerson(personName.id().toString());
-			LOGGER.info("- Person Info loaded..: {}",person);
+			LOGGER.debug("- Person Info loaded..: {}",person);
 			return maptoDataSet(person ,personName);	
 		}
 		catch(Exception e){

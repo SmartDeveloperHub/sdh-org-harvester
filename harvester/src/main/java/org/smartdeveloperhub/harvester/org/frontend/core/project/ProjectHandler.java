@@ -40,10 +40,13 @@ import org.ldp4j.application.ext.UnknownResourceException;
 import org.ldp4j.application.ext.annotations.Attachment;
 import org.ldp4j.application.ext.annotations.Resource;
 import org.ldp4j.application.session.ResourceSnapshot;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.smartdeveloperhub.harvester.org.backend.pojo.Project;
 import org.smartdeveloperhub.harvester.org.frontend.core.BackendController;
 import org.smartdeveloperhub.harvester.org.frontend.core.affiliation.AffiliationContainerHandler;
 import org.smartdeveloperhub.harvester.org.frontend.core.affiliation.AffiliationHandler;
+import org.smartdeveloperhub.harvester.org.frontend.core.person.PersonHandler;
 import org.smartdeveloperhub.harvester.org.frontend.core.role.RoleContainerHandler;
 import org.smartdeveloperhub.harvester.org.frontend.core.role.RoleHandler;
 import org.smartdeveloperhub.harvester.org.frontend.core.util.Mapper;
@@ -60,6 +63,8 @@ import org.smartdeveloperhub.harvester.scm.frontend.core.product.ProductHandler;
 
 public class ProjectHandler implements ResourceHandler, ProjectVocabulary{
 
+	private static final Logger LOGGER=LoggerFactory.getLogger(ProjectHandler.class);
+	
 	public static final String ID="ProjectHandler";
 	public static final String PROJECT_AFFILIATIONS="PROJECTAFFILIATIONS";
 	
@@ -82,6 +87,7 @@ public class ProjectHandler implements ResourceHandler, ProjectVocabulary{
 		Name<String> name = (Name<String>)resource.name();						
 		try{
 			Project project = backendController.getProjectPublisher().getProject(name.id().toString());		
+			LOGGER.debug("- project Info loaded..: {}",project);
 			return maptoDataSet(project,name);	
 		}
 		catch(Exception e){

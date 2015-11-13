@@ -42,7 +42,7 @@ import com.hp.hpl.jena.rdf.model.StmtIterator;
 
 public class ProductPublisher extends OntologyInstanceReader implements ProductVocabulary{
 
-	private static final Logger LOGGER=LoggerFactory.getLogger(ProjectPublisher.class);
+	private static final Logger LOGGER=LoggerFactory.getLogger(ProductPublisher.class);
 	
 	public ProductPublisher(OntModel ontModel) {
 		super(ontModel);
@@ -98,7 +98,7 @@ public class ProductPublisher extends OntologyInstanceReader implements ProductV
 		    
 		    long stopTime = System.currentTimeMillis();
 			long elapsedTime = stopTime - startTime;
-			LOGGER.info("- Load the project, elapsed time (ms)..: {}",elapsedTime);
+			LOGGER.debug("- Load the project, elapsed time (ms)..: {}",elapsedTime);
 		}
 		
 		return product;

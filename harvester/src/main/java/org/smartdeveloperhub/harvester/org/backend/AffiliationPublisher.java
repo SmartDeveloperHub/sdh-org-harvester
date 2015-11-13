@@ -88,7 +88,7 @@ public class AffiliationPublisher extends OntologyInstanceReader implements Affi
 		}
 	    long stopTime = System.currentTimeMillis();
 		long elapsedTime = stopTime - startTime;
-		LOGGER.info("- Load the affiliation, elapsed time (ms)..: {}",elapsedTime);
+		LOGGER.debug("- Load the affiliation, elapsed time (ms)..: {}",elapsedTime);
 	   return affiliation;		
 	}
 

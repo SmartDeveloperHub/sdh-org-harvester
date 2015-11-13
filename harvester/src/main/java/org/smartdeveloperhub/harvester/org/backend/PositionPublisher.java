@@ -75,7 +75,7 @@ public class PositionPublisher extends OntologyInstanceReader implements Members
     	}	    		
     	 long stopTime = System.currentTimeMillis();
  		long elapsedTime = stopTime - startTime;
- 		LOGGER.info("- Load the Position, elapsed time (ms)..: {}",elapsedTime);
+ 		LOGGER.debug("- Load the Position, elapsed time (ms)..: {}",elapsedTime);
     	return position;
 	}
  

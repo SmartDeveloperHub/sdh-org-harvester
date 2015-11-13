@@ -74,7 +74,7 @@ public class MembershipHandler implements ResourceHandler, MembershipVocabulary{
 		Name<String> membershipName = (Name<String>)resource.name();						
 		try{
 			Membership membership = backendController.getMembershipPublisher().getMembership(membershipName.id().toString());
-			LOGGER.info("- Membership Info loaded..: {}",membership);
+			LOGGER.debug("- Membership Info loaded..: {}",membership);
 			return maptoDataSet(membership ,membershipName);	
 		}
 		catch(Exception e){

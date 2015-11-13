@@ -67,7 +67,7 @@ public class RoleHandler  implements ResourceHandler, AffiliationVocabulary{
 		Name<String> roleName = (Name<String>)resource.name();						
 		try{
 			Role role= backendController.getRolePublisher().getRole(roleName.id().toString());
-			LOGGER.info("- Role Info loaded..: {}",role);
+			LOGGER.debug("- Role Info loaded..: {}",role);
 			return maptoDataSet(role ,roleName);	
 		}
 		catch(Exception e){

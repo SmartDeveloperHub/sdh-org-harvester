@@ -57,7 +57,7 @@ import org.smartdeveloperhub.harvester.scm.frontend.core.product.ProductHandler;
 
 public class BackendResourcePublisher {
 	
-	private static final Logger LOGGER=LoggerFactory.getLogger(HarvesterApplication.class);
+	private static final Logger LOGGER=LoggerFactory.getLogger(BackendResourcePublisher.class);
 	
 	WriteSession session;
 	BackendController controller;
@@ -78,6 +78,8 @@ public class BackendResourcePublisher {
 		LOGGER.debug("Published organization container for service {}", harvesterName);
 		
 		addOrganizationMembersToHarvester(target, organizationContainerSnapshot);
+		
+		LOGGER.info("**End of Publishing ORG Harvester Resource");
 				
 	}
 	
@@ -216,51 +218,5 @@ public class BackendResourcePublisher {
 	    }
 		
 	}	
-
-//	private void addRolesToProject(ContainerSnapshot roleContainerSnapshot,
-//			Project project) {
-//		for (String roleId:project.getRole()){
-//			Name<String> roleName = NamingScheme.getDefault().name(roleId);	    				
-//			ResourceSnapshot roleSnapshot = roleContainerSnapshot.addMember(roleName);
-//		}
-//		
-//	}
-	
-//	private void addBranchMemberstToRepository(Repository repository, ContainerSnapshot branchContainerSnapshot) throws Exception{		
-//		for (String branchId:repository.getBranches().getBranchIds()){
-//			Name<String> branchName = NamingScheme.getDefault().name(Integer.toString(repository.getId()),branchId);			
-//			//keeptrack of the branch key and resource name
-//			controller.getBranchIdentityMap().addKey(new BranchKey(Integer.toString(repository.getId()),branchId), branchName);
-//			ResourceSnapshot branchSnapshot = branchContainerSnapshot.addMember(branchName);			
-//		}		
-//	}
-//	
-//	private void addCommitMembersToRepository(Repository repository,
-//			ContainerSnapshot commitContainerSnapshot) throws Exception {
-//		for (String commitId:repository.getCommits().getCommitIds()){
-//			Name<String> commitName = NamingScheme.getDefault().name(Integer.toString(repository.getId()),commitId);			
-//			//keeptrack of the branch key and resource name
-//			controller.getCommitIdentityMap().addKey(new CommitKey(Integer.toString(repository.getId()),commitId), commitName);
-//			ResourceSnapshot commitSnapshot = commitContainerSnapshot.addMember(commitName);			
-//		}
-//		
-//	}
-//	
-//	void publishUserResources() throws Exception{
-//		Name<String> userContainerName = NamingScheme.getDefault().name(UserContainerHandler.NAME);
-//		ContainerSnapshot userContainerSnapshot = session.find(ContainerSnapshot.class, userContainerName ,UserContainerHandler.class);			
-//		if(userContainerSnapshot==null) {
-//			LOGGER.warn("User Container does not exits");
-//			return;
-//		}
-//		
-//		ArrayList<String> userIds = controller.getUsers();	
-//		for (String userId:userIds){			
-//			Name<String> userName = NamingScheme.getDefault().name(userId);			
-//			ResourceSnapshot userSnapshot = userContainerSnapshot.addMember(userName);
-//			LOGGER.debug("Published resource for user {} @ {} ({})",userId, userSnapshot.name(),userSnapshot.templateId());
-//		}
-//		
-//	}
 
 }

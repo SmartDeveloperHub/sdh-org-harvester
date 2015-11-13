@@ -27,6 +27,7 @@
 package org.smartdeveloperhub.harvester.org.frontend.core.harvester;
 
 import java.net.URI;
+import java.util.ArrayList;
 
 import org.ldp4j.application.data.DataSet;
 import org.ldp4j.application.data.DataSets;
@@ -40,9 +41,12 @@ import org.ldp4j.application.ext.UnknownResourceException;
 import org.ldp4j.application.ext.annotations.Attachment;
 import org.ldp4j.application.ext.annotations.Resource;
 import org.ldp4j.application.session.ResourceSnapshot;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.smartdeveloperhub.harvester.org.backend.OrganizationPublisher;
 import org.smartdeveloperhub.harvester.org.frontend.core.Organization.OrganizationContainerHandler;
 import org.smartdeveloperhub.harvester.org.frontend.core.Organization.OrganizationHandler;
+import org.smartdeveloperhub.harvester.scm.frontend.core.product.ProductHandler;
 import org.smartdeveloperhub.harvester.org.frontend.core.BackendController;
 
 @Resource(
@@ -56,6 +60,8 @@ import org.smartdeveloperhub.harvester.org.frontend.core.BackendController;
 		}
 	)
 public class HarvesterHandler implements ResourceHandler, HarvesterVocabulary{
+	
+	private static final Logger LOGGER=LoggerFactory.getLogger(HarvesterHandler.class);
 	
 	public static final String ID="HarvesterHandler";
 	public static final String HARVESTER_ORGANIZATIONS="HarvesterOrganizations";
@@ -100,7 +106,10 @@ public class HarvesterHandler implements ResourceHandler, HarvesterVocabulary{
 					withIndividual(harvesterName,HarvesterHandler.ID,VOCABULARY_PATH);
 
 		//organizations
-		for (String organizationURI:organizationPublisher.getOrganizations()){
+		ArrayList<String> organizations = organizationPublisher.getOrganizations();
+		LOGGER.debug("harvester Organizations URIs loaded ({})", organizations );
+		
+		for (String organizationURI:organizations){
 			Name<String> organizationName = NamingScheme.getDefault().name(organizationURI);	
 			helper.
 			managedIndividual(harvesterName, ID).

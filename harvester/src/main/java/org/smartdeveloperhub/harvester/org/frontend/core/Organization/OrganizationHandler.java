@@ -40,6 +40,8 @@ import org.ldp4j.application.ext.UnknownResourceException;
 import org.ldp4j.application.ext.annotations.Attachment;
 import org.ldp4j.application.ext.annotations.Resource;
 import org.ldp4j.application.session.ResourceSnapshot;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.smartdeveloperhub.harvester.org.backend.pojo.Organization;
 import org.smartdeveloperhub.harvester.org.frontend.core.BackendController;
 import org.smartdeveloperhub.harvester.org.frontend.core.membership.MembershipContainerHandler;
@@ -93,6 +95,8 @@ import org.smartdeveloperhub.harvester.scm.frontend.core.product.ProductHandler;
 
 public class OrganizationHandler implements ResourceHandler, OrganizationVocabulary{
 	
+	private static final Logger LOGGER=LoggerFactory.getLogger(OrganizationHandler.class);
+	
 	public static final String ID="OrganizationHandler";
 	public static final String ORGANIZATION_PROJECTS="ORGANIZATIONPROJECTS";
 	public static final String ORGANIZATION_PRODUCTS="ORGANIZATIONPRODUCTS";
@@ -117,7 +121,8 @@ public class OrganizationHandler implements ResourceHandler, OrganizationVocabul
 		
 		Name<String> name = (Name<String>)resource.name();						
 		try{
-			Organization organization = backendController.getOrganizationPublisher().getOrganization(name.id().toString());		
+			Organization organization = backendController.getOrganizationPublisher().getOrganization(name.id().toString());	
+			LOGGER.debug("organization loaded ({})", organization);
 			return maptoDataSet(organization,name);	
 		}
 		catch(Exception e){

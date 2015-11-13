@@ -76,7 +76,7 @@ public class RolePublisher extends OntologyInstanceReader implements Affiliation
     	}    
     	 long stopTime = System.currentTimeMillis();
  		long elapsedTime = stopTime - startTime;
- 		LOGGER.info("- Load the Role, elapsed time (ms)..: {}",elapsedTime);
+ 		LOGGER.debug("- Load the Role, elapsed time (ms)..: {}",elapsedTime);
     	return role;
 	}
 

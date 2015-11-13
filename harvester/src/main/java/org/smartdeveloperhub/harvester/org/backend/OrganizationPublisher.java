@@ -63,11 +63,12 @@ public class OrganizationPublisher extends OntologyInstanceReader implements Org
 		ResIterator iter =ontModel.listSubjectsWithProperty(RDF.type, organization);
 		
 		if (iter.hasNext()) {
-		    System.out.println("The database contains these organizations:");
+			LOGGER.info("Organizations were found in the database");
+			LOGGER.debug("The database contains these organizations:");
 		    while (iter.hasNext()) {
 		    	Resource organizationResource = iter.nextResource();
 		    	String organizationUri= organizationResource.getURI();		        
-		        LOGGER.info(organizationUri);
+		        LOGGER.debug(organizationUri);
 //		        String organizationId = organizationResource.getProperty(ontModel.getProperty(ORGID)).getString();
 //		        System.out.println("  " + organizationId);
 		        organizations.add(organizationUri);
@@ -81,7 +82,7 @@ public class OrganizationPublisher extends OntologyInstanceReader implements Org
 		long stopTime = System.currentTimeMillis();
 		long elapsedTime = stopTime - startTime;
 		//System.out.println("Load organizations, elapsed time (ms):"+elapsedTime);
-		LOGGER.info("- Load organizations, elapsed time (ms)..: {}",elapsedTime);
+		LOGGER.debug("- Load organizations, elapsed time (ms)..: {}",elapsedTime);
 		
 		return organizations;
 	}
@@ -242,7 +243,7 @@ public class OrganizationPublisher extends OntologyInstanceReader implements Org
 		    
 		    long stopTime = System.currentTimeMillis();
 			long elapsedTime = stopTime - startTime;
-			LOGGER.info("- Load the organization, elapsed time (ms)..: {}",elapsedTime);
+			LOGGER.debug("- Load the organization, elapsed time (ms)..: {}",elapsedTime);
 		}
 		return org;
 		
