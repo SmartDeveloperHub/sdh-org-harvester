@@ -161,19 +161,19 @@ public class OrganizationHandler implements ResourceHandler, OrganizationVocabul
 //				withLiteral(repository.getTags());		
 	//			property(DEFAULTBRANCH).
 	//			withIndividual(repository.getDefaultBranch());
-		
-		if ( organization.getDepicts() !=null){
-			helper.
-			managedIndividual(organizationName, OrganizationHandler.ID).
-				property(DEPICTION).
-					withIndividual(organizationName, OrganizationHandler.ID,IMG_PATH);
-			helper.
-			relativeIndividual(organizationName,OrganizationHandler.ID,IMG_PATH).
-				property(TYPE).
-					withIndividual(IMAGE_CLASS).
-				property(DEPICTS).
-					withIndividual(organization.getDepicts());		
-		}
+		if ( organization.getDepicts() !=null)
+			if ( !organization.getDepicts().isEmpty()){
+				helper.
+				managedIndividual(organizationName, OrganizationHandler.ID).
+					property(DEPICTION).
+						withIndividual(organizationName, OrganizationHandler.ID,IMG_PATH);
+				helper.
+				relativeIndividual(organizationName,OrganizationHandler.ID,IMG_PATH).
+					property(TYPE).
+						withIndividual(IMAGE_CLASS).
+					property(DEPICTS).
+						withIndividual(organization.getDepicts());		
+			}
 		
 	if(organization.isOrganizationalCollaboration()){
 		helper.

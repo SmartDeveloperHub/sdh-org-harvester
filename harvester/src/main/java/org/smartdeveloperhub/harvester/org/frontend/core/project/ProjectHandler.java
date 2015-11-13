@@ -128,7 +128,8 @@ public class ProjectHandler implements ResourceHandler, ProjectVocabulary{
 	//			property(DEFAULTBRANCH).
 	//			withIndividual(repository.getDefaultBranch());
 		
-		if ( project.getDepicts() !=null){
+		if ( project.getDepicts() !=null)
+			if (!project.getDepicts().isEmpty()){
 			helper.
 			managedIndividual(projectName, ProjectHandler.ID).
 				property(DEPICTION).
@@ -139,7 +140,7 @@ public class ProjectHandler implements ResourceHandler, ProjectVocabulary{
 					withIndividual(IMAGE_CLASS).
 				property(DEPICTS).
 					withIndividual(project.getDepicts());		
-		}
+			}
 
 		for (String affiliationId:project.getAffiliation()){
 			Name<String> affiliationName = NamingScheme.getDefault().name(affiliationId);

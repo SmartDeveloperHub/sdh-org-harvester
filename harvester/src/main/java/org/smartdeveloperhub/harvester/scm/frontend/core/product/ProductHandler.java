@@ -109,7 +109,8 @@ public class ProductHandler  implements ResourceHandler, ProductVocabulary{
 						withIndividual(projectOrgName, ProjectHandler.ID);
 		}
 		
-		if ( product.getDepicts() !=null){
+		if ( product.getDepicts() !=null)
+			if ( !product.getDepicts().isEmpty()) {
 			helper.
 			managedIndividual(name, ProductHandler.ID).
 				property(DEPICTION).
@@ -120,7 +121,7 @@ public class ProductHandler  implements ResourceHandler, ProductVocabulary{
 					withIndividual(IMAGE_CLASS).
 				property(DEPICTS).
 					withIndividual(product.getDepicts());		
-		}
+			}
 		
 		return dataSet;
 	}
