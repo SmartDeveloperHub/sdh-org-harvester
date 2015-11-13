@@ -34,14 +34,28 @@ public class Project {
 	String name="";
 	String description="";
 	String uri="";
+	String depicts ="";
 	ArrayList<String> affiliation = new ArrayList<String>();
 	ArrayList<String> repository = new ArrayList<String>();	
 	ArrayList<String> location = new ArrayList<String>();
+	String createdOn ="";
 	
 //	ArrayList<String> role = new ArrayList<String>();
-	
+
 	public String getUri() {
 		return uri;
+	}
+	public String getCreatedOn() {
+		return createdOn;
+	}
+	public void setCreatedOn(String createdOn) {
+		this.createdOn = createdOn;
+	}
+	public String getDepicts() {
+		return depicts;
+	}
+	public void setDepicts(String depicts) {
+		this.depicts = depicts;
 	}
 	public void setUri(String uri) {
 		this.uri = uri;
@@ -77,8 +91,7 @@ public class Project {
 	}
 	public void setRepository(ArrayList<String> repository) {
 		this.repository = repository;
-	}
-	
+	}	
 	
 	public ArrayList<String> getLocation() {
 		return location;
@@ -86,12 +99,14 @@ public class Project {
 	public void setLocation(ArrayList<String> location) {
 		this.location = location;
 	}
+	
 	@Override
 	public String toString() {
-		return "Project [id=" + id + ", name=" + name + ", description="
-				+ description + ", affiliation=" + affiliation
-				+ ", repository=" + repository + "]";
+		return "Project [id=" + id + ", name=" + name + ", description=" + description + ", uri=" + uri + ", depicts="
+				+ depicts + ", affiliation=" + affiliation + ", repository=" + repository + ", location=" + location
+				+ ", createdOn=" + createdOn + "]";
 	}
+	
 	
 //	public ArrayList<String> getRole() {
 //		return role;

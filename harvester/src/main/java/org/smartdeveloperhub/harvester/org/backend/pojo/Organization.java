@@ -38,6 +38,7 @@ public class Organization {
 	String uri="";
 	String classification="";
 	String purpose="";
+	String depicts ="";
 	ArrayList<String> hasMemberOrganization = new ArrayList<String>();
 	ArrayList<String> hasProject = new ArrayList<String>();
 	ArrayList<String> hasProduct = new ArrayList<String>();
@@ -139,19 +140,23 @@ public class Organization {
 	}
 	public void setHasProduct(ArrayList<String> hasProduct) {
 		this.hasProduct = hasProduct;
+	}		
+	
+	public String getDepicts() {
+		return depicts;
+	}
+	public void setDepicts(String depicts) {
+		this.depicts = depicts;
 	}
 	
 	@Override
 	public String toString() {
-		return "Organization [prefLabel=" + prefLabel + ", title=" + title
-				+ ", description=" + description + ", id=" + id + ", uri="
-				+ uri + ", classification=" + classification + ", purpose="
-				+ purpose + ", hasMemberOrganization=" + hasMemberOrganization
-				+ ", hasProduct=" + hasProduct 
-				+ ", hasProject=" + hasProject + ", hasMember=" + hasMember
-				+ ", membership=" + membership + ", position=" + position
+		return "Organization [organizationalCollaboration=" + organizationalCollaboration + ", prefLabel=" + prefLabel
+				+ ", title=" + title + ", description=" + description + ", id=" + id + ", uri=" + uri
+				+ ", classification=" + classification + ", purpose=" + purpose + ", depicts=" + depicts
+				+ ", hasMemberOrganization=" + hasMemberOrganization + ", hasProject=" + hasProject + ", hasProduct="
+				+ hasProduct + ", hasMember=" + hasMember + ", membership=" + membership + ", position=" + position
 				+ ", role=" + role + "]";
 	}
 	
-
 }

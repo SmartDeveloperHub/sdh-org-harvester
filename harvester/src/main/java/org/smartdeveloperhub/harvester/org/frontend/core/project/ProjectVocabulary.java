@@ -43,5 +43,12 @@ public interface ProjectVocabulary {
 	
 	static final String SCMLOCATION= "http://www.smartdeveloperhub.org/vocabulary/scm#location";
 	
+	static final String CREATEDON= "http://www.smartdeveloperhub.org/vocabulary/org#createdOn";		
+	
+	static final String DEPICTION = "http://xmlns.com/foaf/0.1/depiction";
+	static final String IMAGE_CLASS = "http://xmlns.com/foaf/0.1/Image";
+	static final String DEPICTS = "http://xmlns.com/foaf/0.1/depicts";
+		
+	
 	
 }

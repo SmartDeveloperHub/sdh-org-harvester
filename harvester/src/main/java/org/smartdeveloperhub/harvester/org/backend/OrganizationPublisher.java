@@ -139,6 +139,17 @@ public class OrganizationPublisher extends OntologyInstanceReader implements Org
 		    	org.setClassification(preflabelClassification.getString());		    			    			    	
 		    }
 		    
+		    //depiction
+		    Statement depiction = r.getProperty(ontModel.getProperty(DEPICTION)) ;
+		    if (depiction!=null){
+		    	Statement depicts = depiction.getProperty(ontModel.getProperty(DEPICTS));
+		    	if (depicts!=null){
+		    		Resource imgRes=depicts.getResource();
+		    		if (imgRes!=null)
+		    			org.setDepicts(depicts.getResource().getURI());
+		    	}
+		    }
+		    
 		    //memberOrganizations
 		    StmtIterator memberOrgIter = r.listProperties(ontModel.getProperty(HASMEMBERORGANIZATION));
 		    ArrayList<String> hasMemberOrganization = new ArrayList<String>();

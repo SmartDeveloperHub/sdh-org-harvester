@@ -50,7 +50,10 @@ public interface OrganizationVocabulary {
 	static final String PERSONID = "http://www.smartdeveloperhub.org/vocabulary/org#id";
 	
 	static final String ORGPOSITION = "http://www.smartdeveloperhub.org/vocabulary/org#organizationPosition";
-	static final String ORGROLE = "http://www.smartdeveloperhub.org/vocabulary/org#organizationRole";
+	static final String ORGROLE = "http://www.smartdeveloperhub.org/vocabulary/org#organizationRole";	
 	
+	static final String DEPICTION = "http://xmlns.com/foaf/0.1/depiction";
+	static final String IMAGE_CLASS = "http://xmlns.com/foaf/0.1/Image";
+	static final String DEPICTS = "http://xmlns.com/foaf/0.1/depicts";
 	
 }

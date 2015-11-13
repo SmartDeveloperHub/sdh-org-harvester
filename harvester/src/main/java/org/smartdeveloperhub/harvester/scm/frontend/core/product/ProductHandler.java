@@ -85,9 +85,7 @@ public class ProductHandler  implements ResourceHandler, ProductVocabulary{
 	private DataSet maptoDataSet(Product product, Name<String> name) {
 		// TODO Auto-generated method stub
 		DataSet dataSet=DataSets.createDataSet(name);
-		DataSetHelper helper=DataSetUtils.newHelper(dataSet);
-		
-	
+		DataSetHelper helper=DataSetUtils.newHelper(dataSet);			
 		//Name<String> ownerName = NamingScheme.getDefault().name(repository.getOwner().getId().toString());	
 	
 		helper.

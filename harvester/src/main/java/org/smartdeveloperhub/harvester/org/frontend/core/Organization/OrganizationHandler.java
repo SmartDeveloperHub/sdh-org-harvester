@@ -101,6 +101,8 @@ public class OrganizationHandler implements ResourceHandler, OrganizationVocabul
 	public static final String ORGANIZATION_POSITIONS="ORGANIZATIONPOSITIONS";
 	public static final String ORGANIZATION_ROLES="ORGANIZATIONROLES"; 
 	
+	private static final URI IMG_PATH = URI.create("#img");
+	
 	BackendController backendController;
 	
 	private static final URI CLASSIFICATION_PATH = URI.create("#classification");
@@ -159,6 +161,19 @@ public class OrganizationHandler implements ResourceHandler, OrganizationVocabul
 //				withLiteral(repository.getTags());		
 	//			property(DEFAULTBRANCH).
 	//			withIndividual(repository.getDefaultBranch());
+		
+		if ( organization.getDepicts() !=null){
+			helper.
+			managedIndividual(organizationName, OrganizationHandler.ID).
+				property(DEPICTION).
+					withIndividual(organizationName, OrganizationHandler.ID,IMG_PATH);
+			helper.
+			relativeIndividual(organizationName,OrganizationHandler.ID,IMG_PATH).
+				property(TYPE).
+					withIndividual(IMAGE_CLASS).
+				property(DEPICTS).
+					withIndividual(organization.getDepicts());		
+		}
 		
 	if(organization.isOrganizationalCollaboration()){
 		helper.

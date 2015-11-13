@@ -26,6 +26,8 @@
  */
 package org.smartdeveloperhub.harvester.org.frontend.core.project;
 
+import java.net.URI;
+
 import org.ldp4j.application.data.DataSet;
 import org.ldp4j.application.data.DataSetHelper;
 import org.ldp4j.application.data.DataSetUtils;
@@ -44,6 +46,8 @@ import org.smartdeveloperhub.harvester.org.frontend.core.affiliation.Affiliation
 import org.smartdeveloperhub.harvester.org.frontend.core.affiliation.AffiliationHandler;
 import org.smartdeveloperhub.harvester.org.frontend.core.role.RoleContainerHandler;
 import org.smartdeveloperhub.harvester.org.frontend.core.role.RoleHandler;
+import org.smartdeveloperhub.harvester.org.frontend.core.util.Mapper;
+import org.smartdeveloperhub.harvester.scm.frontend.core.product.ProductHandler;
 
 @Resource(id=ProjectHandler.ID
 		,attachments={
@@ -58,6 +62,9 @@ public class ProjectHandler implements ResourceHandler, ProjectVocabulary{
 
 	public static final String ID="ProjectHandler";
 	public static final String PROJECT_AFFILIATIONS="PROJECTAFFILIATIONS";
+	
+	private static final URI IMG_PATH = URI.create("#img");
+	
 	//public static final String PROJECT_ROLES="PROJECTROLES";
 	
 	BackendController backendController;
@@ -101,7 +108,9 @@ public class ProjectHandler implements ResourceHandler, ProjectVocabulary{
 			property(DOAPNAME).
 				withLiteral(project.getName()).
 			property(DOAPDESCRIPTION).
-				withLiteral(project.getDescription());
+				withLiteral(project.getDescription()).
+			property(CREATEDON).
+				withLiteral(Mapper.toLiteral(project.getCreatedOn()));
 //			property(FIRSTCOMMIT).
 //				withLiteral(Mapper.toLiteral(new DateTime(repository.getFirstCommitAt()).toDate())).
 //			property(PURPOSE).
@@ -118,6 +127,19 @@ public class ProjectHandler implements ResourceHandler, ProjectVocabulary{
 //				withLiteral(repository.getTags());		
 	//			property(DEFAULTBRANCH).
 	//			withIndividual(repository.getDefaultBranch());
+		
+		if ( project.getDepicts() !=null){
+			helper.
+			managedIndividual(projectName, ProjectHandler.ID).
+				property(DEPICTION).
+					withIndividual(projectName, ProductHandler.ID,IMG_PATH);
+			helper.
+			relativeIndividual(projectName,ProjectHandler.ID,IMG_PATH).
+				property(TYPE).
+					withIndividual(IMAGE_CLASS).
+				property(DEPICTS).
+					withIndividual(project.getDepicts());		
+		}
 
 		for (String affiliationId:project.getAffiliation()){
 			Name<String> affiliationName = NamingScheme.getDefault().name(affiliationId);

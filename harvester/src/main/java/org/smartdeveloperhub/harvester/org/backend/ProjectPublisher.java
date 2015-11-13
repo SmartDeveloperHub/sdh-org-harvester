@@ -72,7 +72,23 @@ public class ProjectPublisher extends OntologyInstanceReader implements ProjectV
 		    
 		    Statement description = r.getProperty(ontModel.getProperty(DOAPDESCRIPTION));
 		    if (description!=null)
-		    	project.setDescription(description.getString());	    
+		    	project.setDescription(description.getString());
+		    
+		    Statement createdOn = r.getProperty(ontModel.getProperty(CREATEDON)) ;
+		    if (createdOn!=null)
+		    	project.setCreatedOn(createdOn.getString());
+		    
+		    //depiction
+		    Statement depiction = r.getProperty(ontModel.getProperty(DEPICTION)) ;
+		    if (depiction!=null){
+		    	Statement depicts = depiction.getProperty(ontModel.getProperty(DEPICTS));
+		    	if (depicts!=null){
+		    		Resource imgRes=depicts.getResource();
+		    		if (imgRes!=null)
+		    			project.setDepicts(depicts.getResource().getURI());
+		    	}
+		    }
+		    
 		    
 //			//projectRole
 //		    StmtIterator projectRoleIter = r.listProperties(ontModel.getProperty(PROJECTROLE));
