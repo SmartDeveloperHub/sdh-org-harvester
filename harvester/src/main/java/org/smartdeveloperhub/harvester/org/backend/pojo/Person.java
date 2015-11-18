@@ -30,7 +30,7 @@ import java.util.ArrayList;
 
 public class Person {
 	String uri="";
-//	String id="";
+	String id="";
 	String name="";
 	String nick="";
 	String mbox="";
@@ -60,12 +60,12 @@ public class Person {
 	}
 
 
-//	public String getId() {
-//		return id;
-//	}
-//	public void setId(String id) {
-//		this.id = id;
-//	}
+	public String getId() {
+		return id;
+	}
+	public void setId(String id) {
+		this.id = id;
+	}
 	public String getName() {
 		return name;
 	}

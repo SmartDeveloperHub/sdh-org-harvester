@@ -89,7 +89,9 @@ public class PersonHandler implements ResourceHandler, PersonVocabulary{
 		helper.
 		managedIndividual(personName, PersonHandler.ID).
 			property(TYPE).
-				withIndividual(PERSONCLASS).			
+				withIndividual(PERSONCLASS).
+			property(PERSONID).
+				withLiteral(person.getId()).
 			property(FOAFNAME).
 				withLiteral(person.getName()).
 			property(FOAFNICK).

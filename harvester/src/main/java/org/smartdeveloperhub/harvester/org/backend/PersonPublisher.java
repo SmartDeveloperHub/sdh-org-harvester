@@ -61,9 +61,9 @@ public class PersonPublisher extends OntologyInstanceReader implements PersonVoc
 			
 			person.setUri(personURI);
 			
-//			Statement id = r.getProperty(ontModel.getProperty(PERSONID));
-//		    if (id !=null)
-//		    person.setId(id.getString());
+			Statement id = r.getProperty(ontModel.getProperty(PERSONID));
+		    if (id !=null)
+		    person.setId(id.getString());
 		    
 		    Statement name = r.getProperty(ontModel.getProperty(FOAFNAME));
 		    if (name !=null)
