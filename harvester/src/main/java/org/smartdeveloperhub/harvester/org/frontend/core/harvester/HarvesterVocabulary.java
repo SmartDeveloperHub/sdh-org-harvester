@@ -37,11 +37,11 @@ public interface HarvesterVocabulary {
 		static final String MICRO_SERVICE_TYPE             = "http://www.smartdeveloperhub.org/vocabulary/platform#MicroService";
 		static final String HARVESTER = "http://www.smartdeveloperhub.org/vocabulary/platform#Harvester";
 						
-		static final String ORGHARVESTER = "http://www.smartdeveloperhub.org/vocabulary/org#ORGHarvester";
+		static final String ORGHARVESTER = "http://www.smartdeveloperhub.org/vocabulary/organization#ORGHarvester";
 		
 		static final String HARVESTER_VOCABULARY       = "http://www.smartdeveloperhub.org/vocabulary/platform#vocabulary";
 		static final String VOCABULARY = "http://www.smartdeveloperhub.org/vocabulary/platform#Vocabulary";		
-		static final String ORGVOCABULARY = "http://www.smartdeveloperhub.org/vocabulary/org#ORGVocabulary";
+		static final String ORGVOCABULARY = "http://www.smartdeveloperhub.org/vocabulary/organization#ORGVocabulary";
 //		static final String SCMVOCABULARY = "http://www.smartdeveloperhub.org/vocabulary/scm#SCMVocabulary";
 		
 		static final String DOMAIN            = "http://www.smartdeveloperhub.org/vocabulary/platform#domain";
@@ -51,10 +51,10 @@ public interface HarvesterVocabulary {
 		static final String SOURCE            = "http://www.smartdeveloperhub.org/vocabulary/platform#source";
 		static final String IMPLEMENTS        = "http://www.smartdeveloperhub.org/vocabulary/platform#implements";
 		
-		static final String ORG_DOMAIN_TYPE     = "http://www.smartdeveloperhub.org/vocabulary/org#ORGDomain";
+		static final String ORG_DOMAIN_TYPE     = "http://www.smartdeveloperhub.org/vocabulary/organization#ORGDomain";
 		static final String ORG_V1_TTL         = "http://www.smartdeveloperhub.org/vocabulary/v1/org.ttl";
 		
 		//static final String REPOSITORY      = "http://www.smartdeveloperhub.org/vocabulary/scm#hasRepository";		
-		static final String ORGANIZATION      = "http://www.smartdeveloperhub.org/vocabulary/org#hasOrganization";
+		static final String ORGANIZATION      = "http://www.smartdeveloperhub.org/vocabulary/organization#hasOrganization";
 
 }

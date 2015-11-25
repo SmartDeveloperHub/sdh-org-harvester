@@ -29,12 +29,12 @@ package org.smartdeveloperhub.harvester.scm.frontend.core.product;
 public interface ProductVocabulary {
 	
 	static final String TYPE       = "http://www.w3.org/1999/02/22-rdf-syntax-ns#type";
-	static final String PRODUCT_CLASS = "http://www.smartdeveloperhub.org/vocabulary/org#Product";	
+	static final String PRODUCT_CLASS = "http://www.smartdeveloperhub.org/vocabulary/organization#Product";	
 	static final String PREFLABEL = "http://www.w3.org/2004/02/skos/core#prefLabel";
-	static final String PRODUCTID = "http://www.smartdeveloperhub.org/vocabulary/org#id";	
-	static final String DESCRIPTION = "http://www.smartdeveloperhub.org/vocabulary/org#description";	
-	static final String CREATEDON= "http://www.smartdeveloperhub.org/vocabulary/org#createdOn";	
-	static final String RELATESTOPROJECT="http://www.smartdeveloperhub.org/vocabulary/org#relatesToProject";
+	static final String PRODUCTID = "http://www.smartdeveloperhub.org/vocabulary/organization#id";	
+	static final String DESCRIPTION = "http://www.smartdeveloperhub.org/vocabulary/organization#description";	
+	static final String CREATEDON= "http://www.smartdeveloperhub.org/vocabulary/organization#createdOn";	
+	static final String RELATESTOPROJECT="http://www.smartdeveloperhub.org/vocabulary/organization#relatesToProject";
 	
 	static final String DEPICTION = "http://xmlns.com/foaf/0.1/depiction";
 	static final String IMAGE_CLASS = "http://xmlns.com/foaf/0.1/Image";

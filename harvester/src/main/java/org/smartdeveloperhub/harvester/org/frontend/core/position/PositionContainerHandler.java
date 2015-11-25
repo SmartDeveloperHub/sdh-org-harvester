@@ -40,7 +40,7 @@ import org.ldp4j.application.session.WriteSession;
 @DirectContainer(
 		id = PositionContainerHandler.ID,
 		memberHandler = PositionHandler.class,
-		membershipPredicate="http://www.smartdeveloperhub.org/vocabulary/org#organizationPosition"
+		membershipPredicate="http://www.smartdeveloperhub.org/vocabulary/organization#organizationPosition"
 	)
 public class PositionContainerHandler implements ContainerHandler {
 	

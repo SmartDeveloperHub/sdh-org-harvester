@@ -97,7 +97,7 @@ public class OrganizationIndividuals {
 	}
 	
 	public void getOrganizations(){
-		Resource organization=ontModel.getResource("http://www.smartdeveloperhub.org/vocabulary/org#Organization");		                                            
+		Resource organization=ontModel.getResource("http://www.smartdeveloperhub.org/vocabulary/organization#Organization");		                                            
 		
 		ResIterator iter =ontModel.listSubjectsWithProperty(RDF.type, organization);
 		

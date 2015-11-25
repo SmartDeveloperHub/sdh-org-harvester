@@ -29,21 +29,21 @@ package org.smartdeveloperhub.harvester.org.frontend.core.project;
 public interface ProjectVocabulary {
 	
 	static final String TYPE       = "http://www.w3.org/1999/02/22-rdf-syntax-ns#type";
-	static final String PROJECT_CLASS = "http://www.smartdeveloperhub.org/vocabulary/org#Project";
-	static final String ORGANIZATION_CLASS = "http://www.smartdeveloperhub.org/vocabulary/org#Organization";
-	static final String PROJECTID = "http://www.smartdeveloperhub.org/vocabulary/org#id";
+	static final String PROJECT_CLASS = "http://www.smartdeveloperhub.org/vocabulary/organization#Project";
+	static final String ORGANIZATION_CLASS = "http://www.smartdeveloperhub.org/vocabulary/organization#Organization";
+	static final String PROJECTID = "http://www.smartdeveloperhub.org/vocabulary/organization#id";
 	
 	static final String DOAPNAME = "http://usefulinc.com/ns/doap#name";
 	static final String DOAPDESCRIPTION = "http://usefulinc.com/ns/doap#description";
 	static final String DOAPREPOSITORY = "http://usefulinc.com/ns/doap#repository";
 	
-	static final String AFFILIATION = "http://www.smartdeveloperhub.org/vocabulary/org#affiliation";
+	static final String AFFILIATION = "http://www.smartdeveloperhub.org/vocabulary/organization#affiliation";
 	
-	static final String PROJECTROLE= "http://www.smartdeveloperhub.org/vocabulary/org#projectRole";
+	static final String PROJECTROLE= "http://www.smartdeveloperhub.org/vocabulary/organization#projectRole";
 	
 	static final String SCMLOCATION= "http://www.smartdeveloperhub.org/vocabulary/scm#location";
 	
-	static final String CREATEDON= "http://www.smartdeveloperhub.org/vocabulary/org#createdOn";		
+	static final String CREATEDON= "http://www.smartdeveloperhub.org/vocabulary/organization#createdOn";		
 	
 	static final String DEPICTION = "http://xmlns.com/foaf/0.1/depiction";
 	static final String IMAGE_CLASS = "http://xmlns.com/foaf/0.1/Image";

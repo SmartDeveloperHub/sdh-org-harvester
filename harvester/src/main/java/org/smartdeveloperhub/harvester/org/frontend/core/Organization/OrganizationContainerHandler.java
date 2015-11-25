@@ -42,7 +42,7 @@ import org.smartdeveloperhub.harvester.org.frontend.core.harvester.HarvesterVoca
 @DirectContainer(
 		id = OrganizationContainerHandler.ID,
 		memberHandler = OrganizationHandler.class,
-		membershipPredicate="http://www.smartdeveloperhub.org/vocabulary/org#hasOrganization"
+		membershipPredicate="http://www.smartdeveloperhub.org/vocabulary/organization#hasOrganization"
 	)
 public class OrganizationContainerHandler implements ContainerHandler {
 	

@@ -52,7 +52,7 @@ public class HarvesterConfiguration extends Configuration {
 		return
 			new ImmutableNamespaces().
 				withPrefix("scm", "http://www.smartdeveloperhub.org/vocabulary/scm#").	
-				withPrefix("org", "http://www.smartdeveloperhub.org/vocabulary/org#").	
+				withPrefix("org", "http://www.smartdeveloperhub.org/vocabulary/organization#").	
 				withPrefix("orgw3", "http://www.w3.org/ns/org#").					
 				withPrefix("platform", "http://www.smartdeveloperhub.org/vocabulary/platform#").				
 				withPrefix("doap", "http://usefulinc.com/ns/doap#").

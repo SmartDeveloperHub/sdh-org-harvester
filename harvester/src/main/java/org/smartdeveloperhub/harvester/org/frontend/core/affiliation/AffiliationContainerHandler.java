@@ -42,7 +42,7 @@ import org.smartdeveloperhub.harvester.org.frontend.core.membership.MembershipCo
 @DirectContainer(
 		id = AffiliationContainerHandler.ID,
 		memberHandler = AffiliationHandler.class,
-		membershipPredicate="http://www.smartdeveloperhub.org/vocabulary/org#affiliation"
+		membershipPredicate="http://www.smartdeveloperhub.org/vocabulary/organization#affiliation"
 	)
 public class AffiliationContainerHandler implements ContainerHandler {
 	

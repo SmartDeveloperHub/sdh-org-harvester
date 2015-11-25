@@ -42,7 +42,7 @@ import org.smartdeveloperhub.harvester.org.frontend.core.Organization.Organizati
 @DirectContainer(
 		id = PersonContainerHandler.ID,
 		memberHandler = PersonHandler.class,
-		membershipPredicate="http://www.smartdeveloperhub.org/vocabulary/org#hasMember"
+		membershipPredicate="http://www.smartdeveloperhub.org/vocabulary/organization#hasMember"
 	)
 public class PersonContainerHandler implements ContainerHandler {
 	
