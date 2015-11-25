@@ -25,11 +25,11 @@
 # #-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=#
 #
 
-@prefix : <http://www.smartdeveloperhub.org/vocabulary/org#> .
+@prefix : <http://www.smartdeveloperhub.org/vocabulary/organization#> .
 @prefix ci: <http://www.smartdeveloperhub.org/vocabulary/ci#> .
 @prefix dc: <http://purl.org/dc/elements/1.1/> .
 @prefix vs: <http://www.w3.org/2003/06/sw-vocab-status/ns#> .
-@prefix org: <http://www.smartdeveloperhub.org/vocabulary/org#> .
+@prefix org: <http://www.smartdeveloperhub.org/vocabulary/organization#> .
 @prefix owl: <http://www.w3.org/2002/07/owl#> .
 @prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
 @prefix scm: <http://www.smartdeveloperhub.org/vocabulary/scm#> .
