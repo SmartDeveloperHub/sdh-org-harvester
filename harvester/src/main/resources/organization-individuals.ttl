@@ -114,6 +114,8 @@ org:com a org:OrganizationalCollaboration, org:Organization ;
     org:hasMemberOrganization org:upm ;
     org:hasProject org:sdh ;
     org:hasProject org:ldp4j ;
+	org:hasProject org:jenkins ;
+	org:hasProject org:phoenix ;
 	org:hasProduct org:swdsupportproduct ;
 	org:hasProduct org:linkeddataproduct ;
 	foaf:depiction _:comimg ;	
@@ -159,8 +161,57 @@ org:sdh a org:Project ;
 	org:createdOn "2015-10-05T19:14:23"^^xsd:dateTime ;
     scm:location "scmRepoLocation1";
     scm:location "scmRepoLocation2";
-    doap:repository  <http://www.scm.org/repo1> ;
-    doap:repository  <http://www.scm.org/repo2> ;    
+	doap:repository  <http://www.scm.org/agora-js>;
+	doap:repository  <http://www.scm.org/sdh-curator-connector>;
+	doap:repository  <http://www.scm.org/agora-planner-docker>;
+	doap:repository  <http://www.scm.org/backend-extension-indexer>;
+	doap:repository  <http://www.scm.org/sdh-machine-web>;
+	doap:repository  <http://www.scm.org/phoenix>;
+	doap:repository  <http://www.scm.org/sdh-machine-agora>;
+	doap:repository  <http://www.scm.org/agora>;
+	doap:repository  <http://www.scm.org/sdh-framework>;
+	doap:repository  <http://www.scm.org/sdh-ci-metrics>;
+	doap:repository  <http://www.scm.org/agora-client>;
+	doap:repository  <http://www.scm.org/sdh-scm-harvester>;
+	doap:repository  <http://www.scm.org/gitlab-api-generator>;
+	doap:repository  <http://www.scm.org/sdh-maven>;
+	doap:repository  <http://www.scm.org/sdh-web>;
+	doap:repository  <http://www.scm.org/sdh-curator>;
+	doap:repository  <http://www.scm.org/sdh-docker>;
+	doap:repository  <http://www.scm.org/maven-interceptors>;
+	doap:repository  <http://www.scm.org/sdh-org-harvester-docker>;
+	doap:repository  <http://www.scm.org/pom>;
+	doap:repository  <http://www.scm.org/sdh-machine-alm-tools>;
+	doap:repository  <http://www.scm.org/sdh-metrics>;
+	doap:repository  <http://www.scm.org/gitlab-collector>;
+	doap:repository  <http://www.scm.org/sdh-api-docker>;
+	doap:repository  <http://www.scm.org/agora-examples>;
+	doap:repository  <http://www.scm.org/maven-hpi-plugin>;
+	doap:repository  <http://www.scm.org/agora-fragment-js>;
+	doap:repository  <http://www.scm.org/gitlab-enhancer>;
+	doap:repository  <http://www.scm.org/agora-service-provider>;
+	doap:repository  <http://www.scm.org/sdh-platform-web>;
+	doap:repository  <http://www.scm.org/sdh-fragment-server>;
+	doap:repository  <http://www.scm.org/agora-fountain>;
+	doap:repository  <http://www.scm.org/sdh-vm-machines>;
+	doap:repository  <http://www.scm.org/sdh-scm-metrics>;
+	doap:repository  <http://www.scm.org/SmartDeveloperHub.github.io>;
+	doap:repository  <http://www.scm.org/ldp4j>;
+	doap:repository  <http://www.scm.org/agora-fountain-docker>;
+	doap:repository  <http://www.scm.org/sdh-scm-harvester-docker>;
+	doap:repository  <http://www.scm.org/sdh-vocabulary>;
+	doap:repository  <http://www.scm.org/agora-planner>;
+	doap:repository  <http://www.scm.org/sdh-api>;
+	doap:repository  <http://www.scm.org/sdh-ci-metrics-docker>;
+	doap:repository  <http://www.scm.org/sdh-scm-metrics-docker>;
+	doap:repository  <http://www.scm.org/sdh-ci-harvester-docker>;
+	doap:repository  <http://www.scm.org/sdh-gl-enhancer-docker>;
+	doap:repository  <http://www.scm.org/sdh-curator-py>;
+	doap:repository  <http://www.scm.org/sdh-platform>;
+	doap:repository  <http://www.scm.org/sdh-machine-harvesters>;
+	doap:repository  <http://www.scm.org/sdh-ci-harvester>;
+	doap:repository  <http://www.scm.org/sdh-org-harvester>;
+	doap:repository  <http://www.scm.org/fragment-service-provider>;	
 	foaf:depiction _:sdhimg ;	
     org:affiliation org:affiliation01 ;
     org:affiliation org:affiliation02 ;
@@ -183,8 +234,7 @@ org:ldp4j a org:Project ;
     doap:name "Linked Data Platform for Java";
     doap:description "Java implementation of the LDP specification";
 	org:createdOn "2015-10-05T19:14:23"^^xsd:dateTime ;
-    doap:repository  [ a scm:Repository ;    
-                         doap:name "git repo FrontEnd Project 01" ] ;    
+    doap:repository  <http://www.scm.org/ldp4j> ;    
     foaf:depiction _:ldp4jimg ;
     org:affiliation org:affiliation08 ;
     org:affiliation org:affiliation09 ;
@@ -193,6 +243,31 @@ org:ldp4j a org:Project ;
 _:ldp4jimg a foaf:Image ;	
     foaf:depicts <https://pbs.twimg.com/profile_images/469428404131856384/s2sstWDb.jpeg> .	
 	
+org:jenkins a org:Project ;
+    org:id "project-jenkins";
+    doap:name "Jenkins";
+    doap:description "Continous Integration tool";
+	org:createdOn "2015-10-05T19:14:23"^^xsd:dateTime ;
+    doap:repository  <http://www.scm.org/backend-extension-indexer> ;
+	doap:repository  <http://www.scm.org/maven-interceptors> ;
+	doap:repository  <http://www.scm.org/pom> ;
+	doap:repository  <http://www.scm.org/maven-hpi-plugins> ;	
+    foaf:depiction _:jenkinsimg  .
+	
+_:jenkinsimg a foaf:Image ;	
+    foaf:depicts <https://cdn1.iconfinder.com/data/icons/business-bicolor-4/512/presentation-512.png> .
+
+org:phoenix a org:Project ;
+    org:id "project-phoenix";
+    doap:name "phoenix";
+    doap:description "phoenix plataform";
+	org:createdOn "2015-10-05T19:14:23"^^xsd:dateTime ;
+    doap:repository  <http://www.scm.org/phoenix> ;
+    foaf:depiction _:phoeniximg  .
+	
+_:phoeniximg a foaf:Image ;	
+    foaf:depicts <https://cdn1.iconfinder.com/data/icons/business-bicolor-4/512/presentation-512.png> .
+	
 #Products
 org:swdsupportproduct a org:Product;
 	org:id "product-sws" ;
@@ -200,7 +275,9 @@ org:swdsupportproduct a org:Product;
 	org:description "Software Development Support helps to manage the performance of development teams"@en;
 	foaf:depiction  _:swdsupportproductimg;
 	org:createdOn "2015-10-05T19:14:23"^^xsd:dateTime ;
-	org:relatesToProject org:sdh .
+	org:relatesToProject org:sdh ;
+	org:relatesToProject org:jenkins ;
+	org:relatesToProject org:phoenix .
 	
 _:swdsupportproductimg a foaf:Image ;	
     foaf:depicts <http://www.icon.com.pk/images/soft-img.jpg> .
