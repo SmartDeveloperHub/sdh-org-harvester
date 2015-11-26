@@ -139,9 +139,10 @@ org:com a org:OrganizationalCollaboration, org:Organization ;
     org:membership org:membership09 ;
     org:membership org:membership10 ;
     org:membership org:membership11 ;
-    org:organizationPosition  org:softwareEngineer ;
-    org:organizationPosition  org:director ;
-    org:organizationPosition  org:external ;
+    org:organizationPosition  org:developers ;
+	org:organizationPosition  org:architects ;
+    org:organizationPosition  org:directors ;
+    org:organizationPosition  org:productManagers ;
     org:organizationRole org:softwarepDeveloper ;
     org:organizationRole org:softwareArchitect ;
     org:organizationRole org:projectManager ;
@@ -306,7 +307,11 @@ _:person06avatar a foaf:Image ;
     org:id "1005"^^xsd:string;
     org:memberOf org:com ;
     org:hasMembership org:membership07 ;
-    org:isAffiliated org:affiliation10 .    
+    org:isAffiliated org:affiliation10 ;
+    foaf:img _:person07avatar .  
+
+_:person07avatar a foaf:Image ;	
+    foaf:depicts <https://avatars3.githubusercontent.com/u/1067341?v=3&s=400> .  
 
 org:person08 a org:Person ;    
     foaf:name "Asuncion Gomez Perez";
@@ -316,8 +321,12 @@ org:person08 a org:Person ;
     org:memberOf org:com ;
     org:hasMembership org:membership08 ;
     org:isAffiliated org:affiliation11 ;
-    org:isAffiliated org:affiliation12 .   
+    org:isAffiliated org:affiliation12 ;
+    foaf:img _:person08avatar .  
 
+_:person08avatar a foaf:Image ;	
+    foaf:depicts <https://pbs.twimg.com/profile_images/1554448422/asun_oeg_400x400.png> .  
+	
 org:person09 a org:Person ;    
     foaf:name "Francisco Javier Soriano";
     foaf:nick "jsoriano" ;
@@ -325,7 +334,11 @@ org:person09 a org:Person ;
     org:id "1004"^^xsd:string;
     org:memberOf org:com ;
     org:hasMembership org:membership09 ;
-    org:isAffiliated org:affiliation13 . 
+    org:isAffiliated org:affiliation13 ;
+    foaf:img _:person09avatar .  
+
+_:person09avatar a foaf:Image ;	
+    foaf:depicts <https://pbs.twimg.com/profile_images/1652209779/Foto_Jefe_Estudios.jpg> .  
 
  org:person10 a org:Person ;    
     foaf:name "Maria Jose Gonzales";
@@ -334,7 +347,11 @@ org:person09 a org:Person ;
     org:id "1011"^^xsd:string;
     org:memberOf org:com ;
     org:hasMembership org:membership10 ;
-    org:isAffiliated org:affiliation14 .  
+    org:isAffiliated org:affiliation14 ;
+    foaf:img _:person10avatar .  
+
+_:person10avatar a foaf:Image ;	
+    foaf:depicts <https://image.freepik.com/iconos-gratis/avatar-mujer_318-81274.jpg> . 
 
  org:person11 a org:Person ;    
     foaf:name "Ruben de Dios Barbero";
@@ -343,7 +360,11 @@ org:person09 a org:Person ;
     org:id "rdediosb"^^xsd:string;
     org:memberOf org:com ;
     org:hasMembership org:membership11 ;
-    org:isAffiliated org:affiliation15 .        
+    org:isAffiliated org:affiliation15 ;
+    foaf:img _:person11avatar .  
+
+_:person11avatar a foaf:Image ;	
+    foaf:depicts <https://image.freepik.com/iconos-gratis/hombre-avatar-oscuro_318-9118.jpg> . 
 
 # -- Positions and Role Types ---------------------------------
 org:FirstLevelPosition a skos:Concept;
@@ -373,17 +394,21 @@ org:FourthLevelRole a skos:Concept;
 
  # -- Positions
 
-org:softwareEngineer a org:Position;
-    rdfs:label "Software Engineer"@en;    
+org:developers a org:Position;
+    rdfs:label "Developers"@en;    
+    org:positionType org:SecondLevelPosition. 
+
+org:architects a org:Position;
+    rdfs:label "Architects"@en;    
     org:positionType org:SecondLevelPosition. 
    
-org:director a org:Position;
-    rdfs:label "Project Director"@en;
+org:directors a org:Position;
+    rdfs:label "Directors"@en;
    org:positionType org:FirstLevelPosition .
 
-org:external a org:Position;
-    rdfs:label "External advisor"@en;
-   org:positionType org:FirstLevelPosition .
+org:productManagers a org:Position;
+    rdfs:label "ProductManagers"@en;
+    org:positionType org:FirstLevelPosition .
    
  # -- Project Roles
 org:softwarepDeveloper a org:Role;
@@ -409,57 +434,57 @@ org:stakeholder a org:Role;
 org:membership01 a org:Membership ;   
   org:member org:person01 ;
   org:membershipOn org:com ;
-  org:position org:softwareEngineer.
+  org:position org:developers.
 #alejandro
 org:membership02 a org:Membership ;   
   org:member org:person02 ;
   org:membershipOn org:com ;
-  org:position org:softwareEngineer.
+  org:position org:developers.
 #Andrés
 org:membership03 a org:Membership ;   
   org:member org:person03 ;
   org:membershipOn org:com ;
-  org:position org:softwareEngineer.
+  org:position org:developers.
 #Carlos
 org:membership04 a org:Membership ; 
   org:member org:person04 ;
   org:membershipOn org:com ;
-  org:position org:softwareEngineer.  
+  org:position org:developers.  
 #fserena
 org:membership05 a org:Membership ; 
   org:member org:person05 ;
-  org:membershipOn org:com ;
-  org:position org:softwareEngineer.    
+  org:membershipOn org:com ;  
+  org:position org:architects .    
 #mesteban
 org:membership06 a org:Membership ; 
   org:member org:person06 ;
   org:membershipOn org:com ;
-  org:position org:softwareEngineer.    
+  org:position org:developers.    
 #corcho
 org:membership07 a org:Membership ; 
   org:member org:person07 ;
   org:membershipOn org:com ;
-  org:position org:director.
+  org:position org:directors.
 #asun
 org:membership08 a org:Membership ; 
   org:member org:person08 ;
   org:membershipOn org:com ;
-  org:position org:director.
+  org:position org:directors.
 #soriano
 org:membership09 a org:Membership ; 
   org:member org:person09 ;
   org:membershipOn org:com ;
-  org:position org:director.
+  org:position org:directors.
 #maria jose
 org:membership10 a org:Membership ; 
   org:member org:person10 ;
   org:membershipOn org:com ;
-  org:position org:external.
+  org:position org:productManagers.
 #Ruben
 org:membership11 a org:Membership ; 
   org:member org:person11 ;
   org:membershipOn org:com ;
-  org:position org:external.
+  org:position org:productManagers.
 
 
 #Affiliations
