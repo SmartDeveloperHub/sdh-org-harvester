@@ -139,7 +139,7 @@ public class ProjectHandler implements ResourceHandler, ProjectVocabulary{
 			helper.
 			managedIndividual(projectName, ProjectHandler.ID).
 				property(DEPICTION).
-					withIndividual(projectName, ProductHandler.ID,IMG_PATH);
+					withIndividual(projectName, ProjectHandler.ID,IMG_PATH);
 			helper.
 			relativeIndividual(projectName,ProjectHandler.ID,IMG_PATH).
 				property(TYPE).
