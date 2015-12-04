@@ -272,6 +272,9 @@ org:sdhweb a org:Project ;
 	org:affiliation org:affiliation084 ;
 	org:affiliation org:affiliation094 .
 	
+_:sdhwebimg a foaf:Image ;	
+    foaf:depicts <https://avatars1.githubusercontent.com/u/12413297?v=3&s=200> .
+	
 org:sdhharvesters a org:Project ;
     org:id "project-sdh-harvesters";
     doap:name "Harvesters";
