@@ -245,6 +245,8 @@ org:sdhmetrics a org:Project ;
 	doap:repository  <http://alm.sdhcom.org/scm/sdh-ci-metrics>;
 	doap:repository  <http://alm.sdhcom.org/scm/sdh-metrics>;
 	doap:repository  <http://alm.sdhcom.org/scm/sdh-scm-metrics>;
+	doap:repository  <http://alm.sdhcom.org/scm/sdh-org-metrics>;
+	doap:repository  <http://alm.sdhcom.org/scm/sdh-machine-metrics>;	
     foaf:depiction _:sdhmetricimg ;
     org:affiliation org:affiliation054 ;
 	org:affiliation org:affiliation073 ;
@@ -283,6 +285,7 @@ org:sdhharvesters a org:Project ;
 	doap:repository  <http://alm.sdhcom.org/scm/sdh-maven>;
 	doap:repository  <http://alm.sdhcom.org/scm/gitlab-collector>;
 	doap:repository  <http://alm.sdhcom.org/scm/gitlab-enhancer>;
+	doap:repository  <http://alm.sdhcom.org/scm/gitlab-api-generator>;
 	doap:repository  <http://alm.sdhcom.org/scm/sdh-ci-harvester>;
 	doap:repository  <http://alm.sdhcom.org/scm/sdh-org-harvester>;
 	doap:repository  <http://alm.sdhcom.org/scm/sdh-scm-harvester>;
@@ -318,7 +321,7 @@ org:jenkins a org:Project ;
     doap:repository  <http://alm.sdhcom.org/scm/backend-extension-indexer> ;
 	doap:repository  <http://alm.sdhcom.org/scm/maven-interceptors> ;
 	doap:repository  <http://alm.sdhcom.org/scm/pom> ;
-	doap:repository  <http://alm.sdhcom.org/scm/maven-hpi-plugins> ;	
+	doap:repository  <http://alm.sdhcom.org/scm/maven-hpi-plugin> ;	
     foaf:depiction _:jenkinsimg  ;
 	org:affiliation org:affiliation121 .
 	
