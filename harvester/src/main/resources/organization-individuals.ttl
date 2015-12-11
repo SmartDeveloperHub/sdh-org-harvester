@@ -323,6 +323,7 @@ org:jenkins a org:Project ;
 	doap:repository  <http://alm.sdhcom.org/scm/pom> ;
 	doap:repository  <http://alm.sdhcom.org/scm/maven-hpi-plugin> ;	
     foaf:depiction _:jenkinsimg  ;
+	org:affiliation org:affiliation087 ;
 	org:affiliation org:affiliation121 .
 	
 _:jenkinsimg a foaf:Image ;	
@@ -335,6 +336,7 @@ org:phoenix a org:Project ;
 	org:createdOn "2015-10-05T19:14:23"^^xsd:dateTime ;
     doap:repository  <http://alm.sdhcom.org/scm/phoenix> ;
     foaf:depiction _:phoeniximg  ;
+	org:affiliation org:affiliation102 ;
 	org:affiliation org:affiliation131 .
 	
 _:phoeniximg a foaf:Image ;	
@@ -548,6 +550,7 @@ org:person08 a org:Person ;
 	org:isAffiliated org:affiliation084 ;
 	org:isAffiliated org:affiliation085 ;
 	org:isAffiliated org:affiliation086 ;
+	org:isAffiliated org:affiliation087 ;
     foaf:img _:person08avatar .  
 
 _:person08avatar a foaf:Image ;	
@@ -578,6 +581,7 @@ _:person09avatar a foaf:Image ;
     org:memberOf org:com ;
     org:hasMembership org:membership10 ;
     org:isAffiliated org:affiliation101 ;
+	org:isAffiliated org:affiliation102 ;
     foaf:img _:person10avatar .  
 
 _:person10avatar a foaf:Image ;	
@@ -876,6 +880,11 @@ org:affiliation086 a org:Affiliation ;
   org:affiliate org:person08 ;
   org:affiliationWith org:ldp4j ;
   org:role org:projectManager.    
+  
+org:affiliation087 a org:Affiliation ; 
+  org:affiliate org:person08 ;
+  org:affiliationWith org:jenkins ;
+  org:role org:projectManager.     
 #soriano
 org:affiliation091 a org:Affiliation ; 
   org:affiliate org:person09 ;
@@ -900,16 +909,22 @@ org:affiliation094 a org:Affiliation ;
 org:affiliation095 a org:Affiliation ; 
   org:affiliate org:person09 ;
   org:affiliationWith org:sdhharvesters ;
-  org:role org:projectManager. 
+  org:role org:projectManager.  
+  
 #mariajose
 org:affiliation101 a org:Affiliation ; 
   org:affiliate org:person10 ;
   org:affiliationWith org:sdh ;
   org:role org:stakeholder.
+  
+org:affiliation102 a org:Affiliation ; 
+  org:affiliate org:person10 ;
+  org:affiliationWith org:phoenix ;
+  org:role org:stakeholder.  
 #ruben
 org:affiliation111 a org:Affiliation ; 
   org:affiliate org:person11 ;
-  org:affiliationWith org:sdh ;
+  org:affiliationWith org:phoenix ;
   org:role org:stakeholder.
 #Alexander Garcia
 org:affiliation121 a org:Affiliation ; 
