@@ -587,7 +587,7 @@ org:isAffiliated org:affiliation103 ;
 foaf:img _:person10avatar .  
 
 _:person10avatar a foaf:Image ; 
-foaf:depicts <https://image.freepik.com/iconos-gratis/avatar-mujer_318-81274.jpg> . 
+foaf:depicts <http://res.freestockphotos.biz/pictures/10/10678-illustration-of-a-female-user-icon-pv.png> . 
 
 org:person11 a org:Person ;    
 foaf:name "Ruben de Dios Barbero";
@@ -602,7 +602,7 @@ org:isAffiliated org:affiliation113 ;
 foaf:img _:person11avatar .  
 
 _:person11avatar a foaf:Image ; 
-foaf:depicts <https://image.freepik.com/iconos-gratis/hombre-avatar-oscuro_318-9118.jpg> . 
+foaf:depicts <http://icons.iconarchive.com/icons/paomedia/small-n-flat/1024/user-male-alt-icon.png> . 
 
 org:person12 a org:Person ;    
 foaf:name "Julian García";
@@ -615,7 +615,7 @@ org:isAffiliated org:affiliation121 ;
 foaf:img _:person12avatar .  
 
 _:person12avatar a foaf:Image ; 
-foaf:depicts <https://image.freepik.com/iconos-gratis/hombre-avatar-oscuro_318-9118.jpg> .  
+foaf:depicts <https://cdn3.iconfinder.com/data/icons/digital-marketing/512/user_business_person_businessman_man_flat_icon-512.png> .  
 
 org:person13 a org:Person ;    
 foaf:name "Cesar Rubio";
@@ -628,7 +628,7 @@ org:isAffiliated org:affiliation131 ;
 foaf:img _:person13avatar .  
 
 _:person13avatar a foaf:Image ; 
-foaf:depicts <https://image.freepik.com/iconos-gratis/hombre-avatar-oscuro_318-9118.jpg> . 
+foaf:depicts <http://icons.iconarchive.com/icons/paomedia/small-n-flat/1024/user-male-icon.png> . 
 
 # -- Positions and Role Types ---------------------------------
 org:FirstLevelPosition a skos:Concept;
