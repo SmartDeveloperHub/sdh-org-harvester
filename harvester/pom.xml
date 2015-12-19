@@ -43,7 +43,6 @@
 		<relativePath>../pom.xml</relativePath>
 	</parent>
 
-	<groupId>org.smartdeveloperhub.harvester.org</groupId>
 	<artifactId>org-harvester-frontend</artifactId>
 	<packaging>war</packaging>
 
@@ -60,7 +59,7 @@
 	<!-- =================================================================== -->
 
 	<properties>
-		<ldp4j.version>0.2.0-SNAPSHOT</ldp4j.version>
+		<ldp4j.version>0.2.0</ldp4j.version>
 		<jackson.version>2.4.4</jackson.version>
 	</properties>
 
@@ -159,7 +158,6 @@
 			<plugin>
 				<groupId>org.apache.maven.plugins</groupId>
 				<artifactId>maven-war-plugin</artifactId>
-				<version>2.6</version>
 				<configuration>
 					<failOnMissingWebXml>true</failOnMissingWebXml>
 				</configuration>
