@@ -20,7 +20,7 @@
  *   See the License for the specific language governing permissions and
  *   limitations under the License.
  * #-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=#
- *   Artifact    : org.smartdeveloperhub.harvester.org:org-harvester-ldp4j:0.2.0-SNAPSHOT
+ *   Artifact    : org.smartdeveloperhub.harvester.org:org-harvester-frontend:0.1.0
  *   Bundle      : org-harvester.war
  * #-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=#
  */
@@ -42,7 +42,7 @@ import org.smartdeveloperhub.harvester.org.frontend.core.Organization.Organizati
 @DirectContainer(
 		id = PersonContainerHandler.ID,
 		memberHandler = PersonHandler.class,
-		membershipPredicate="http://www.smartdeveloperhub.org/vocabulary/org#hasMember"
+		membershipPredicate="http://www.smartdeveloperhub.org/vocabulary/organization#hasMember"
 	)
 public class PersonContainerHandler implements ContainerHandler {
 	

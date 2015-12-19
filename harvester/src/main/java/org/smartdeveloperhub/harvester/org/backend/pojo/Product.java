@@ -26,42 +26,69 @@
  */
 package org.smartdeveloperhub.harvester.org.backend.pojo;
 
-public class Membership {
-	String uri="";	
-	String membershipon="";
-	String member="";
-	Position position;
+import java.util.ArrayList;
+
+public class Product {
 	
-	public String toString(){
-		String newLine = System.getProperty("line.separator");
-		String str="uri:"+uri+",membershipOn:"+membershipon+",member:"+member+newLine+
-				",position:{"+position.toString()+"}";				
-		return str;
+	String prefLabel = "";	
+	String description = "";
+	String id = "";
+	String depicts ="";
+	String createdOn ="";
+	String uri="";
+	
+	ArrayList<String> relatesToProject = new ArrayList<String>();
+	
+	public String getPrefLabel() {
+		return prefLabel;
 	}
-		
+	public void setPrefLabel(String prefLabel) {
+		this.prefLabel = prefLabel;
+	}
+	public String getDescription() {
+		return description;
+	}
+	public void setDescription(String description) {
+		this.description = description;
+	}
+	public String getId() {
+		return id;
+	}
+	public void setId(String id) {
+		this.id = id;
+	}
+	public String getDepicts() {
+		return depicts;
+	}
+	public void setDepicts(String depicts) {
+		this.depicts = depicts;
+	}
+	public String getCreatedOn() {
+		return createdOn;
+	}
+	public void setCreatedOn(String createdOn) {
+		this.createdOn = createdOn;
+	}
 	public String getUri() {
 		return uri;
 	}
 	public void setUri(String uri) {
 		this.uri = uri;
 	}
-	public String getMembershipon() {
-		return membershipon;
+	public ArrayList<String> getRelatesToProject() {
+		return relatesToProject;
 	}
-	public void setMembershipon(String membershipon) {
-		this.membershipon = membershipon;
+	public void setRelatesToProject(ArrayList<String> relatesToProject) {
+		this.relatesToProject = relatesToProject;
 	}
-	public String getMember() {
-		return member;
-	}
-	public void setMember(String member) {
-		this.member = member;
-	}
-	public Position getPosition() {
-		return position;
-	}
-	public void setPosition(Position position) {
-		this.position = position;
+	@Override
+	public String toString() {
+		return "Product [prefLabel=" + prefLabel + ", description=" + description + ", id=" + id + ", depicts="
+				+ depicts + ", createdOn=" + createdOn + ", uri=" + uri + ", relatesToProject=" + relatesToProject
+				+ "]";
 	}
 	
+	
+	
+
 }

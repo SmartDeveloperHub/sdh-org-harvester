@@ -20,7 +20,7 @@
  *   See the License for the specific language governing permissions and
  *   limitations under the License.
  * #-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=#
- *   Artifact    : org.smartdeveloperhub.harvester.org:org-harvester-ldp4j:0.2.0-SNAPSHOT
+ *   Artifact    : org.smartdeveloperhub.harvester.org:org-harvester-frontend:0.1.0
  *   Bundle      : org-harvester.war
  * #-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=#
  */
@@ -74,7 +74,7 @@ public class AffiliationHandler implements ResourceHandler, AffiliationVocabular
 		Name<String> affiliationName = (Name<String>)resource.name();						
 		try{
 			Affiliation affiliation= backendController.getAffiliationPublisher().getAffiliation(affiliationName.id().toString());
-			LOGGER.info("- Affiliation Info loaded..: {}",affiliation);
+			LOGGER.debug("- Affiliation Info loaded..: {}",affiliation);
 			return maptoDataSet(affiliation ,affiliationName);	
 		}
 		catch(Exception e){

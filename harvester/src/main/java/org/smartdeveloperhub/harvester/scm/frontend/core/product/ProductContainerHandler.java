@@ -24,7 +24,7 @@
  *   Bundle      : org-harvester.war
  * #-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=#
  */
-package org.smartdeveloperhub.harvester.org.frontend.core.affiliation;
+package org.smartdeveloperhub.harvester.scm.frontend.core.product;
 
 import org.ldp4j.application.data.DataSet;
 import org.ldp4j.application.data.DataSets;
@@ -36,33 +36,32 @@ import org.ldp4j.application.ext.annotations.DirectContainer;
 import org.ldp4j.application.session.ContainerSnapshot;
 import org.ldp4j.application.session.ResourceSnapshot;
 import org.ldp4j.application.session.WriteSession;
-import org.smartdeveloperhub.harvester.org.frontend.core.Organization.OrganizationHandler;
-import org.smartdeveloperhub.harvester.org.frontend.core.membership.MembershipContainerHandler;
+import org.smartdeveloperhub.harvester.org.frontend.core.project.ProjectContainerHandler;
+import org.smartdeveloperhub.harvester.org.frontend.core.project.ProjectHandler;
 
 @DirectContainer(
-		id = AffiliationContainerHandler.ID,
-		memberHandler = AffiliationHandler.class,
-		membershipPredicate="http://www.smartdeveloperhub.org/vocabulary/organization#affiliation"
+		id = ProductContainerHandler.ID,
+		memberHandler = ProductHandler.class,
+		membershipPredicate="http://www.smartdeveloperhub.org/vocabulary/organization#hasProduct"
 	)
-public class AffiliationContainerHandler implements ContainerHandler {
-	
-	public static final String ID="AffiliationContainerHandler";
+public class ProductContainerHandler implements ContainerHandler {	
+		
+		public static final String ID="ProductContainerHandler";
 
-	@Override
-	public DataSet get(ResourceSnapshot resource)
-			throws UnknownResourceException, ApplicationRuntimeException {
-		return
-				DataSets.
-					createDataSet(resource.name());
-	}
+		@Override
+		public DataSet get(ResourceSnapshot resource)
+				throws UnknownResourceException, ApplicationRuntimeException {
+			return
+					DataSets.
+						createDataSet(resource.name());
+		}
 
-	@Override
-	public ResourceSnapshot create(ContainerSnapshot container,
-			DataSet representation, WriteSession session)
-			throws UnknownResourceException, UnsupportedContentException,
-			ApplicationRuntimeException {
-		// TODO Auto-generated method stub
-		return null;
-	}
-
+		@Override
+		public ResourceSnapshot create(ContainerSnapshot container,
+				DataSet representation, WriteSession session)
+				throws UnknownResourceException, UnsupportedContentException,
+				ApplicationRuntimeException {
+			// TODO Auto-generated method stub
+			return null;
+		}
 }

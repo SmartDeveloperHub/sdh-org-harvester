@@ -20,7 +20,7 @@
  *   See the License for the specific language governing permissions and
  *   limitations under the License.
  * #-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=#
- *   Artifact    : org.smartdeveloperhub.harvester.org:org-harvester-ldp4j:0.2.0-SNAPSHOT
+ *   Artifact    : org.smartdeveloperhub.harvester.org:org-harvester-frontend:0.1.0
  *   Bundle      : org-harvester.war
  * #-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=#
  */
@@ -29,18 +29,18 @@ package org.smartdeveloperhub.harvester.org.frontend.core.affiliation;
 public interface AffiliationVocabulary {
 	
 	static final String TYPE       = "http://www.w3.org/1999/02/22-rdf-syntax-ns#type";
-	static final String AFFILIATION_CLASS = "http://www.smartdeveloperhub.org/vocabulary/org#Affiliation";
-	static final String AFFILIATIONWITH = "http://www.smartdeveloperhub.org/vocabulary/org#affiliationWith";
-	static final String AFFILIATE = "http://www.smartdeveloperhub.org/vocabulary/org#affiliate";
+	static final String AFFILIATION_CLASS = "http://www.smartdeveloperhub.org/vocabulary/organization#Affiliation";
+	static final String AFFILIATIONWITH = "http://www.smartdeveloperhub.org/vocabulary/organization#affiliationWith";
+	static final String AFFILIATE = "http://www.smartdeveloperhub.org/vocabulary/organization#affiliate";
 	
-	static final String ROLE = "http://www.smartdeveloperhub.org/vocabulary/org#role";
+	static final String ROLE = "http://www.smartdeveloperhub.org/vocabulary/organization#role";
 	static final String ROLELABEL="http://www.w3.org/2000/01/rdf-schema#label";	
-	static final String ROLETYPE = "http://www.smartdeveloperhub.org/vocabulary/org#roleType";	
+	static final String ROLETYPE = "http://www.smartdeveloperhub.org/vocabulary/organization#roleType";	
 	static final String ROLETYPEClASS = "http://www.w3.org/2004/02/skos/core#Concept";
 	static final String ROLETYPELABEL="http://www.w3.org/2004/02/skos/core#prefLabel";
-	static final String ROLECLASS = "http://www.smartdeveloperhub.org/vocabulary/org#Role";
+	static final String ROLECLASS = "http://www.smartdeveloperhub.org/vocabulary/organization#Role";
 		
-	static final String PROJECTID = "http://www.smartdeveloperhub.org/vocabulary/org#id";
-	static final String PERSONID = "http://www.smartdeveloperhub.org/vocabulary/org#id";
+	static final String PROJECTID = "http://www.smartdeveloperhub.org/vocabulary/organization#id";
+	static final String PERSONID = "http://www.smartdeveloperhub.org/vocabulary/organization#id";
 	
 }

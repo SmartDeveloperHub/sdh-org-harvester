@@ -20,7 +20,7 @@
  *   See the License for the specific language governing permissions and
  *   limitations under the License.
  * #-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=#
- *   Artifact    : org.smartdeveloperhub.harvester.org:org-harvester-ldp4j:0.2.0-SNAPSHOT
+ *   Artifact    : org.smartdeveloperhub.harvester.org:org-harvester-frontend:0.1.0
  *   Bundle      : org-harvester.war
  * #-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=#
  */
@@ -74,7 +74,7 @@ public class MembershipHandler implements ResourceHandler, MembershipVocabulary{
 		Name<String> membershipName = (Name<String>)resource.name();						
 		try{
 			Membership membership = backendController.getMembershipPublisher().getMembership(membershipName.id().toString());
-			LOGGER.info("- Membership Info loaded..: {}",membership);
+			LOGGER.debug("- Membership Info loaded..: {}",membership);
 			return maptoDataSet(membership ,membershipName);	
 		}
 		catch(Exception e){

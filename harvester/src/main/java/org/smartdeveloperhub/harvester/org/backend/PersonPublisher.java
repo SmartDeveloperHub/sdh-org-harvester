@@ -20,7 +20,7 @@
  *   See the License for the specific language governing permissions and
  *   limitations under the License.
  * #-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=#
- *   Artifact    : org.smartdeveloperhub.harvester.org:org-harvester-ldp4j:0.2.0-SNAPSHOT
+ *   Artifact    : org.smartdeveloperhub.harvester.org:org-harvester-frontend:0.1.0
  *   Bundle      : org-harvester.war
  * #-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=#
  */
@@ -61,9 +61,9 @@ public class PersonPublisher extends OntologyInstanceReader implements PersonVoc
 			
 			person.setUri(personURI);
 			
-//			Statement id = r.getProperty(ontModel.getProperty(PERSONID));
-//		    if (id !=null)
-//		    person.setId(id.getString());
+			Statement id = r.getProperty(ontModel.getProperty(PERSONID));
+		    if (id !=null)
+		    person.setId(id.getString());
 		    
 		    Statement name = r.getProperty(ontModel.getProperty(FOAFNAME));
 		    if (name !=null)
@@ -139,7 +139,7 @@ public class PersonPublisher extends OntologyInstanceReader implements PersonVoc
 		    
 		    long stopTime = System.currentTimeMillis();
 			long elapsedTime = stopTime - startTime;
-			LOGGER.info("- Load the person, elapsed time (ms)..: {}",elapsedTime);
+			LOGGER.debug("- Load the person, elapsed time (ms)..: {}",elapsedTime);
 		}
 		return person;
 		

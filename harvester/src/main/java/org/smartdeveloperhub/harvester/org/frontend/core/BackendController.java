@@ -20,13 +20,17 @@
  *   See the License for the specific language governing permissions and
  *   limitations under the License.
  * #-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=#
- *   Artifact    : org.smartdeveloperhub.harvester.org:org-harvester-ldp4j:0.2.0-SNAPSHOT
+ *   Artifact    : org.smartdeveloperhub.harvester.org:org-harvester-frontend:0.1.0
  *   Bundle      : org-harvester.war
  * #-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=#
  */
 package org.smartdeveloperhub.harvester.org.frontend.core;
 
+import java.io.File;
+import java.io.FileInputStream;
+import java.io.FileNotFoundException;
 import java.io.InputStream;
+import java.nio.file.Files;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -35,11 +39,14 @@ import org.smartdeveloperhub.harvester.org.backend.MembershipPublisher;
 import org.smartdeveloperhub.harvester.org.backend.OrganizationPublisher;
 import org.smartdeveloperhub.harvester.org.backend.PersonPublisher;
 import org.smartdeveloperhub.harvester.org.backend.PositionPublisher;
+import org.smartdeveloperhub.harvester.org.backend.ProductPublisher;
 import org.smartdeveloperhub.harvester.org.backend.ProjectPublisher;
 import org.smartdeveloperhub.harvester.org.backend.RolePublisher;
 
+import com.hp.hpl.jena.ontology.OntDocumentManager;
 import com.hp.hpl.jena.ontology.OntModel;
 import com.hp.hpl.jena.rdf.model.ModelFactory;
+import com.hp.hpl.jena.util.FileManager;
 
 public class BackendController {
 	
@@ -53,8 +60,9 @@ public class BackendController {
 	AffiliationPublisher affPub;
 	PositionPublisher posPub;
 	RolePublisher rolePub;
+	ProductPublisher prodPub;
 	
-	public BackendController(){
+	public BackendController() throws FileNotFoundException{
 		loadOntologyIndividuals();
 		orgPub = new OrganizationPublisher(ontModel);
 		projPub = new ProjectPublisher(ontModel);
@@ -63,21 +71,26 @@ public class BackendController {
 		affPub =new AffiliationPublisher(ontModel);
 		posPub = new PositionPublisher(ontModel);
 		rolePub = new RolePublisher(ontModel);
+		prodPub = new ProductPublisher(ontModel);
 	}
 	
-	public void loadOntologyIndividuals(){
+	public void loadOntologyIndividuals() throws FileNotFoundException{
 						
 		long startTime = System.currentTimeMillis();
+		InputStream in;
 		
-		String inputFileName = "organization-individuals.ttl";
-		InputStream in=
-			Thread.
-				currentThread().
-					getContextClassLoader().
-						getResourceAsStream(inputFileName);		
-			
-	    
-//		InputStream in = FileManager.get().open(inputFileName);
+		 String inputFileName = System.getenv("ORG_INDIVIDUALS");
+		 if (inputFileName==null){
+			 inputFileName="organization-individuals.ttl";
+			  LOGGER.info("ORG_INDIVIDUALS by default {}",inputFileName);		
+			  in= Thread.currentThread().getContextClassLoader().getResourceAsStream(inputFileName);
+		  }
+		  else{		 			 
+			  LOGGER.info("ORG_INDIVIDUALS environment variable {}",inputFileName);	
+			  File file = new  File(inputFileName);
+			  in = new FileInputStream(file);
+		  }
+		 
 		
 		if (in == null) {
 		    throw new IllegalArgumentException(
@@ -87,7 +100,8 @@ public class BackendController {
 				
 		//this option worked!
 		ontModel= ModelFactory.createOntologyModel();
-		//OntDocumentManager docMgr = ontModel.getDocumentManager();
+		OntDocumentManager docMgr = ontModel.getDocumentManager();
+		docMgr.setProcessImports(false);
 		
 		// read the RDF/XML file
 		ontModel.read(in, null, "TTL" );
@@ -131,6 +145,11 @@ public class BackendController {
 	
 	public PositionPublisher getPositionPublisher() {
 		return posPub;		
+	}
+
+	public ProductPublisher getProductPublisher() {
+		// TODO Auto-generated method stub
+		return prodPub;
 	}
 
 }

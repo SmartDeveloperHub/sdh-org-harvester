@@ -20,7 +20,7 @@
  *   See the License for the specific language governing permissions and
  *   limitations under the License.
  * #-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=#
- *   Artifact    : org.smartdeveloperhub.harvester.org:org-harvester-ldp4j:0.2.0-SNAPSHOT
+ *   Artifact    : org.smartdeveloperhub.harvester.org:org-harvester-frontend:0.1.0
  *   Bundle      : org-harvester.war
  * #-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=#
  */
@@ -51,6 +51,8 @@ import org.smartdeveloperhub.harvester.org.frontend.core.project.ProjectContaine
 import org.smartdeveloperhub.harvester.org.frontend.core.project.ProjectHandler;
 import org.smartdeveloperhub.harvester.org.frontend.core.role.RoleContainerHandler;
 import org.smartdeveloperhub.harvester.org.frontend.core.role.RoleHandler;
+import org.smartdeveloperhub.harvester.scm.frontend.core.product.ProductContainerHandler;
+import org.smartdeveloperhub.harvester.scm.frontend.core.product.ProductHandler;
 
 
 public final class HarvesterApplication extends Application<HarvesterConfiguration> {
@@ -81,6 +83,8 @@ public final class HarvesterApplication extends Application<HarvesterConfigurati
 		 	    bootstrap.addHandlerClass(OrganizationContainerHandler.class);
 		 	    bootstrap.addHandler(new ProjectHandler(controller));
 		 	    bootstrap.addHandlerClass(ProjectContainerHandler.class);
+		 	    bootstrap.addHandler(new ProductHandler(controller));
+		 	    bootstrap.addHandlerClass(ProductContainerHandler.class);
 				bootstrap.addHandler(new PersonHandler(controller));
 				bootstrap.addHandlerClass(PersonContainerHandler.class);
 				bootstrap.addHandler(new RoleHandler(controller));

@@ -21,35 +21,47 @@
       See the License for the specific language governing permissions and
       limitations under the License.
     #-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=#
-      Artifact    : org.smartdeveloperhub.harvester.org:org-harvester-ldp4j:0.2.0-SNAPSHOT
+      Artifact    : org.smartdeveloperhub.harvester.org:org-harvester-frontend:0.1.0
       Bundle      : org-harvester.war
     #-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=#
 
 -->
-<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-  xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
+<project
+	xmlns="http://maven.apache.org/POM/4.0.0"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
+	<modelVersion>4.0.0</modelVersion>
 
-  <modelVersion>4.0.0</modelVersion>
+	<!-- =================================================================== -->
+	<!--   MODULE COORDINATES                                                -->
+	<!-- =================================================================== -->
 
-  <parent>
-	<groupId>org.smartdeveloperhub.harvester.org</groupId>
-	<artifactId>org-harvester-aggregator</artifactId>
-	<version>0.2.0-SNAPSHOT</version>
-	<relativePath>../pom.xml</relativePath>
-  </parent>
- 
-  <groupId>org.smartdeveloperhub.harvester.org</groupId>
-  <artifactId>org-harvester-ldp4j</artifactId>
-  <name>SDH :: SCMH :: SCM Harvester (ldp4j)</name>
+	<parent>
+		<groupId>org.smartdeveloperhub.harvester.org</groupId>
+		<artifactId>org-harvester-aggregator</artifactId>
+		<version>0.1.0</version>
+		<relativePath>../pom.xml</relativePath>
+	</parent>
 
-  <description>This harvester publishes organization data such as organization chart, users, roles, and projects
-  </description>
+	<artifactId>org-harvester-frontend</artifactId>
+	<packaging>war</packaging>
 
-  <packaging>war</packaging>
-    <properties>
-		<ldp4j.version>0.1.0</ldp4j.version>
+	<!-- =================================================================== -->
+	<!--   MODULE INFORMATION                                                -->
+	<!-- =================================================================== -->
+
+	<name>SDH :: ORGH :: LDP4j Frontend</name>
+
+	<description>This harvester publishes organization data such as organization chart, users, roles, and projects</description>
+
+	<!-- =================================================================== -->
+	<!--   BUILD SETTINGS                                                    -->
+	<!-- =================================================================== -->
+
+	<properties>
+		<ldp4j.version>0.2.0</ldp4j.version>
 		<jackson.version>2.4.4</jackson.version>
-    </properties>
+	</properties>
 
 	<dependencyManagement>
 		<dependencies>
@@ -62,9 +74,9 @@
 			</dependency>
 		</dependencies>
 	</dependencyManagement>
- 
-  <dependencies>
-  		<dependency>
+
+	<dependencies>
+		<dependency>
 			<groupId>org.ldp4j.framework</groupId>
 			<artifactId>ldp4j-application-api</artifactId>
 		</dependency>
@@ -115,67 +127,51 @@
 		<dependency>
 			<groupId>org.slf4j</groupId>
 			<artifactId>slf4j-log4j12</artifactId>
-		</dependency>				
-<!-- 		  <dependency> -->
-<!-- 		    <groupId>com.fasterxml.jackson.core</groupId> -->
-<!-- 		    <artifactId>jackson-databind</artifactId> -->
-<!-- 		    <version>${jackson.version}</version> -->
-<!-- 		  </dependency> -->
-<!-- 		  <dependency> -->
-<!-- 		    <groupId>com.fasterxml.jackson.core</groupId> -->
-<!-- 		    <artifactId>jackson-annotations</artifactId> -->
-<!-- 		    <version>${jackson.version}</version> -->
-<!-- 		  </dependency> -->
-<!-- 		  <dependency> -->
-<!-- 		    <groupId>com.fasterxml.jackson.core</groupId> -->
-<!-- 		    <artifactId>jackson-core</artifactId> -->
-<!-- 		    <version>${jackson.version}</version> -->
-<!-- 		  </dependency> -->
-		<dependency>
-			    <groupId>org.apache.jena</groupId>
-			    <artifactId>apache-jena-libs</artifactId>
-			    <type>pom</type>
-			    <version>2.13.0</version>
-  		</dependency>
-		<dependency>
-            <groupId>commons-lang</groupId>
-            <artifactId>commons-lang</artifactId>
-            <version>2.4</version>
-        </dependency>
-         <dependency>
-		  <groupId>joda-time</groupId>
-		  <artifactId>joda-time</artifactId>
 		</dependency>
-		
-    <dependency>
-      <groupId>junit</groupId>
-      <artifactId>junit</artifactId>
-      <scope>test</scope>
-    </dependency> 
-    
-  </dependencies>
+		<dependency>
+			<groupId>org.apache.jena</groupId>
+			<artifactId>apache-jena-libs</artifactId>
+			<type>pom</type>
+			<version>2.13.0</version>
+		</dependency>
+		<dependency>
+			<groupId>commons-lang</groupId>
+			<artifactId>commons-lang</artifactId>
+			<version>2.4</version>
+		</dependency>
+		<dependency>
+			<groupId>joda-time</groupId>
+			<artifactId>joda-time</artifactId>
+		</dependency>
 
-  <build>
-    <finalName>org-harvester</finalName>
-     <plugins>
-		    <plugin>
-		        <groupId>org.apache.maven.plugins</groupId>
-		        <artifactId>maven-war-plugin</artifactId>
-		        <version>2.6</version>
-		        <configuration>
-		            <failOnMissingWebXml>true</failOnMissingWebXml>
-		        </configuration>
-		    </plugin>
-    		<plugin>
-	            <groupId>org.apache.tomcat.maven</groupId>
-	            <artifactId>tomcat7-maven-plugin</artifactId>
-	            <version>2.2</version>
-	            <configuration>
-	                <server>TomcatServer</server>
-	                <path>/org-harvester</path>
-	            </configuration>
-	        </plugin>
-	</plugins>	        
-  </build>
+		<dependency>
+			<groupId>junit</groupId>
+			<artifactId>junit</artifactId>
+			<scope>test</scope>
+		</dependency>
+
+	</dependencies>
+
+	<build>
+		<finalName>org-harvester</finalName>
+		<plugins>
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-war-plugin</artifactId>
+				<configuration>
+					<failOnMissingWebXml>true</failOnMissingWebXml>
+				</configuration>
+			</plugin>
+			<plugin>
+				<groupId>org.apache.tomcat.maven</groupId>
+				<artifactId>tomcat7-maven-plugin</artifactId>
+				<version>2.2</version>
+				<configuration>
+					<server>TomcatServer</server>
+					<path>/org-harvester</path>
+				</configuration>
+			</plugin>
+		</plugins>
+	</build>
 
 </project>

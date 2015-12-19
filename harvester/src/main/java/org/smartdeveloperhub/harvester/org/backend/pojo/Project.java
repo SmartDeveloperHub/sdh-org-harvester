@@ -20,7 +20,7 @@
  *   See the License for the specific language governing permissions and
  *   limitations under the License.
  * #-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=#
- *   Artifact    : org.smartdeveloperhub.harvester.org:org-harvester-ldp4j:0.2.0-SNAPSHOT
+ *   Artifact    : org.smartdeveloperhub.harvester.org:org-harvester-frontend:0.1.0
  *   Bundle      : org-harvester.war
  * #-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=#
  */
@@ -34,12 +34,28 @@ public class Project {
 	String name="";
 	String description="";
 	String uri="";
+	String depicts ="";
 	ArrayList<String> affiliation = new ArrayList<String>();
-	ArrayList<String> repository = new ArrayList<String>();
-//	ArrayList<String> role = new ArrayList<String>();
+	ArrayList<String> repository = new ArrayList<String>();	
+	ArrayList<String> location = new ArrayList<String>();
+	String createdOn ="";
 	
+//	ArrayList<String> role = new ArrayList<String>();
+
 	public String getUri() {
 		return uri;
+	}
+	public String getCreatedOn() {
+		return createdOn;
+	}
+	public void setCreatedOn(String createdOn) {
+		this.createdOn = createdOn;
+	}
+	public String getDepicts() {
+		return depicts;
+	}
+	public void setDepicts(String depicts) {
+		this.depicts = depicts;
 	}
 	public void setUri(String uri) {
 		this.uri = uri;
@@ -75,13 +91,22 @@ public class Project {
 	}
 	public void setRepository(ArrayList<String> repository) {
 		this.repository = repository;
+	}	
+	
+	public ArrayList<String> getLocation() {
+		return location;
 	}
+	public void setLocation(ArrayList<String> location) {
+		this.location = location;
+	}
+	
 	@Override
 	public String toString() {
-		return "Project [id=" + id + ", name=" + name + ", description="
-				+ description + ", affiliation=" + affiliation
-				+ ", repository=" + repository + "]";
+		return "Project [id=" + id + ", name=" + name + ", description=" + description + ", uri=" + uri + ", depicts="
+				+ depicts + ", affiliation=" + affiliation + ", repository=" + repository + ", location=" + location
+				+ ", createdOn=" + createdOn + "]";
 	}
+	
 	
 //	public ArrayList<String> getRole() {
 //		return role;

@@ -20,7 +20,7 @@
  *   See the License for the specific language governing permissions and
  *   limitations under the License.
  * #-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=#
- *   Artifact    : org.smartdeveloperhub.harvester.org:org-harvester-ldp4j:0.2.0-SNAPSHOT
+ *   Artifact    : org.smartdeveloperhub.harvester.org:org-harvester-frontend:0.1.0
  *   Bundle      : org-harvester.war
  * #-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=#
  */
@@ -71,7 +71,7 @@ public class PersonHandler implements ResourceHandler, PersonVocabulary{
 		Name<String> personName = (Name<String>)resource.name();						
 		try{
 			Person person = backendController.getPersonPublisher().getPerson(personName.id().toString());
-			LOGGER.info("- Person Info loaded..: {}",person);
+			LOGGER.debug("- Person Info loaded..: {}",person);
 			return maptoDataSet(person ,personName);	
 		}
 		catch(Exception e){
@@ -89,7 +89,9 @@ public class PersonHandler implements ResourceHandler, PersonVocabulary{
 		helper.
 		managedIndividual(personName, PersonHandler.ID).
 			property(TYPE).
-				withIndividual(PERSONCLASS).			
+				withIndividual(PERSONCLASS).
+			property(PERSONID).
+				withLiteral(person.getId()).
 			property(FOAFNAME).
 				withLiteral(person.getName()).
 			property(FOAFNICK).

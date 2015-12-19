@@ -20,7 +20,7 @@
  *   See the License for the specific language governing permissions and
  *   limitations under the License.
  * #-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=#
- *   Artifact    : org.smartdeveloperhub.harvester.org:org-harvester-ldp4j:0.2.0-SNAPSHOT
+ *   Artifact    : org.smartdeveloperhub.harvester.org:org-harvester-frontend:0.1.0
  *   Bundle      : org-harvester.war
  * #-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=#
  */
@@ -72,7 +72,23 @@ public class ProjectPublisher extends OntologyInstanceReader implements ProjectV
 		    
 		    Statement description = r.getProperty(ontModel.getProperty(DOAPDESCRIPTION));
 		    if (description!=null)
-		    	project.setDescription(description.getString());	    
+		    	project.setDescription(description.getString());
+		    
+		    Statement createdOn = r.getProperty(ontModel.getProperty(CREATEDON)) ;
+		    if (createdOn!=null)
+		    	project.setCreatedOn(createdOn.getString());
+		    
+		    //depiction
+		    Statement depiction = r.getProperty(ontModel.getProperty(DEPICTION)) ;
+		    if (depiction!=null){
+		    	Statement depicts = depiction.getProperty(ontModel.getProperty(DEPICTS));
+		    	if (depicts!=null){
+		    		Resource imgRes=depicts.getResource();
+		    		if (imgRes!=null)
+		    			project.setDepicts(depicts.getResource().getURI());
+		    	}
+		    }
+		    
 		    
 //			//projectRole
 //		    StmtIterator projectRoleIter = r.listProperties(ontModel.getProperty(PROJECTROLE));
@@ -98,9 +114,33 @@ public class ProjectPublisher extends OntologyInstanceReader implements ProjectV
 		    }
 		    project.setAffiliation(affiliation);		    
 		    
+		    //doap:repository
+		    StmtIterator repoIter = r.listProperties(ontModel.getProperty(DOAPREPOSITORY));
+		    ArrayList<String> repositories = new ArrayList<String>();
+		    while (repoIter.hasNext()) {
+			    Statement stmtRepo = repoIter.next();
+			    Resource repoRes= stmtRepo.getResource();
+			    if (repoRes!=null){
+			    	repositories.add(repoRes.getURI());
+			    }
+		    }
+		    project.setRepository(repositories);		
+		    
+		  //scm:location
+		    StmtIterator locationIter = r.listProperties(ontModel.getProperty(SCMLOCATION));
+		    ArrayList<String> locations = new ArrayList<String>();
+		    while (locationIter.hasNext()) {
+			    Statement stmtLocation = locationIter.next();
+			    String location= stmtLocation.getString();
+			    if (location!=null){
+			    	locations.add(location);
+			    }
+		    }
+		    project.setLocation(locations);
+		    
 		    long stopTime = System.currentTimeMillis();
 			long elapsedTime = stopTime - startTime;
-			LOGGER.info("- Load the project, elapsed time (ms)..: {}",elapsedTime);
+			LOGGER.debug("- Load the project, elapsed time (ms)..: {}",elapsedTime);
 		}
 		return project;
 		
@@ -108,3 +148,4 @@ public class ProjectPublisher extends OntologyInstanceReader implements ProjectV
 
 
 }
+

@@ -20,7 +20,7 @@
  *   See the License for the specific language governing permissions and
  *   limitations under the License.
  * #-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=#
- *   Artifact    : org.smartdeveloperhub.harvester.org:org-harvester-ldp4j:0.2.0-SNAPSHOT
+ *   Artifact    : org.smartdeveloperhub.harvester.org:org-harvester-frontend:0.1.0
  *   Bundle      : org-harvester.war
  * #-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=#
  */
@@ -29,8 +29,8 @@ package org.smartdeveloperhub.harvester.org.frontend.core.person;
 public interface PersonVocabulary {
 	
 	static final String TYPE       = "http://www.w3.org/1999/02/22-rdf-syntax-ns#type";
-	static final String PERSONCLASS = "http://www.smartdeveloperhub.org/vocabulary/org#Person";
-	static final String PERSONID = "http://www.smartdeveloperhub.org/vocabulary/org#id";
+	static final String PERSONCLASS = "http://www.smartdeveloperhub.org/vocabulary/organization#Person";
+	static final String PERSONID = "http://www.smartdeveloperhub.org/vocabulary/organization#id";
 
 	static final String FOAFNAME = "http://xmlns.com/foaf/0.1/name";
 	static final String FOAFNICK ="http://xmlns.com/foaf/0.1/nick";
@@ -43,11 +43,11 @@ public interface PersonVocabulary {
 	
 	
 	
-	static final String MEMBEROF = "http://www.smartdeveloperhub.org/vocabulary/org#memberOf";
-	static final String ORGID = "http://www.smartdeveloperhub.org/vocabulary/org#id";
-	static final String HASMEMBERSHIP = "http://www.smartdeveloperhub.org/vocabulary/org#hasMembership";
-	static final String MEMBERSHIPID = "http://www.smartdeveloperhub.org/vocabulary/org#id";
-	static final String ISAFFILIATED = "http://www.smartdeveloperhub.org/vocabulary/org#isAffiliated";
-	static final String AFFILIATIONID = "http://www.smartdeveloperhub.org/vocabulary/org#id";
+	static final String MEMBEROF = "http://www.smartdeveloperhub.org/vocabulary/organization#memberOf";
+	static final String ORGID = "http://www.smartdeveloperhub.org/vocabulary/organization#id";
+	static final String HASMEMBERSHIP = "http://www.smartdeveloperhub.org/vocabulary/organization#hasMembership";
+	static final String MEMBERSHIPID = "http://www.smartdeveloperhub.org/vocabulary/organization#id";
+	static final String ISAFFILIATED = "http://www.smartdeveloperhub.org/vocabulary/organization#isAffiliated";
+	static final String AFFILIATIONID = "http://www.smartdeveloperhub.org/vocabulary/organization#id";
 	    
 }

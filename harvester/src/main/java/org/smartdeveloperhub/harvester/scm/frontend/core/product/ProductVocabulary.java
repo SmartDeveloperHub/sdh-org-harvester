@@ -24,24 +24,22 @@
  *   Bundle      : org-harvester.war
  * #-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=#
  */
-package org.smartdeveloperhub.harvester.org.backend;
+package org.smartdeveloperhub.harvester.scm.frontend.core.product;
 
-import com.hp.hpl.jena.ontology.OntModel;
-
-public class OntologyInstanceReader {
-	OntModel ontModel;
+public interface ProductVocabulary {
 	
-	OntologyInstanceReader(OntModel ontModel){
-		this.ontModel=ontModel;
-	}
-
-	public OntModel getOntModel() {
-		return ontModel;
-	}
-
-	public void setOntModel(OntModel ontModel) {
-		this.ontModel = ontModel;
-	}
+	static final String TYPE       = "http://www.w3.org/1999/02/22-rdf-syntax-ns#type";
+	static final String PRODUCT_CLASS = "http://www.smartdeveloperhub.org/vocabulary/organization#Product";	
+	static final String PREFLABEL = "http://www.w3.org/2004/02/skos/core#prefLabel";
+	static final String PRODUCTID = "http://www.smartdeveloperhub.org/vocabulary/organization#id";	
+	static final String DESCRIPTION = "http://www.smartdeveloperhub.org/vocabulary/organization#description";	
+	static final String CREATEDON= "http://www.smartdeveloperhub.org/vocabulary/organization#createdOn";	
+	static final String RELATESTOPROJECT="http://www.smartdeveloperhub.org/vocabulary/organization#relatesToProject";
+	
+	static final String DEPICTION = "http://xmlns.com/foaf/0.1/depiction";
+	static final String IMAGE_CLASS = "http://xmlns.com/foaf/0.1/Image";
+	static final String DEPICTS = "http://xmlns.com/foaf/0.1/depicts";
 	
 	
+
 }

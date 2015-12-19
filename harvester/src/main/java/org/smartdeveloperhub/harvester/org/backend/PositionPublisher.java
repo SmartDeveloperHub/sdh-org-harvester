@@ -20,7 +20,7 @@
  *   See the License for the specific language governing permissions and
  *   limitations under the License.
  * #-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=#
- *   Artifact    : org.smartdeveloperhub.harvester.org:org-harvester-ldp4j:0.2.0-SNAPSHOT
+ *   Artifact    : org.smartdeveloperhub.harvester.org:org-harvester-frontend:0.1.0
  *   Bundle      : org-harvester.war
  * #-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=#
  */
@@ -75,7 +75,7 @@ public class PositionPublisher extends OntologyInstanceReader implements Members
     	}	    		
     	 long stopTime = System.currentTimeMillis();
  		long elapsedTime = stopTime - startTime;
- 		LOGGER.info("- Load the Position, elapsed time (ms)..: {}",elapsedTime);
+ 		LOGGER.debug("- Load the Position, elapsed time (ms)..: {}",elapsedTime);
     	return position;
 	}
  

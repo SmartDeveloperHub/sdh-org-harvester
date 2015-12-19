@@ -20,17 +20,18 @@
  *   See the License for the specific language governing permissions and
  *   limitations under the License.
  * #-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=#
- *   Artifact    : org.smartdeveloperhub.harvester.org:org-harvester-ldp4j:0.2.0-SNAPSHOT
+ *   Artifact    : org.smartdeveloperhub.harvester.org:org-harvester-frontend:0.1.0
  *   Bundle      : org-harvester.war
  * #-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=#
  */
 package org.smartdeveloperhub.harvester.org.frontend.core;
 
+import java.io.FileNotFoundException;
 import java.util.ArrayList;
 
 public class Test {
 
-	public static void main(String[] args) {
+	public static void main(String[] args) throws FileNotFoundException {
 //		OrganizationIndividuals onto = new OrganizationIndividuals();
 //		onto.loadIndividuals();
 //		onto.getOrganizations();

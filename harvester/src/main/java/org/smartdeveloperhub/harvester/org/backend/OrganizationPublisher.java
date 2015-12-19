@@ -20,7 +20,7 @@
  *   See the License for the specific language governing permissions and
  *   limitations under the License.
  * #-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=#
- *   Artifact    : org.smartdeveloperhub.harvester.org:org-harvester-ldp4j:0.2.0-SNAPSHOT
+ *   Artifact    : org.smartdeveloperhub.harvester.org:org-harvester-frontend:0.1.0
  *   Bundle      : org-harvester.war
  * #-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=#
  */
@@ -63,11 +63,12 @@ public class OrganizationPublisher extends OntologyInstanceReader implements Org
 		ResIterator iter =ontModel.listSubjectsWithProperty(RDF.type, organization);
 		
 		if (iter.hasNext()) {
-		    System.out.println("The database contains these organizations:");
+			LOGGER.info("Organizations were found in the database");
+			LOGGER.debug("The database contains these organizations:");
 		    while (iter.hasNext()) {
 		    	Resource organizationResource = iter.nextResource();
 		    	String organizationUri= organizationResource.getURI();		        
-		        LOGGER.info(organizationUri);
+		        LOGGER.debug(organizationUri);
 //		        String organizationId = organizationResource.getProperty(ontModel.getProperty(ORGID)).getString();
 //		        System.out.println("  " + organizationId);
 		        organizations.add(organizationUri);
@@ -81,7 +82,7 @@ public class OrganizationPublisher extends OntologyInstanceReader implements Org
 		long stopTime = System.currentTimeMillis();
 		long elapsedTime = stopTime - startTime;
 		//System.out.println("Load organizations, elapsed time (ms):"+elapsedTime);
-		LOGGER.info("- Load organizations, elapsed time (ms)..: {}",elapsedTime);
+		LOGGER.debug("- Load organizations, elapsed time (ms)..: {}",elapsedTime);
 		
 		return organizations;
 	}
@@ -139,6 +140,17 @@ public class OrganizationPublisher extends OntologyInstanceReader implements Org
 		    	org.setClassification(preflabelClassification.getString());		    			    			    	
 		    }
 		    
+		    //depiction
+		    Statement depiction = r.getProperty(ontModel.getProperty(DEPICTION)) ;
+		    if (depiction!=null){
+		    	Statement depicts = depiction.getProperty(ontModel.getProperty(DEPICTS));
+		    	if (depicts!=null){
+		    		Resource imgRes=depicts.getResource();
+		    		if (imgRes!=null)
+		    			org.setDepicts(depicts.getResource().getURI());
+		    	}
+		    }
+		    
 		    //memberOrganizations
 		    StmtIterator memberOrgIter = r.listProperties(ontModel.getProperty(HASMEMBERORGANIZATION));
 		    ArrayList<String> hasMemberOrganization = new ArrayList<String>();
@@ -161,13 +173,22 @@ public class OrganizationPublisher extends OntologyInstanceReader implements Org
 			    Statement stmtProjOrg = projectOrgIter.next();
 			    Resource projRes= stmtProjOrg.getResource();
 			    if (projRes!=null){
-//			    	Statement stmtProjectId = projRes.getProperty(ontModel.getProperty(PROJECTID));
-//			    	if (stmtProjectId!=null)
-//			    		hasProject.add(stmtProjectId.getString());
 			    	hasProject.add(projRes.getURI());
 			    }
 		    }
 		    org.setHasProject(hasProject);
+		    
+		   //hasProduct
+		    StmtIterator productOrgIter = r.listProperties(ontModel.getProperty(HASPRODUCT));
+		    ArrayList<String> hasProduct = new ArrayList<String>();
+		    while (productOrgIter.hasNext()) {
+			    Statement stmtProdOrg = productOrgIter.next();
+			    Resource prodRes= stmtProdOrg.getResource();
+			    if (prodRes!=null){
+			    	hasProduct.add(prodRes.getURI());
+			    }
+		    }
+		    org.setHasProduct(hasProduct);		    
 		    
 		  //hasMember
 		    StmtIterator hasMemberIter = r.listProperties(ontModel.getProperty(HASMEMBER));
@@ -222,7 +243,7 @@ public class OrganizationPublisher extends OntologyInstanceReader implements Org
 		    
 		    long stopTime = System.currentTimeMillis();
 			long elapsedTime = stopTime - startTime;
-			LOGGER.info("- Load the organization, elapsed time (ms)..: {}",elapsedTime);
+			LOGGER.debug("- Load the organization, elapsed time (ms)..: {}",elapsedTime);
 		}
 		return org;
 		

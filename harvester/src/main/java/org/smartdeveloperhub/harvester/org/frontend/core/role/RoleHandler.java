@@ -20,7 +20,7 @@
  *   See the License for the specific language governing permissions and
  *   limitations under the License.
  * #-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=#
- *   Artifact    : org.smartdeveloperhub.harvester.org:org-harvester-ldp4j:0.2.0-SNAPSHOT
+ *   Artifact    : org.smartdeveloperhub.harvester.org:org-harvester-frontend:0.1.0
  *   Bundle      : org-harvester.war
  * #-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=#
  */
@@ -67,7 +67,7 @@ public class RoleHandler  implements ResourceHandler, AffiliationVocabulary{
 		Name<String> roleName = (Name<String>)resource.name();						
 		try{
 			Role role= backendController.getRolePublisher().getRole(roleName.id().toString());
-			LOGGER.info("- Role Info loaded..: {}",role);
+			LOGGER.debug("- Role Info loaded..: {}",role);
 			return maptoDataSet(role ,roleName);	
 		}
 		catch(Exception e){

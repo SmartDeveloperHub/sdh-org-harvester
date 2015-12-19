@@ -20,7 +20,7 @@
  *   See the License for the specific language governing permissions and
  *   limitations under the License.
  * #-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=#
- *   Artifact    : org.smartdeveloperhub.harvester.org:org-harvester-ldp4j:0.2.0-SNAPSHOT
+ *   Artifact    : org.smartdeveloperhub.harvester.org:org-harvester-frontend:0.1.0
  *   Bundle      : org-harvester.war
  * #-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=#
  */
@@ -38,6 +38,7 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.smartdeveloperhub.harvester.org.backend.OrganizationPublisher;
 import org.smartdeveloperhub.harvester.org.backend.pojo.Organization;
+import org.smartdeveloperhub.harvester.org.backend.pojo.Product;
 import org.smartdeveloperhub.harvester.org.backend.pojo.Project;
 import org.smartdeveloperhub.harvester.org.frontend.core.Organization.OrganizationContainerHandler;
 import org.smartdeveloperhub.harvester.org.frontend.core.Organization.OrganizationHandler;
@@ -49,12 +50,14 @@ import org.smartdeveloperhub.harvester.org.frontend.core.position.PositionContai
 import org.smartdeveloperhub.harvester.org.frontend.core.project.ProjectContainerHandler;
 import org.smartdeveloperhub.harvester.org.frontend.core.project.ProjectHandler;
 import org.smartdeveloperhub.harvester.org.frontend.core.role.RoleContainerHandler;
+import org.smartdeveloperhub.harvester.scm.frontend.core.product.ProductContainerHandler;
+import org.smartdeveloperhub.harvester.scm.frontend.core.product.ProductHandler;
 //import org.smartdeveloperhub.harvesters.scm.backend.pojos.Repository;
 
 
 public class BackendResourcePublisher {
 	
-	private static final Logger LOGGER=LoggerFactory.getLogger(HarvesterApplication.class);
+	private static final Logger LOGGER=LoggerFactory.getLogger(BackendResourcePublisher.class);
 	
 	WriteSession session;
 	BackendController controller;
@@ -75,6 +78,8 @@ public class BackendResourcePublisher {
 		LOGGER.debug("Published organization container for service {}", harvesterName);
 		
 		addOrganizationMembersToHarvester(target, organizationContainerSnapshot);
+		
+		LOGGER.info("**End of Publishing ORG Harvester Resource");
 				
 	}
 	
@@ -95,6 +100,12 @@ public class BackendResourcePublisher {
 					organizationName, ProjectContainerHandler.class);
 			
 			addProjectsToOrganization(projectContainerSnapshot, org);
+			
+			//Product container for each organization
+			ContainerSnapshot productContainerSnapshot = organizationSnapshot.createAttachedResource( ContainerSnapshot.class, OrganizationHandler.ORGANIZATION_PRODUCTS,
+					organizationName, ProductContainerHandler.class);
+			
+			addProductsToOrganization(productContainerSnapshot, org);
 			
 
 			//Member container for each organization
@@ -125,6 +136,7 @@ public class BackendResourcePublisher {
 			LOGGER.debug("Published resource for repository {} @ {} ({})",organizationURI, organizationContainerSnapshot.name(),organizationContainerSnapshot.templateId());
 		}
 	}
+
 
 	private void addMembershipsToOrganization(
 			ContainerSnapshot membershipContainerSnapshot, Organization org) {
@@ -186,6 +198,16 @@ public class BackendResourcePublisher {
 	    }	    	
 	}
 	
+	private void addProductsToOrganization(ContainerSnapshot productContainerSnapshot, Organization org) {
+	    for (String productURI:org.getHasProduct()){
+	    	//Product product = controller.getProductPublisher().getProduct(productURI);
+	    	Name<String> productName = NamingScheme.getDefault().name(productURI);	    				
+			ResourceSnapshot productSnapshot = productContainerSnapshot.addMember(productName);			
+	    }			
+		
+	}
+	
+	
 	private void addAffiliationsToProject(
 			ContainerSnapshot affiliationContainerSnapshot, Project project) {		
 	    
@@ -196,51 +218,5 @@ public class BackendResourcePublisher {
 	    }
 		
 	}	
-
-//	private void addRolesToProject(ContainerSnapshot roleContainerSnapshot,
-//			Project project) {
-//		for (String roleId:project.getRole()){
-//			Name<String> roleName = NamingScheme.getDefault().name(roleId);	    				
-//			ResourceSnapshot roleSnapshot = roleContainerSnapshot.addMember(roleName);
-//		}
-//		
-//	}
-	
-//	private void addBranchMemberstToRepository(Repository repository, ContainerSnapshot branchContainerSnapshot) throws Exception{		
-//		for (String branchId:repository.getBranches().getBranchIds()){
-//			Name<String> branchName = NamingScheme.getDefault().name(Integer.toString(repository.getId()),branchId);			
-//			//keeptrack of the branch key and resource name
-//			controller.getBranchIdentityMap().addKey(new BranchKey(Integer.toString(repository.getId()),branchId), branchName);
-//			ResourceSnapshot branchSnapshot = branchContainerSnapshot.addMember(branchName);			
-//		}		
-//	}
-//	
-//	private void addCommitMembersToRepository(Repository repository,
-//			ContainerSnapshot commitContainerSnapshot) throws Exception {
-//		for (String commitId:repository.getCommits().getCommitIds()){
-//			Name<String> commitName = NamingScheme.getDefault().name(Integer.toString(repository.getId()),commitId);			
-//			//keeptrack of the branch key and resource name
-//			controller.getCommitIdentityMap().addKey(new CommitKey(Integer.toString(repository.getId()),commitId), commitName);
-//			ResourceSnapshot commitSnapshot = commitContainerSnapshot.addMember(commitName);			
-//		}
-//		
-//	}
-//	
-//	void publishUserResources() throws Exception{
-//		Name<String> userContainerName = NamingScheme.getDefault().name(UserContainerHandler.NAME);
-//		ContainerSnapshot userContainerSnapshot = session.find(ContainerSnapshot.class, userContainerName ,UserContainerHandler.class);			
-//		if(userContainerSnapshot==null) {
-//			LOGGER.warn("User Container does not exits");
-//			return;
-//		}
-//		
-//		ArrayList<String> userIds = controller.getUsers();	
-//		for (String userId:userIds){			
-//			Name<String> userName = NamingScheme.getDefault().name(userId);			
-//			ResourceSnapshot userSnapshot = userContainerSnapshot.addMember(userName);
-//			LOGGER.debug("Published resource for user {} @ {} ({})",userId, userSnapshot.name(),userSnapshot.templateId());
-//		}
-//		
-//	}
 
 }

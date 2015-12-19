@@ -20,7 +20,7 @@
  *   See the License for the specific language governing permissions and
  *   limitations under the License.
  * #-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=#
- *   Artifact    : org.smartdeveloperhub.harvester.org:org-harvester-ldp4j:0.2.0-SNAPSHOT
+ *   Artifact    : org.smartdeveloperhub.harvester.org:org-harvester-frontend:0.1.0
  *   Bundle      : org-harvester.war
  * #-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=#
  */
@@ -29,27 +29,31 @@ package org.smartdeveloperhub.harvester.org.frontend.core.Organization;
 public interface OrganizationVocabulary {
 
 	static final String TYPE       = "http://www.w3.org/1999/02/22-rdf-syntax-ns#type";
-	static final String ORGANIZATION_CLASS = "http://www.smartdeveloperhub.org/vocabulary/org#Organization";
-	static final String ORGANIZATIONALCOLLABORATION = "http://www.smartdeveloperhub.org/vocabulary/org#OrganizationalCollaboration";
+	static final String ORGANIZATION_CLASS = "http://www.smartdeveloperhub.org/vocabulary/organization#Organization";
+	static final String ORGANIZATIONALCOLLABORATION = "http://www.smartdeveloperhub.org/vocabulary/organization#OrganizationalCollaboration";
 	static final String PREFLABEL = "http://www.w3.org/2004/02/skos/core#prefLabel";
-	static final String ORGID = "http://www.smartdeveloperhub.org/vocabulary/org#id";
-	static final String TITLE = "http://www.smartdeveloperhub.org/vocabulary/org#title";
-	static final String DESCRIPTION = "http://www.smartdeveloperhub.org/vocabulary/org#description";
+	static final String ORGID = "http://www.smartdeveloperhub.org/vocabulary/organization#id";
+	static final String TITLE = "http://www.smartdeveloperhub.org/vocabulary/organization#title";
+	static final String DESCRIPTION = "http://www.smartdeveloperhub.org/vocabulary/organization#description";
 	static final String CLASSIFICATION = "http://www.w3.org/ns/org#classification";
 	static final String PURPOSE = "http://www.w3.org/ns/org#purpose";
-	static final String HASMEMBERORGANIZATION="http://www.smartdeveloperhub.org/vocabulary/org#hasMemberOrganization";
-	static final String HASPROJECT="http://www.smartdeveloperhub.org/vocabulary/org#hasProject";
-	static final String HASMEMBER ="http://www.smartdeveloperhub.org/vocabulary/org#hasMember";
-	static final String MEMBERSHIP = "http://www.smartdeveloperhub.org/vocabulary/org#membership";
+	static final String HASMEMBERORGANIZATION="http://www.smartdeveloperhub.org/vocabulary/organization#hasMemberOrganization";
+	static final String HASPROJECT="http://www.smartdeveloperhub.org/vocabulary/organization#hasProject";
+	static final String HASPRODUCT="http://www.smartdeveloperhub.org/vocabulary/organization#hasProduct";
+	static final String HASMEMBER ="http://www.smartdeveloperhub.org/vocabulary/organization#hasMember";
+	static final String MEMBERSHIP = "http://www.smartdeveloperhub.org/vocabulary/organization#membership";
 	
 	static final String SKOSCONCEPT = "http://www.w3.org/2004/02/skos/core#Concept";
 	static final String LABEL = "http://www.w3.org/2000/01/rdf-schema#label";
 	
-	static final String PROJECTID = "http://www.smartdeveloperhub.org/vocabulary/org#id";
-	static final String PERSONID = "http://www.smartdeveloperhub.org/vocabulary/org#id";
+	static final String PROJECTID = "http://www.smartdeveloperhub.org/vocabulary/organization#id";
+	static final String PERSONID = "http://www.smartdeveloperhub.org/vocabulary/organization#id";
 	
-	static final String ORGPOSITION = "http://www.smartdeveloperhub.org/vocabulary/org#organizationPosition";
-	static final String ORGROLE = "http://www.smartdeveloperhub.org/vocabulary/org#organizationRole";
+	static final String ORGPOSITION = "http://www.smartdeveloperhub.org/vocabulary/organization#organizationPosition";
+	static final String ORGROLE = "http://www.smartdeveloperhub.org/vocabulary/organization#organizationRole";	
 	
+	static final String DEPICTION = "http://xmlns.com/foaf/0.1/depiction";
+	static final String IMAGE_CLASS = "http://xmlns.com/foaf/0.1/Image";
+	static final String DEPICTS = "http://xmlns.com/foaf/0.1/depicts";
 	
 }

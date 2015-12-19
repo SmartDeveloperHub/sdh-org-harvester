@@ -21,35 +21,45 @@
       See the License for the specific language governing permissions and
       limitations under the License.
     #-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=#
-      Artifact    : org.smartdeveloperhub.harvester.org:org-harvester-aggregator:0.2.0-SNAPSHOT
-      Bundle      : org-harvester-aggregator-0.2.0-SNAPSHOT.pom
+      Artifact    : org.smartdeveloperhub.harvester.org:org-harvester-aggregator:0.1.0
+      Bundle      : org-harvester-aggregator-0.1.0.pom
     #-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=#
 
 -->
-<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-  xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
+<project
+	xmlns="http://maven.apache.org/POM/4.0.0"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
+	<modelVersion>4.0.0</modelVersion>
 
-  <modelVersion>4.0.0</modelVersion>
+	<!-- =================================================================== -->
+	<!--   MODULE COORDINATES                                                -->
+	<!-- =================================================================== -->
 
-  <parent>
-  <groupId>org.smartdeveloperhub</groupId>
-  <artifactId>sdh-build</artifactId>
-  <version>0.2.0-SNAPSHOT</version>
-  </parent>
- 
-  <groupId>org.smartdeveloperhub.harvester.org</groupId>
-  <artifactId>org-harvester-aggregator</artifactId>
-  <name>SDH :: ORGH :: ORG Harvester</name>
-  <version>0.2.0-SNAPSHOT</version>
-  <packaging>pom</packaging>
+	<parent>
+		<groupId>org.smartdeveloperhub</groupId>
+		<artifactId>sdh-build</artifactId>
+		<version>0.2.0</version>
+	</parent>
 
+	<groupId>org.smartdeveloperhub.harvester.org</groupId>
+	<artifactId>org-harvester-aggregator</artifactId>
+	<version>0.1.0</version>
 
-  <description>Organization Harvester of the Smart Developer Hub project </description>
+	<packaging>pom</packaging>
 
-    <modules>   
-    <module>harvester</module>
-    <module>container</module>    
-  </modules>
+	<!-- =================================================================== -->
+	<!--   MODULE INFORMATION                                                -->
+	<!-- =================================================================== -->
+
+	<name>SDH :: ORGH -- Organization Harvester</name>
+
+	<description>Organization Harvester of the Smart Developer Hub project</description>
+
+	<modules>
+		<module>harvester</module>
+		<module>container</module>
+	</modules>
 
 
 </project>

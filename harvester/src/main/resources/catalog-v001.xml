@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!--
+
+    #-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=#
+      This file is part of the Smart Developer Hub Project:
+        http://www.smartdeveloperhub.org/
+
+      Center for Open Middleware
+        http://www.centeropenmiddleware.com/
+    #-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=#
+      Copyright (C) 2015 Center for Open Middleware.
+    #-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=#
+      Licensed under the Apache License, Version 2.0 (the "License");
+      you may not use this file except in compliance with the License.
+      You may obtain a copy of the License at
+
+                http://www.apache.org/licenses/LICENSE-2.0
+
+      Unless required by applicable law or agreed to in writing, software
+      distributed under the License is distributed on an "AS IS" BASIS,
+      WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+      See the License for the specific language governing permissions and
+      limitations under the License.
+    #-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=#
+      Artifact    : org.smartdeveloperhub.harvester.org:org-harvester-frontend:0.1.0
+      Bundle      : org-harvester.war
+    #-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=#
+
+-->
+<catalog prefer="public" xmlns="urn:oasis:names:tc:entity:xmlns:xml:catalog">
+    <uri id="User Entered Import Resolution" name="http://www.smartdeveloperhub.org/vocabulary/external/dcmi/dctype.rdf" uri="file:/C:/Users/hagarcia/Documents/NetBeansProjects/sdh/sdh-vocabulary/src/main/resources/vocabulary/external/dcmi/dctype.rdf"/>
+    <uri id="User Entered Import Resolution" name="http://www.smartdeveloperhub.org/vocabulary/external/dcmi/dcterms.rdf" uri="file:/C:/Users/hagarcia/Documents/NetBeansProjects/sdh/sdh-vocabulary/src/main/resources/vocabulary/external/dcmi/dcterms.rdf"/>
+    <uri id="User Entered Import Resolution" name="http://www.smartdeveloperhub.org/vocabulary/v1/platform" uri="file:/C:/Users/hagarcia/Documents/NetBeansProjects/sdh/sdh-vocabulary/src/main/resources/vocabulary/v1/platform.ttl"/>
+    <uri id="User Entered Import Resolution" name="http://www.smartdeveloperhub.org/vocabulary/external/skos/skos.rdf" uri="file:/C:/Users/hagarcia/Documents/NetBeansProjects/sdh/sdh-vocabulary/src/main/resources/vocabulary/external/skos/skos.rdf"/>
+    <uri id="User Entered Import Resolution" name="http://www.smartdeveloperhub.org/vocabulary/external/org/org.ttl" uri="file:/C:/Users/hagarcia/Documents/NetBeansProjects/sdh/sdh-vocabulary/src/main/resources/vocabulary/external/org/org.ttl"/>
+    <uri id="User Entered Import Resolution" name="http://www.smartdeveloperhub.org/vocabulary/external/doap/doap.rdf" uri="file:/C:/Users/hagarcia/Documents/NetBeansProjects/sdh/sdh-vocabulary/src/main/resources/vocabulary/external/doap/doap.rdf"/>
+    <group id="Folder Repository, directory=, recursive=true, Auto-Update=true, version=2" prefer="public" xml:base=""/>
+</catalog>
