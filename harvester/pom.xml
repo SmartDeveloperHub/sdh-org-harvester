@@ -21,7 +21,7 @@
       See the License for the specific language governing permissions and
       limitations under the License.
     #-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=#
-      Artifact    : org.smartdeveloperhub.harvester.org:org-harvester-frontend:0.1.0-SNAPSHOT
+      Artifact    : org.smartdeveloperhub.harvester.org:org-harvester-frontend:0.1.0
       Bundle      : org-harvester.war
     #-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=#
 
@@ -39,7 +39,7 @@
 	<parent>
 		<groupId>org.smartdeveloperhub.harvester.org</groupId>
 		<artifactId>org-harvester-aggregator</artifactId>
-		<version>0.1.0-SNAPSHOT</version>
+		<version>0.1.0</version>
 		<relativePath>../pom.xml</relativePath>
 	</parent>
 
