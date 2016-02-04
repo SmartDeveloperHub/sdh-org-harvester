@@ -265,6 +265,7 @@ doap:repository  <http://alm.sdhcom.org/scm/sdh-machine-web>;
 doap:repository  <http://alm.sdhcom.org/scm/sdh-framework>;
 doap:repository  <http://alm.sdhcom.org/scm/sdh-web>;
 doap:repository  <http://alm.sdhcom.org/scm/sdh-platform-web>;
+doap:repository  <http://alm.sdhcom.org/scm/sdh-widget-snapshot-service>;
 doap:repository  <http://alm.sdhcom.org/scm/sdh-api>;
 foaf:depiction _:sdhwebimg ;
 org:affiliation org:affiliation021 ;
