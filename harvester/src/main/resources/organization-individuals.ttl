@@ -276,7 +276,7 @@ org:affiliation org:affiliation094 ;
 org:affiliation org:affiliation113 .
 
 _:sdhwebimg a foaf:Image ;
-foaf:depicts <https://www.codeofaninja.com/wp-content/uploads/2013/07/1-optical-spinner-animated-css-html-logo-1.jpg> .
+foaf:depicts <http://www.crearunapaginaweb.es/wp-content/uploads/2015/07/icon-domainfree.png> .
 
 org:sdhharvesters a org:Project ;
 org:id "project-sdh-harvesters";
