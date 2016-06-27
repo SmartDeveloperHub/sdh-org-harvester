@@ -41,7 +41,7 @@
 @prefix skos: <http://www.w3.org/2004/02/skos/core#> .
 @prefix foaf: <http://xmlns.com/foaf/0.1/> .
 @prefix oslc: <http://open-services.net/ns/core#> .
-@prefix orgw3: <http://www.w3.org/ns/org#> . 
+@prefix orgw3: <http://www.w3.org/ns/org#> .
 @prefix prov: <http://www.w3.org/ns/prov#> .
 @prefix rddl: <http://www.rddl.org/> .
 @prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
@@ -75,11 +75,11 @@ skos:prefLabel "University"@en.
 
 org:financialInstitutionType a skos:Concept;
 rdfs:label "Financial Institution"@en;
-skos:prefLabel "Financial Institution"@en.  
+skos:prefLabel "Financial Institution"@en.
 
 org:technologyTransferType a skos:Concept;
 rdfs:label "Thechnology transfer institution"@en;
-skos:prefLabel "Thechnology transfer institution"@en.  
+skos:prefLabel "Thechnology transfer institution"@en.
 
 #-- Organization chart
 org:upm a org:FormalOrganization, org:Organization ;
@@ -89,15 +89,15 @@ org:id "organization01"^^xsd:string;
 foaf:depiction _:upmimg ;
 orgw3:classification org:universityType.
 
-_:upmimg a foaf:Image ; 
-foaf:depicts <http://www.geo.upm.es/imagenes/logo_upm.gif> .    
+_:upmimg a foaf:Image ;
+foaf:depicts <http://www.geo.upm.es/imagenes/logo_upm.gif> .
 
 
 org:isban a org:FormalOrganization, org:Organization ;
 skos:prefLabel "ISBAN" ;
 org:title "Ingenieria de Software Bancario";
 org:id "organization02"^^xsd:string;
-orgw3:classification org:financialInstitutionType.    
+orgw3:classification org:financialInstitutionType.
 
 
 org:com a org:OrganizationalCollaboration, org:Organization ;
@@ -113,19 +113,19 @@ org:hasProject org:sdh ;
 org:hasProject org:sdhagora ;
 org:hasProject org:sdhmetrics ;
 org:hasProject org:sdhweb ;
-org:hasProject org:sdhharvesters ;  
+org:hasProject org:sdhharvesters ;
 org:hasProject org:ldp4j ;
 org:hasProject org:jenkins ;
 org:hasProject org:phoenix ;
-org:hasProduct org:productsdh; 
+org:hasProduct org:productsdh;
 org:hasProduct org:productsdhagora;
-org:hasProduct org:productsdhmetrics; 
-org:hasProduct org:productsdhweb;  
-org:hasProduct org:productsdhharvesters;  
-org:hasProduct org:productjenkins;  
-org:hasProduct org:productphoenix; 
+org:hasProduct org:productsdhmetrics;
+org:hasProduct org:productsdhweb;
+org:hasProduct org:productsdhharvesters;
+org:hasProduct org:productjenkins;
+org:hasProduct org:productphoenix;
 org:hasProduct org:productldp4j;
-foaf:depiction _:comimg ; 
+foaf:depiction _:comimg ;
 org:hasMember org:person01 ;
 org:hasMember org:person02 ;
 org:hasMember org:person03 ;
@@ -161,8 +161,8 @@ org:organizationRole org:softwareArchitect ;
 org:organizationRole org:projectManager ;
 org:organizationRole org:stakeholder .
 
-_:comimg a foaf:Image ; 
-foaf:depicts <https://media.licdn.com/media/p/5/005/019/085/043a6b9.png> .    
+_:comimg a foaf:Image ;
+foaf:depicts <https://media.licdn.com/media/p/5/005/019/085/043a6b9.png> .
 
 #projects
 org:sdh a org:Project ;
@@ -188,7 +188,7 @@ doap:repository  <http://alm.sdhcom.org/scm/sdh-gl-enhancer-docker>;
 doap:repository  <http://alm.sdhcom.org/scm/sdh-gl-collector-docker>;
 doap:repository  <http://alm.sdhcom.org/scm/sdh-platform>;
 doap:repository  <http://alm.sdhcom.org/scm/sdh-machine-harvesters>;
-foaf:depiction _:sdhimg ; 
+foaf:depiction _:sdhimg ;
 org:affiliation org:affiliation011 ;
 org:affiliation org:affiliation032 ;
 org:affiliation org:affiliation051 ;
@@ -201,7 +201,7 @@ org:affiliation org:affiliation101 ;
 org:affiliation org:affiliation111 .
 
 
-_:sdhimg a foaf:Image ; 
+_:sdhimg a foaf:Image ;
 foaf:depicts <https://avatars1.githubusercontent.com/u/12413297?v=3&s=200> .
 
 org:sdhagora a org:Project ;
@@ -224,7 +224,7 @@ doap:repository  <http://alm.sdhcom.org/scm/agora-fountain>;
 doap:repository  <http://alm.sdhcom.org/scm/agora-fountain-docker>;
 doap:repository  <http://alm.sdhcom.org/scm/agora-planner>;
 doap:repository  <http://alm.sdhcom.org/scm/sdh-curator-py>;
-doap:repository  <http://alm.sdhcom.org/scm/fragment-service-provider>; 
+doap:repository  <http://alm.sdhcom.org/scm/fragment-service-provider>;
 foaf:depiction _:sdhagoraimg ;
 org:affiliation org:affiliation053 ;
 org:affiliation org:affiliation072 ;
@@ -232,7 +232,7 @@ org:affiliation org:affiliation082 ;
 org:affiliation org:affiliation092 ;
 org:affiliation org:affiliation103 .
 
-_:sdhagoraimg a foaf:Image ;  
+_:sdhagoraimg a foaf:Image ;
 foaf:depicts <http://www.daliahabbak.com/img/logo/fountain-logo-dark.png> .
 
 org:sdhmetrics a org:Project ;
@@ -253,7 +253,7 @@ org:affiliation org:affiliation083 ;
 org:affiliation org:affiliation093 ;
 org:affiliation org:affiliation112 .
 
-_:sdhmetricimg a foaf:Image ; 
+_:sdhmetricimg a foaf:Image ;
 foaf:depicts <http://csie.ase.ro/Media/Default/images/Statistics_logo.png> .
 
 org:sdhweb a org:Project ;
@@ -261,7 +261,7 @@ org:id "project-sdh-web";
 doap:name "Web Framework and Dashboards";
 doap:description "Web framework that allows communication between the metric services and the dashboards";
 org:createdOn "2015-10-05T19:14:23"^^xsd:dateTime ;
-doap:repository  <http://alm.sdhcom.org/scm/sdh-machine-web>; 
+doap:repository  <http://alm.sdhcom.org/scm/sdh-machine-web>;
 doap:repository  <http://alm.sdhcom.org/scm/sdh-framework>;
 doap:repository  <http://alm.sdhcom.org/scm/sdh-web>;
 doap:repository  <http://alm.sdhcom.org/scm/sdh-platform-web>;
@@ -275,7 +275,7 @@ org:affiliation org:affiliation084 ;
 org:affiliation org:affiliation094 ;
 org:affiliation org:affiliation113 .
 
-_:sdhwebimg a foaf:Image ;  
+_:sdhwebimg a foaf:Image ;
 foaf:depicts <https://www.codeofaninja.com/wp-content/uploads/2013/07/1-optical-spinner-animated-css-html-logo-1.jpg> .
 
 org:sdhharvesters a org:Project ;
@@ -298,7 +298,7 @@ org:affiliation org:affiliation075 ;
 org:affiliation org:affiliation085 ;
 org:affiliation org:affiliation095 .
 
-_:sdhharvestersimg a foaf:Image ; 
+_:sdhharvestersimg a foaf:Image ;
 foaf:depicts <http://www.downwithdesign.com/wp-content/uploads/2012/02/harvester-logo-design.png> .
 
 org:ldp4j a org:Project ;
@@ -306,13 +306,13 @@ org:id "project-ldpj";
 doap:name "Linked Data Platform for Java";
 doap:description "Java implementation of the LDP specification";
 org:createdOn "2015-10-05T19:14:23"^^xsd:dateTime ;
-doap:repository  <http://alm.sdhcom.org/scm/ldp4j> ;    
+doap:repository  <http://alm.sdhcom.org/scm/ldp4j> ;
 foaf:depiction _:ldp4jimg ;
 org:affiliation org:affiliation063 ;
 org:affiliation org:affiliation086 .
 
-_:ldp4jimg a foaf:Image ; 
-foaf:depicts <http://www.clipartbest.com/cliparts/bTy/EXx/bTyEXxe8c.png> .  
+_:ldp4jimg a foaf:Image ;
+foaf:depicts <http://www.clipartbest.com/cliparts/bTy/EXx/bTyEXxe8c.png> .
 
 org:jenkins a org:Project ;
 org:id "project-jenkins";
@@ -322,12 +322,12 @@ org:createdOn "2015-10-05T19:14:23"^^xsd:dateTime ;
 doap:repository  <http://alm.sdhcom.org/scm/backend-extension-indexer> ;
 doap:repository  <http://alm.sdhcom.org/scm/maven-interceptors> ;
 doap:repository  <http://alm.sdhcom.org/scm/pom> ;
-doap:repository  <http://alm.sdhcom.org/scm/maven-hpi-plugin> ; 
+doap:repository  <http://alm.sdhcom.org/scm/maven-hpi-plugin> ;
 foaf:depiction _:jenkinsimg  ;
 org:affiliation org:affiliation087 ;
 org:affiliation org:affiliation121 .
 
-_:jenkinsimg a foaf:Image ; 
+_:jenkinsimg a foaf:Image ;
 foaf:depicts <http://www.unixstickers.com/image/cache/data/stickers/jenkins/Jenkins.sh-600x600.png> .
 
 org:phoenix a org:Project ;
@@ -341,7 +341,7 @@ org:affiliation org:affiliation076 ;
 org:affiliation org:affiliation102 ;
 org:affiliation org:affiliation131 .
 
-_:phoeniximg a foaf:Image ; 
+_:phoeniximg a foaf:Image ;
 foaf:depicts <http://www.clipartbest.com/cliparts/9Tp/zBz/9TpzBzkjc.png> .
 
 #Products
@@ -356,7 +356,7 @@ org:relatesToProject org:sdhagora ;
 org:relatesToProject org:sdhmetrics ;
 org:relatesToProject org:sdhweb .
 
-_:productsdhimg a foaf:Image ;  
+_:productsdhimg a foaf:Image ;
 foaf:depicts <https://avatars1.githubusercontent.com/u/12413297?v=3&s=200> .
 
 org:productsdhagora a org:Product;
@@ -367,7 +367,7 @@ foaf:depiction  _:productsdhagoraimg;
 org:createdOn "2015-10-05T19:14:23"^^xsd:dateTime ;
 org:relatesToProject org:sdhagora .
 
-_:productsdhagoraimg a foaf:Image ; 
+_:productsdhagoraimg a foaf:Image ;
 foaf:depicts <http://www.daliahabbak.com/img/logo/fountain-logo-dark.png> .
 
 org:productsdhmetrics a org:Product;
@@ -378,7 +378,7 @@ foaf:depiction  _:productsdhmetricsimg;
 org:createdOn "2015-10-05T19:14:23"^^xsd:dateTime ;
 org:relatesToProject org:sdhmetrics .
 
-_:productsdhmetricsimg a foaf:Image ; 
+_:productsdhmetricsimg a foaf:Image ;
 foaf:depicts <http://csie.ase.ro/Media/Default/images/Statistics_logo.png> .
 
 org:productsdhweb a org:Product;
@@ -389,7 +389,7 @@ foaf:depiction  _:productsdhwebimg;
 org:createdOn "2015-10-05T19:14:23"^^xsd:dateTime ;
 org:relatesToProject org:sdhweb .
 
-_:productsdhwebimg a foaf:Image ; 
+_:productsdhwebimg a foaf:Image ;
 foaf:depicts <https://www.codeofaninja.com/wp-content/uploads/2013/07/1-optical-spinner-animated-css-html-logo-1.jpg> .
 
 org:productsdhharvesters a org:Product;
@@ -400,7 +400,7 @@ foaf:depiction  _:productsdhharvestersimg;
 org:createdOn "2015-10-05T19:14:23"^^xsd:dateTime ;
 org:relatesToProject org:sdhharvesters .
 
-_:productsdhharvestersimg a foaf:Image ;  
+_:productsdhharvestersimg a foaf:Image ;
 foaf:depicts <http://www.downwithdesign.com/wp-content/uploads/2012/02/harvester-logo-design.png> .
 
 org:productjenkins a org:Product;
@@ -411,7 +411,7 @@ foaf:depiction  _:productjenkinsimg;
 org:createdOn "2015-10-05T19:14:23"^^xsd:dateTime ;
 org:relatesToProject org:jenkins .
 
-_:productjenkinsimg a foaf:Image ;  
+_:productjenkinsimg a foaf:Image ;
 foaf:depicts <http://www.unixstickers.com/image/cache/data/stickers/jenkins/Jenkins.sh-600x600.png> .
 
 org:productphoenix a org:Product;
@@ -422,7 +422,7 @@ foaf:depiction  _:productphoeniximg;
 org:createdOn "2015-10-05T19:14:23"^^xsd:dateTime ;
 org:relatesToProject org:phoenix .
 
-_:productphoeniximg a foaf:Image ;  
+_:productphoeniximg a foaf:Image ;
 foaf:depicts <http://www.clipartbest.com/cliparts/9Tp/zBz/9TpzBzkjc.png> .
 
 org:productldp4j a org:Product;
@@ -433,12 +433,12 @@ foaf:depiction  _:linkeddataproductimg;
 org:createdOn "2015-10-05T19:14:23"^^xsd:dateTime ;
 org:relatesToProject org:ldp4j .
 
-_:linkeddataproductimg a foaf:Image ; 
+_:linkeddataproductimg a foaf:Image ;
 foaf:depicts <http://www.clipartbest.com/cliparts/bTy/EXx/bTyEXxe8c.png> .
 
 
 # Person instances
-org:person01 a org:Person ;    
+org:person01 a org:Person ;
 foaf:name "Alejandro F. Carrera";
 foaf:nick "alejandrofcarrera" ;
 foaf:mbox "alej4fc@gmail.com" ;
@@ -447,12 +447,12 @@ org:memberOf org:com ;
 org:hasMembership org:membership01 ;
 org:isAffiliated org:affiliation011;
 org:isAffiliated org:affiliation012;
-foaf:img _:person01avatar .  
+foaf:img _:person01avatar .
 
-_:person01avatar a foaf:Image ; 
-foaf:depicts <https://avatars0.githubusercontent.com/u/2384152?v=3&s=460> . 
+_:person01avatar a foaf:Image ;
+foaf:depicts <https://avatars0.githubusercontent.com/u/2384152?v=3&s=460> .
 
-org:person02 a org:Person ;    
+org:person02 a org:Person ;
 foaf:name "Alejandro Vera";
 foaf:nick "avera" ;
 foaf:mbox "xafilox@gmail.com" ;
@@ -460,12 +460,12 @@ org:id "1001"^^xsd:string;
 org:memberOf org:com ;
 org:hasMembership org:membership02 ;
 org:isAffiliated org:affiliation021 ;
-foaf:img _:person02avatar .  
+foaf:img _:person02avatar .
 
-_:person02avatar a foaf:Image ; 
-foaf:depicts <https://avatars1.githubusercontent.com/u/196068?v=3&s=460> .  
+_:person02avatar a foaf:Image ;
+foaf:depicts <https://avatars1.githubusercontent.com/u/196068?v=3&s=460> .
 
-org:person03 a org:Person ;    
+org:person03 a org:Person ;
 foaf:name "Andres Garcia Silva";
 foaf:nick "andresgs77" ;
 foaf:mbox "andresgs77@hotmail.com" ;
@@ -474,12 +474,12 @@ org:memberOf org:com ;
 org:hasMembership org:membership03 ;
 org:isAffiliated org:affiliation031 ;
 org:isAffiliated org:affiliation032 ;
-foaf:img _:person03avatar .  
+foaf:img _:person03avatar .
 
-_:person03avatar a foaf:Image ; 
-foaf:depicts <https://avatars1.githubusercontent.com/u/5235697?v=3&s=460> . 
+_:person03avatar a foaf:Image ;
+foaf:depicts <https://avatars1.githubusercontent.com/u/5235697?v=3&s=460> .
 
-org:person04 a org:Person ;    
+org:person04 a org:Person ;
 foaf:name "Carlos Blanco";
 foaf:nick "cblanco" ;
 foaf:mbox "cblanco@conwet.com" ;
@@ -487,12 +487,12 @@ org:id "1003"^^xsd:string;
 org:memberOf org:com ;
 org:hasMembership org:membership04 ;
 org:isAffiliated org:affiliation041 ;
-foaf:img _:person04avatar .  
+foaf:img _:person04avatar .
 
-_:person04avatar a foaf:Image ; 
-foaf:depicts <https://avatars0.githubusercontent.com/u/3510628?v=3&s=460> .   
+_:person04avatar a foaf:Image ;
+foaf:depicts <https://avatars0.githubusercontent.com/u/3510628?v=3&s=460> .
 
-org:person05 a org:Person ;    
+org:person05 a org:Person ;
 foaf:name "Fernando Serena Acedo";
 foaf:nick "fserena" ;
 foaf:mbox "kudhmud@gmail.com" ;
@@ -503,12 +503,12 @@ org:isAffiliated org:affiliation051 ;
 org:isAffiliated org:affiliation052 ;
 org:isAffiliated org:affiliation053 ;
 org:isAffiliated org:affiliation054 ;
-foaf:img _:person05avatar .  
+foaf:img _:person05avatar .
 
-_:person05avatar a foaf:Image ; 
-foaf:depicts <https://avatars2.githubusercontent.com/u/2788595?v=3&s=460> . 
+_:person05avatar a foaf:Image ;
+foaf:depicts <https://avatars2.githubusercontent.com/u/2788595?v=3&s=460> .
 
-org:person06 a org:Person ;    
+org:person06 a org:Person ;
 foaf:name "Miguel Esteban Gutierrez";
 foaf:nick "mestebangutierrez" ;
 foaf:mbox "m.esteban.gutierrez@gmail.com" ;
@@ -518,12 +518,12 @@ org:hasMembership org:membership06 ;
 org:isAffiliated org:affiliation061 ;
 org:isAffiliated org:affiliation062 ;
 org:isAffiliated org:affiliation063 ;
-foaf:img _:person06avatar .  
+foaf:img _:person06avatar .
 
-_:person06avatar a foaf:Image ; 
-foaf:depicts <https://avatars2.githubusercontent.com/u/6214757?v=3&s=460> .  
+_:person06avatar a foaf:Image ;
+foaf:depicts <https://avatars2.githubusercontent.com/u/6214757?v=3&s=460> .
 
-org:person07 a org:Person ;    
+org:person07 a org:Person ;
 foaf:name "Oscar Corcho";
 foaf:nick "ocorcho" ;
 foaf:mbox "ocorcho@fi.upm.es" ;
@@ -536,12 +536,12 @@ org:isAffiliated org:affiliation073 ;
 org:isAffiliated org:affiliation074 ;
 org:isAffiliated org:affiliation075 ;
 org:isAffiliated org:affiliation076 ;
-foaf:img _:person07avatar .  
+foaf:img _:person07avatar .
 
-_:person07avatar a foaf:Image ; 
-foaf:depicts <https://avatars3.githubusercontent.com/u/1067341?v=3&s=400> .  
+_:person07avatar a foaf:Image ;
+foaf:depicts <https://avatars3.githubusercontent.com/u/1067341?v=3&s=400> .
 
-org:person08 a org:Person ;    
+org:person08 a org:Person ;
 foaf:name "Asuncion Gomez Perez";
 foaf:nick "asun" ;
 foaf:mbox "asun@fi.upm.es" ;
@@ -555,12 +555,12 @@ org:isAffiliated org:affiliation084 ;
 org:isAffiliated org:affiliation085 ;
 org:isAffiliated org:affiliation086 ;
 org:isAffiliated org:affiliation087 ;
-foaf:img _:person08avatar .  
+foaf:img _:person08avatar .
 
-_:person08avatar a foaf:Image ; 
-foaf:depicts <https://pbs.twimg.com/profile_images/1554448422/asun_oeg_400x400.png> .  
+_:person08avatar a foaf:Image ;
+foaf:depicts <https://pbs.twimg.com/profile_images/1554448422/asun_oeg_400x400.png> .
 
-org:person09 a org:Person ;    
+org:person09 a org:Person ;
 foaf:name "Francisco Javier Soriano";
 foaf:nick "jsoriano" ;
 foaf:mbox "jsoriano@fi.upm.es" ;
@@ -572,12 +572,12 @@ org:isAffiliated org:affiliation092;
 org:isAffiliated org:affiliation093;
 org:isAffiliated org:affiliation094;
 org:isAffiliated org:affiliation095;
-foaf:img _:person09avatar .  
+foaf:img _:person09avatar .
 
-_:person09avatar a foaf:Image ; 
-foaf:depicts <https://pbs.twimg.com/profile_images/1652209779/Foto_Jefe_Estudios.jpg> .  
+_:person09avatar a foaf:Image ;
+foaf:depicts <https://pbs.twimg.com/profile_images/732712622743801856/ZjivPDQQ.jpg> .
 
-org:person10 a org:Person ;    
+org:person10 a org:Person ;
 foaf:name "Maria Jose Gonzalez";
 foaf:nick "mgonzper" ;
 foaf:mbox "mgonzper@isban.es" ;
@@ -587,12 +587,12 @@ org:hasMembership org:membership10 ;
 org:isAffiliated org:affiliation101 ;
 org:isAffiliated org:affiliation102 ;
 org:isAffiliated org:affiliation103 ;
-foaf:img _:person10avatar .  
+foaf:img _:person10avatar .
 
-_:person10avatar a foaf:Image ; 
-foaf:depicts <http://res.freestockphotos.biz/pictures/10/10678-illustration-of-a-female-user-icon-pv.png> . 
+_:person10avatar a foaf:Image ;
+foaf:depicts <http://res.freestockphotos.biz/pictures/10/10678-illustration-of-a-female-user-icon-pv.png> .
 
-org:person11 a org:Person ;    
+org:person11 a org:Person ;
 foaf:name "Ruben de Dios Barbero";
 foaf:nick "rdedios" ;
 foaf:mbox "rdediosb@servexternos.isban.es" ;
@@ -602,12 +602,12 @@ org:hasMembership org:membership11 ;
 org:isAffiliated org:affiliation111 ;
 org:isAffiliated org:affiliation112 ;
 org:isAffiliated org:affiliation113 ;
-foaf:img _:person11avatar .  
+foaf:img _:person11avatar .
 
-_:person11avatar a foaf:Image ; 
-foaf:depicts <http://icons.iconarchive.com/icons/paomedia/small-n-flat/1024/user-male-alt-icon.png> . 
+_:person11avatar a foaf:Image ;
+foaf:depicts <http://icons.iconarchive.com/icons/paomedia/small-n-flat/1024/user-male-alt-icon.png> .
 
-org:person12 a org:Person ;    
+org:person12 a org:Person ;
 foaf:name "Julian García";
 foaf:nick "jgarcia" ;
 foaf:mbox "juliangarcia@gmail.com" ;
@@ -615,12 +615,12 @@ org:id "1013"^^xsd:string;
 org:memberOf org:com ;
 org:hasMembership org:membership121 ;
 org:isAffiliated org:affiliation121 ;
-foaf:img _:person12avatar .  
+foaf:img _:person12avatar .
 
-_:person12avatar a foaf:Image ; 
-foaf:depicts <https://cdn3.iconfinder.com/data/icons/digital-marketing/512/user_business_person_businessman_man_flat_icon-512.png> .  
+_:person12avatar a foaf:Image ;
+foaf:depicts <https://cdn3.iconfinder.com/data/icons/digital-marketing/512/user_business_person_businessman_man_flat_icon-512.png> .
 
-org:person13 a org:Person ;    
+org:person13 a org:Person ;
 foaf:name "Cesar Rubio";
 foaf:nick "crubio" ;
 foaf:mbox "crubio@gmail.com" ;
@@ -628,10 +628,10 @@ org:id "1014"^^xsd:string;
 org:memberOf org:com ;
 org:hasMembership org:membership131 ;
 org:isAffiliated org:affiliation131 ;
-foaf:img _:person13avatar .  
+foaf:img _:person13avatar .
 
-_:person13avatar a foaf:Image ; 
-foaf:depicts <http://icons.iconarchive.com/icons/paomedia/small-n-flat/1024/user-male-icon.png> . 
+_:person13avatar a foaf:Image ;
+foaf:depicts <http://icons.iconarchive.com/icons/paomedia/small-n-flat/1024/user-male-icon.png> .
 
 # -- Positions and Role Types ---------------------------------
 org:FirstLevelPosition a skos:Concept;
@@ -662,12 +662,12 @@ skos:prefLabel "Four level role"@en .
 # -- Positions
 
 org:developers a org:Position;
-rdfs:label "Developers"@en;    
-org:positionType org:SecondLevelPosition. 
+rdfs:label "Developers"@en;
+org:positionType org:SecondLevelPosition.
 
 org:architects a org:Position;
-rdfs:label "Architects"@en;    
-org:positionType org:SecondLevelPosition. 
+rdfs:label "Architects"@en;
+org:positionType org:SecondLevelPosition.
 
 org:directors a org:Position;
 rdfs:label "Directors"@en;
@@ -694,274 +694,274 @@ org:roleType org:FirstLevelRole.
 org:stakeholder a org:Role;
 rdfs:label "stakeholder"@en;
 rdfs:comment "stakeholder define the project goals and requirements and provide resources and funding to carry it out."@en ;
-org:roleType org:FirstLevelRole.    
+org:roleType org:FirstLevelRole.
 
 # Memberships    .
 #alejandro carrera
-org:membership01 a org:Membership ;   
+org:membership01 a org:Membership ;
 org:member org:person01 ;
 org:membershipOn org:com ;
 org:position org:developers.
 #alejandro
-org:membership02 a org:Membership ;   
+org:membership02 a org:Membership ;
 org:member org:person02 ;
 org:membershipOn org:com ;
-org:position org:developers. 
+org:position org:developers.
 #Andrés
-org:membership03 a org:Membership ;   
+org:membership03 a org:Membership ;
 org:member org:person03 ;
 org:membershipOn org:com ;
 org:position org:developers.
 #Carlos
-org:membership04 a org:Membership ; 
+org:membership04 a org:Membership ;
 org:member org:person04 ;
 org:membershipOn org:com ;
-org:position org:developers.  
+org:position org:developers.
 #fserena
-org:membership05 a org:Membership ; 
+org:membership05 a org:Membership ;
 org:member org:person05 ;
-org:membershipOn org:com ;  
-org:position org:architects .    
+org:membershipOn org:com ;
+org:position org:architects .
 #mesteban
-org:membership06 a org:Membership ; 
+org:membership06 a org:Membership ;
 org:member org:person06 ;
 org:membershipOn org:com ;
-org:position org:developers.    
+org:position org:developers.
 #corcho
-org:membership07 a org:Membership ; 
+org:membership07 a org:Membership ;
 org:member org:person07 ;
 org:membershipOn org:com ;
 org:position org:directors.
 #asun
-org:membership08 a org:Membership ; 
+org:membership08 a org:Membership ;
 org:member org:person08 ;
 org:membershipOn org:com ;
 org:position org:directors.
 #soriano
-org:membership09 a org:Membership ; 
+org:membership09 a org:Membership ;
 org:member org:person09 ;
 org:membershipOn org:com ;
 org:position org:directors.
 #maria jose
-org:membership10 a org:Membership ; 
+org:membership10 a org:Membership ;
 org:member org:person10 ;
 org:membershipOn org:com ;
 org:position org:productManagers.
 #Ruben
-org:membership11 a org:Membership ; 
+org:membership11 a org:Membership ;
 org:member org:person11 ;
 org:membershipOn org:com ;
 org:position org:productManagers.
 #Alexander Garcia
-org:membership121 a org:Membership ; 
+org:membership121 a org:Membership ;
 org:member org:person12 ;
 org:membershipOn org:com ;
 org:position org:productManagers.
 #Cesar Rubio
-org:membership131 a org:Membership ; 
+org:membership131 a org:Membership ;
 org:member org:person13 ;
 org:membershipOn org:com ;
 org:position org:productManagers.
 
 #Affiliations
 #alejandro carrera
-org:affiliation011 a org:Affiliation ; 
+org:affiliation011 a org:Affiliation ;
 org:affiliate org:person01 ;
 org:affiliationWith org:sdh ;
 org:role org:softwareDeveloper.
 
-org:affiliation012 a org:Affiliation ; 
+org:affiliation012 a org:Affiliation ;
 org:affiliate org:person01 ;
 org:affiliationWith org:sdhharvesters ;
 org:role org:softwareDeveloper.
 
 #alejandro
-org:affiliation021 a org:Affiliation ; 
+org:affiliation021 a org:Affiliation ;
 org:affiliate org:person02 ;
 org:affiliationWith org:sdhweb ;
 org:role org:softwareDeveloper.
 
 #andres
-org:affiliation031 a org:Affiliation ; 
+org:affiliation031 a org:Affiliation ;
 org:affiliate org:person03 ;
 org:affiliationWith org:sdhharvesters ;
 org:role org:softwareDeveloper.
 
-org:affiliation032 a org:Affiliation ; 
+org:affiliation032 a org:Affiliation ;
 org:affiliate org:person03 ;
 org:affiliationWith org:sdh ;
 org:role org:softwareDeveloper.
 #carlos
-org:affiliation041 a org:Affiliation ; 
+org:affiliation041 a org:Affiliation ;
 org:affiliate org:person04 ;
 org:affiliationWith org:sdhweb ;
 org:role org:softwareDeveloper.
 #fserena
-org:affiliation051 a org:Affiliation ; 
+org:affiliation051 a org:Affiliation ;
 org:affiliate org:person05 ;
 org:affiliationWith org:sdh ;
-org:role org:softwareDeveloper.  
+org:role org:softwareDeveloper.
 
-org:affiliation052 a org:Affiliation ; 
+org:affiliation052 a org:Affiliation ;
 org:affiliate org:person05 ;
 org:affiliationWith org:sdh ;
 org:role org:softwareArchitect.
 
-org:affiliation053 a org:Affiliation ; 
+org:affiliation053 a org:Affiliation ;
 org:affiliate org:person05 ;
 org:affiliationWith org:sdhagora ;
-org:role org:softwareArchitect. 
+org:role org:softwareArchitect.
 
-org:affiliation054 a org:Affiliation ; 
+org:affiliation054 a org:Affiliation ;
 org:affiliate org:person05 ;
 org:affiliationWith org:sdhmetrics ;
-org:role org:softwareArchitect.   
+org:role org:softwareArchitect.
 #mesteban
-org:affiliation061 a org:Affiliation ; 
+org:affiliation061 a org:Affiliation ;
 org:affiliate org:person06 ;
 org:affiliationWith org:sdh ;
 org:role org:softwareDeveloper.
 
-org:affiliation062 a org:Affiliation ; 
+org:affiliation062 a org:Affiliation ;
 org:affiliate org:person06 ;
 org:affiliationWith org:sdhharvesters ;
 org:role org:softwareDeveloper.
 
-org:affiliation063 a org:Affiliation ; 
+org:affiliation063 a org:Affiliation ;
 org:affiliate org:person06 ;
 org:affiliationWith org:ldp4j ;
 org:role org:softwareArchitect.
 #corcho
-org:affiliation071 a org:Affiliation ; 
+org:affiliation071 a org:Affiliation ;
 org:affiliate org:person07 ;
 org:affiliationWith org:sdh ;
 org:role org:projectManager.
 
-org:affiliation072 a org:Affiliation ; 
+org:affiliation072 a org:Affiliation ;
 org:affiliate org:person07 ;
 org:affiliationWith org:sdhagora ;
 org:role org:projectManager.
 
-org:affiliation073 a org:Affiliation ; 
+org:affiliation073 a org:Affiliation ;
 org:affiliate org:person07 ;
 org:affiliationWith org:sdhmetrics ;
 org:role org:projectManager.
 
-org:affiliation074 a org:Affiliation ; 
+org:affiliation074 a org:Affiliation ;
 org:affiliate org:person07 ;
 org:affiliationWith org:sdhweb ;
 org:role org:projectManager.
 
-org:affiliation075 a org:Affiliation ; 
+org:affiliation075 a org:Affiliation ;
 org:affiliate org:person07 ;
 org:affiliationWith org:sdhharvesters ;
-org:role org:projectManager.  
+org:role org:projectManager.
 
-org:affiliation076 a org:Affiliation ; 
+org:affiliation076 a org:Affiliation ;
 org:affiliate org:person07 ;
 org:affiliationWith org:phoenix ;
-org:role org:projectManager. 
+org:role org:projectManager.
 
 #asun
-org:affiliation081 a org:Affiliation ; 
+org:affiliation081 a org:Affiliation ;
 org:affiliate org:person08 ;
 org:affiliationWith org:sdh ;
 org:role org:projectManager.
 
-org:affiliation082 a org:Affiliation ; 
+org:affiliation082 a org:Affiliation ;
 org:affiliate org:person08 ;
 org:affiliationWith org:sdhagora ;
 org:role org:projectManager.
 
-org:affiliation083 a org:Affiliation ; 
+org:affiliation083 a org:Affiliation ;
 org:affiliate org:person08 ;
 org:affiliationWith org:sdhmetrics ;
 org:role org:projectManager.
 
-org:affiliation084 a org:Affiliation ; 
+org:affiliation084 a org:Affiliation ;
 org:affiliate org:person08 ;
 org:affiliationWith org:sdhweb ;
 org:role org:projectManager.
 
-org:affiliation085 a org:Affiliation ; 
+org:affiliation085 a org:Affiliation ;
 org:affiliate org:person08 ;
 org:affiliationWith org:sdhharvesters ;
-org:role org:projectManager.  
+org:role org:projectManager.
 
-org:affiliation086 a org:Affiliation ; 
+org:affiliation086 a org:Affiliation ;
 org:affiliate org:person08 ;
 org:affiliationWith org:ldp4j ;
-org:role org:projectManager.    
+org:role org:projectManager.
 
-org:affiliation087 a org:Affiliation ; 
+org:affiliation087 a org:Affiliation ;
 org:affiliate org:person08 ;
 org:affiliationWith org:jenkins ;
-org:role org:projectManager.     
+org:role org:projectManager.
 #soriano
-org:affiliation091 a org:Affiliation ; 
+org:affiliation091 a org:Affiliation ;
 org:affiliate org:person09 ;
 org:affiliationWith org:sdh ;
 org:role org:projectManager.
 
-org:affiliation092 a org:Affiliation ; 
+org:affiliation092 a org:Affiliation ;
 org:affiliate org:person09 ;
 org:affiliationWith org:sdhagora ;
 org:role org:projectManager.
 
-org:affiliation093 a org:Affiliation ; 
+org:affiliation093 a org:Affiliation ;
 org:affiliate org:person09 ;
 org:affiliationWith org:sdhmetrics ;
 org:role org:projectManager.
 
-org:affiliation094 a org:Affiliation ; 
+org:affiliation094 a org:Affiliation ;
 org:affiliate org:person09 ;
 org:affiliationWith org:sdhweb ;
 org:role org:projectManager.
 
-org:affiliation095 a org:Affiliation ; 
+org:affiliation095 a org:Affiliation ;
 org:affiliate org:person09 ;
 org:affiliationWith org:sdhharvesters ;
-org:role org:projectManager.  
+org:role org:projectManager.
 
 #mariajose
-org:affiliation101 a org:Affiliation ; 
+org:affiliation101 a org:Affiliation ;
 org:affiliate org:person10 ;
 org:affiliationWith org:sdh ;
 org:role org:stakeholder.
 
-org:affiliation102 a org:Affiliation ; 
+org:affiliation102 a org:Affiliation ;
 org:affiliate org:person10 ;
 org:affiliationWith org:phoenix ;
-org:role org:stakeholder.  
+org:role org:stakeholder.
 
-org:affiliation103 a org:Affiliation ; 
+org:affiliation103 a org:Affiliation ;
 org:affiliate org:person10 ;
 org:affiliationWith org:sdhagora ;
 org:role org:stakeholder.
 
 #ruben
-org:affiliation111 a org:Affiliation ; 
+org:affiliation111 a org:Affiliation ;
 org:affiliate org:person11 ;
 org:affiliationWith org:phoenix ;
 org:role org:stakeholder.
 
-org:affiliation112 a org:Affiliation ; 
+org:affiliation112 a org:Affiliation ;
 org:affiliate org:person11 ;
 org:affiliationWith org:sdhmetrics ;
 org:role org:stakeholder.
 
-org:affiliation113 a org:Affiliation ; 
+org:affiliation113 a org:Affiliation ;
 org:affiliate org:person11 ;
 org:affiliationWith org:sdhweb ;
 org:role org:stakeholder.
 
 #Alexander Garcia
-org:affiliation121 a org:Affiliation ; 
+org:affiliation121 a org:Affiliation ;
 org:affiliate org:person12 ;
 org:affiliationWith org:jenkins ;
 org:role org:stakeholder.
 #Alexander Garcia
-org:affiliation131 a org:Affiliation ; 
+org:affiliation131 a org:Affiliation ;
 org:affiliate org:person13 ;
 org:affiliationWith org:phoenix ;
 org:role org:stakeholder.
