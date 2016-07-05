@@ -63,10 +63,10 @@ owl:imports <http://www.smartdeveloperhub.org/vocabulary/external/doap/doap.rdf>
 
 owl:versionIRI <http://www.smartdeveloperhub.org/vocabulary/v1/organization-individuals> ;
 
-rdfs:label "Organization individuals for the smart person hub project"@en;
-rdfs:label "Instancias para la ontologia de organización del proyecto smart person hub"@es;
+rdfs:label "Organization individuals for the Smart Developer Hub project"@en;
+rdfs:label "Instancias para la ontologia de organización del proyecto Smart Developer Hub"@es;
 dcterms:created "2015-09-14"^^xsd:date;
-dcterms:contributor [foaf:name "Andrés García-Silva"] .
+dcterms:contributor [foaf:name "Andrés García-Silva"], [foaf:name "Miguel Esteban Gutiérrez"] .
 
 #-- Organization classification
 org:universityType a skos:Concept;
@@ -302,7 +302,7 @@ _:sdhharvestersimg a foaf:Image ;
 foaf:depicts <http://www.downwithdesign.com/wp-content/uploads/2012/02/harvester-logo-design.png> .
 
 org:ldp4j a org:Project ;
-org:id "project-ldpj";
+org:id "project-ldp4j";
 doap:name "Linked Data Platform for Java";
 doap:description "Java implementation of the LDP specification";
 org:createdOn "2015-10-05T19:14:23"^^xsd:dateTime ;
@@ -764,6 +764,7 @@ org:membershipOn org:com ;
 org:position org:productManagers.
 
 #Affiliations
+
 #alejandro carrera
 org:affiliation011 a org:Affiliation ;
 org:affiliate org:person01 ;
@@ -791,11 +792,13 @@ org:affiliation032 a org:Affiliation ;
 org:affiliate org:person03 ;
 org:affiliationWith org:sdh ;
 org:role org:softwareDeveloper.
+
 #carlos
 org:affiliation041 a org:Affiliation ;
 org:affiliate org:person04 ;
 org:affiliationWith org:sdhweb ;
 org:role org:softwareDeveloper.
+
 #fserena
 org:affiliation051 a org:Affiliation ;
 org:affiliate org:person05 ;
@@ -816,6 +819,7 @@ org:affiliation054 a org:Affiliation ;
 org:affiliate org:person05 ;
 org:affiliationWith org:sdhmetrics ;
 org:role org:softwareArchitect.
+
 #mesteban
 org:affiliation061 a org:Affiliation ;
 org:affiliate org:person06 ;
@@ -831,6 +835,7 @@ org:affiliation063 a org:Affiliation ;
 org:affiliate org:person06 ;
 org:affiliationWith org:ldp4j ;
 org:role org:softwareArchitect.
+
 #corcho
 org:affiliation071 a org:Affiliation ;
 org:affiliate org:person07 ;
@@ -897,6 +902,7 @@ org:affiliation087 a org:Affiliation ;
 org:affiliate org:person08 ;
 org:affiliationWith org:jenkins ;
 org:role org:projectManager.
+
 #soriano
 org:affiliation091 a org:Affiliation ;
 org:affiliate org:person09 ;
@@ -942,7 +948,7 @@ org:role org:stakeholder.
 #ruben
 org:affiliation111 a org:Affiliation ;
 org:affiliate org:person11 ;
-org:affiliationWith org:phoenix ;
+org:affiliationWith org:sdh ;
 org:role org:stakeholder.
 
 org:affiliation112 a org:Affiliation ;
@@ -955,12 +961,13 @@ org:affiliate org:person11 ;
 org:affiliationWith org:sdhweb ;
 org:role org:stakeholder.
 
-#Alexander Garcia
+#Julian Garcia
 org:affiliation121 a org:Affiliation ;
 org:affiliate org:person12 ;
 org:affiliationWith org:jenkins ;
 org:role org:stakeholder.
-#Alexander Garcia
+
+#Cesar Rubio
 org:affiliation131 a org:Affiliation ;
 org:affiliate org:person13 ;
 org:affiliationWith org:phoenix ;
