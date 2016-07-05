@@ -139,6 +139,8 @@ org:hasMember org:person10 ;
 org:hasMember org:person11 ;
 org:hasMember org:person12 ;
 org:hasMember org:person13 ;
+org:hasMember org:person14 ;
+org:hasMember org:person15 ;
 org:membership org:membership01 ;
 org:membership org:membership02 ;
 org:membership org:membership03 ;
@@ -152,6 +154,8 @@ org:membership org:membership10 ;
 org:membership org:membership11 ;
 org:membership org:membership121 ;
 org:membership org:membership131 ;
+org:membership org:membership14 ;
+org:membership org:membership15 ;
 org:organizationPosition  org:developers ;
 org:organizationPosition  org:architects ;
 org:organizationPosition  org:directors ;
@@ -198,7 +202,9 @@ org:affiliation org:affiliation071 ;
 org:affiliation org:affiliation081 ;
 org:affiliation org:affiliation091 ;
 org:affiliation org:affiliation101 ;
-org:affiliation org:affiliation111 .
+org:affiliation org:affiliation111 ;
+org:affiliation org:affiliation141 ;
+org:affiliation org:affiliation151 .
 
 
 _:sdhimg a foaf:Image ;
@@ -281,7 +287,7 @@ foaf:depicts <http://www.crearunapaginaweb.es/wp-content/uploads/2015/07/icon-do
 org:sdhharvesters a org:Project ;
 org:id "project-sdh-harvesters";
 doap:name "Harvesters";
-doap:description "Applications publishing linked data from thir-party tools according to the sdh vocabulary";
+doap:description "Applications publishing linked data from third-party tools according to the SDH Vocabulary";
 org:createdOn "2015-10-05T19:14:23"^^xsd:dateTime ;
 doap:repository  <http://alm.sdhcom.org/scm/sdh-maven>;
 doap:repository  <http://alm.sdhcom.org/scm/gitlab-collector>;
@@ -296,7 +302,8 @@ org:affiliation org:affiliation031 ;
 org:affiliation org:affiliation062 ;
 org:affiliation org:affiliation075 ;
 org:affiliation org:affiliation085 ;
-org:affiliation org:affiliation095 .
+org:affiliation org:affiliation095 ;
+org:affiliation org:affiliation142 .
 
 _:sdhharvestersimg a foaf:Image ;
 foaf:depicts <http://www.downwithdesign.com/wp-content/uploads/2012/02/harvester-logo-design.png> .
@@ -633,6 +640,33 @@ foaf:img _:person13avatar .
 _:person13avatar a foaf:Image ;
 foaf:depicts <http://icons.iconarchive.com/icons/paomedia/small-n-flat/1024/user-male-icon.png> .
 
+org:person14 a org:Person ;
+foaf:name "Ignacio Molina Cuquerella";
+foaf:nick "ignaciomolina" ;
+foaf:mbox "neldan@gmail.com" ;
+org:id "1015"^^xsd:string;
+org:memberOf org:com ;
+org:hasMembership org:membership14 ;
+org:isAffiliated org:affiliation141 ;
+org:isAffiliated org:affiliation142 ;
+foaf:img _:person14avatar .
+
+_:person14avatar a foaf:Image ;
+foaf:depicts <https://avatars1.githubusercontent.com/u/10563987?v=3&s=460> .
+
+org:person15 a org:Person ;
+foaf:name "Maria Poveda Villalon";
+foaf:nick "mariapoveda" ;
+foaf:mbox "mpoveda@fi.upm.es" ;
+org:id "1016"^^xsd:string;
+org:memberOf org:com ;
+org:hasMembership org:membership15 ;
+org:isAffiliated org:affiliation151 ;
+foaf:img _:person15avatar .
+
+_:person15avatar a foaf:Image ;
+foaf:depicts <https://avatars3.githubusercontent.com/u/5693576?v=3&s=140> .
+
 # -- Positions and Role Types ---------------------------------
 org:FirstLevelPosition a skos:Concept;
 skos:prefLabel "Top level position"@en .
@@ -762,7 +796,16 @@ org:membership131 a org:Membership ;
 org:member org:person13 ;
 org:membershipOn org:com ;
 org:position org:productManagers.
-
+#Nacho
+org:membership14 a org:Membership ;
+org:member org:person14 ;
+org:membershipOn org:com ;
+org:position org:developers.
+#Maria
+org:membership15 a org:Membership ;
+org:member org:person15 ;
+org:membershipOn org:com ;
+org:position org:developers.
 #Affiliations
 
 #alejandro carrera
@@ -972,3 +1015,20 @@ org:affiliation131 a org:Affiliation ;
 org:affiliate org:person13 ;
 org:affiliationWith org:phoenix ;
 org:role org:stakeholder.
+
+#Nacho
+org:affiliation141 a org:Affiliation ;
+org:affiliate org:person14 ;
+org:affiliationWith org:sdh ;
+org:role org:softwareDeveloper.
+
+org:affiliation142 a org:Affiliation ;
+org:affiliate org:person14 ;
+org:affiliationWith org:sdhharvesters ;
+org:role org:softwareDeveloper.
+
+#Maria
+org:affiliation151 a org:Affiliation ;
+org:affiliate org:person15 ;
+org:affiliationWith org:sdh ;
+org:role org:softwareDeveloper.
