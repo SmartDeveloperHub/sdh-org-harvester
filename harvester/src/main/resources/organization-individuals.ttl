@@ -295,7 +295,7 @@ org:sdhharvesters a org:Project ;
 org:id "project-sdh-harvesters";
 doap:name "Harvesters";
 doap:description "Applications publishing linked data from third-party tools according to the SDH Vocabulary";
-org:createdOn "2015-10-05T19:14:23"^^xsd:dateTime ;
+org:createdOn "2015-05-12T14:41:20Z"^^xsd:dateTime ;
 doap:repository  <http://alm.sdhcom.org/scm/sdh-maven>;
 doap:repository  <http://alm.sdhcom.org/scm/gitlab-collector>;
 doap:repository  <http://alm.sdhcom.org/scm/gitlab-enhancer>;
@@ -303,6 +303,8 @@ doap:repository  <http://alm.sdhcom.org/scm/gitlab-api-generator>;
 doap:repository  <http://alm.sdhcom.org/scm/sdh-ci-harvester>;
 doap:repository  <http://alm.sdhcom.org/scm/sdh-org-harvester>;
 doap:repository  <http://alm.sdhcom.org/scm/sdh-scm-harvester>;
+doap:repository  <http://alm.sdhcom.org/scm/sdh-it-harvester>;
+doap:repository  <http://alm.sdhcom.org/scm/sdh-testing>;
 foaf:depiction _:sdhharvestersimg ;
 org:affiliation org:affiliation012 ;
 org:affiliation org:affiliation031 ;
@@ -879,7 +881,7 @@ org:role org:softwareDeveloper.
 org:affiliation062 a org:Affiliation ;
 org:affiliate org:person06 ;
 org:affiliationWith org:sdhharvesters ;
-org:role org:softwareDeveloper.
+org:role org:softwareArchitect.
 
 org:affiliation063 a org:Affiliation ;
 org:affiliate org:person06 ;
