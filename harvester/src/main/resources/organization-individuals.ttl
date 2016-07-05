@@ -270,7 +270,7 @@ org:sdhweb a org:Project ;
 org:id "project-sdh-web";
 doap:name "Web Framework and Dashboards";
 doap:description "Web framework that allows communication between the metric services and the dashboards";
-org:createdOn "2015-05-12T14:41:20Z"^^xsd:dateTime ;
+org:createdOn "2015-05-12T14:41:20"^^xsd:dateTime ;
 doap:repository  <http://alm.sdhcom.org/scm/sdh-framework>;
 doap:repository  <http://alm.sdhcom.org/scm/sdh-web>;
 doap:repository  <http://alm.sdhcom.org/scm/sdh-platform-web>;
@@ -295,7 +295,7 @@ org:sdhharvesters a org:Project ;
 org:id "project-sdh-harvesters";
 doap:name "Harvesters";
 doap:description "Applications publishing linked data from third-party tools according to the SDH Vocabulary";
-org:createdOn "2015-05-12T14:41:20Z"^^xsd:dateTime ;
+org:createdOn "2015-05-12T14:41:20"^^xsd:dateTime ;
 doap:repository  <http://alm.sdhcom.org/scm/sdh-maven>;
 doap:repository  <http://alm.sdhcom.org/scm/gitlab-collector>;
 doap:repository  <http://alm.sdhcom.org/scm/gitlab-enhancer>;
@@ -321,9 +321,12 @@ org:ldp4j a org:Project ;
 org:id "project-ldp4j";
 doap:name "Linked Data Platform for Java";
 doap:description "Java implementation of the LDP specification";
-org:createdOn "2015-10-05T19:14:23"^^xsd:dateTime ;
+org:createdOn "2014-04-23T08:34:38"^^xsd:dateTime ;
 doap:repository  <http://alm.sdhcom.org/scm/ldp4j> ;
+doap:repository  <http://alm.sdhcom.org/scm/eswc2015-tutorial> ;
+doap:repository  <http://alm.sdhcom.org/scm/ldp4j.github.io> ;
 foaf:depiction _:ldp4jimg ;
+org:affiliation org:affiliation055 ;
 org:affiliation org:affiliation063 ;
 org:affiliation org:affiliation086 .
 
@@ -519,6 +522,7 @@ org:isAffiliated org:affiliation051 ;
 org:isAffiliated org:affiliation052 ;
 org:isAffiliated org:affiliation053 ;
 org:isAffiliated org:affiliation054 ;
+org:isAffiliated org:affiliation055 ;
 foaf:img _:person05avatar .
 
 _:person05avatar a foaf:Image ;
@@ -871,6 +875,11 @@ org:affiliation054 a org:Affiliation ;
 org:affiliate org:person05 ;
 org:affiliationWith org:sdhmetrics ;
 org:role org:softwareArchitect.
+
+org:affiliation055 a org:Affiliation ;
+org:affiliate org:person05 ;
+org:affiliationWith org:ldp4j ;
+org:role org:softwareDeveloper.
 
 #mesteban
 org:affiliation061 a org:Affiliation ;
