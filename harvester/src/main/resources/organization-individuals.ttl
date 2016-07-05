@@ -173,7 +173,7 @@ org:sdh a org:Project ;
 org:id "project-sdh";
 doap:name "Smart Developer Hub";
 doap:description "Metrics to support the management of software development projects";
-org:createdOn "2015-10-05T19:14:23"^^xsd:dateTime ;
+org:createdOn "2015-05-12T14:41:20"^^xsd:dateTime ;
 scm:location "scmRepoLocation1";
 scm:location "scmRepoLocation2";
 doap:repository  <http://alm.sdhcom.org/scm/sdh-docker>;
@@ -198,7 +198,9 @@ doap:repository  <http://alm.sdhcom.org/scm/sdh-machine-slackbot>;
 doap:repository  <http://alm.sdhcom.org/scm/sdh-machine-snapshot-service>;
 foaf:depiction _:sdhimg ;
 org:affiliation org:affiliation011 ;
+org:affiliation org:affiliation022 ;
 org:affiliation org:affiliation032 ;
+org:affiliation org:affiliation042 ;
 org:affiliation org:affiliation051 ;
 org:affiliation org:affiliation052 ;
 org:affiliation org:affiliation061 ;
@@ -479,6 +481,7 @@ org:id "1001"^^xsd:string;
 org:memberOf org:com ;
 org:hasMembership org:membership02 ;
 org:isAffiliated org:affiliation021 ;
+org:isAffiliated org:affiliation022 ;
 foaf:img _:person02avatar .
 
 _:person02avatar a foaf:Image ;
@@ -506,6 +509,7 @@ org:id "1003"^^xsd:string;
 org:memberOf org:com ;
 org:hasMembership org:membership04 ;
 org:isAffiliated org:affiliation041 ;
+org:isAffiliated org:affiliation042 ;
 foaf:img _:person04avatar .
 
 _:person04avatar a foaf:Image ;
@@ -838,6 +842,11 @@ org:affiliate org:person02 ;
 org:affiliationWith org:sdhweb ;
 org:role org:softwareDeveloper.
 
+org:affiliation022 a org:Affiliation ;
+org:affiliate org:person02 ;
+org:affiliationWith org:sdh ;
+org:role org:softwareDeveloper.
+
 #andres
 org:affiliation031 a org:Affiliation ;
 org:affiliate org:person03 ;
@@ -853,6 +862,11 @@ org:role org:softwareDeveloper.
 org:affiliation041 a org:Affiliation ;
 org:affiliate org:person04 ;
 org:affiliationWith org:sdhweb ;
+org:role org:softwareDeveloper.
+
+org:affiliation042 a org:Affiliation ;
+org:affiliate org:person04 ;
+org:affiliationWith org:sdh ;
 org:role org:softwareDeveloper.
 
 #fserena
@@ -885,7 +899,7 @@ org:role org:softwareDeveloper.
 org:affiliation061 a org:Affiliation ;
 org:affiliate org:person06 ;
 org:affiliationWith org:sdh ;
-org:role org:softwareDeveloper.
+org:role org:softwareArchitect.
 
 org:affiliation062 a org:Affiliation ;
 org:affiliate org:person06 ;
