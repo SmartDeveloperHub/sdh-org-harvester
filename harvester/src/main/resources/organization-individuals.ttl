@@ -196,6 +196,9 @@ doap:repository  <http://alm.sdhcom.org/scm/sdh-it-harvester-docker>;
 doap:repository  <http://alm.sdhcom.org/scm/sdh-machine-web>;
 doap:repository  <http://alm.sdhcom.org/scm/sdh-machine-slackbot>;
 doap:repository  <http://alm.sdhcom.org/scm/sdh-machine-snapshot-service>;
+doap:repository  <http://alm.sdhcom.org/scm/agora-fountain-docker>;
+doap:repository  <http://alm.sdhcom.org/scm/agora-planner-docker>;
+doap:repository  <http://alm.sdhcom.org/scm/sdh-machine-agora>;
 foaf:depiction _:sdhimg ;
 org:affiliation org:affiliation011 ;
 org:affiliation org:affiliation022 ;
@@ -220,11 +223,9 @@ org:sdhagora a org:Project ;
 org:id "project-sdh-agora";
 doap:name "Graph-based Query System for LDP";
 doap:description "This a query system to traverse the lpd graph";
-org:createdOn "2015-10-05T19:14:23"^^xsd:dateTime ;
+org:createdOn "2015-05-12T14:41:20"^^xsd:dateTime ;
 doap:repository  <http://alm.sdhcom.org/scm/agora-js>;
 doap:repository  <http://alm.sdhcom.org/scm/sdh-curator-connector>;
-doap:repository  <http://alm.sdhcom.org/scm/agora-planner-docker>;
-doap:repository  <http://alm.sdhcom.org/scm/sdh-machine-agora>;
 doap:repository  <http://alm.sdhcom.org/scm/agora>;
 doap:repository  <http://alm.sdhcom.org/scm/agora-client>;
 doap:repository  <http://alm.sdhcom.org/scm/sdh-curator>;
@@ -233,12 +234,12 @@ doap:repository  <http://alm.sdhcom.org/scm/agora-fragment-js>;
 doap:repository  <http://alm.sdhcom.org/scm/agora-service-provider>;
 doap:repository  <http://alm.sdhcom.org/scm/sdh-fragment-server>;
 doap:repository  <http://alm.sdhcom.org/scm/agora-fountain>;
-doap:repository  <http://alm.sdhcom.org/scm/agora-fountain-docker>;
 doap:repository  <http://alm.sdhcom.org/scm/agora-planner>;
 doap:repository  <http://alm.sdhcom.org/scm/sdh-curator-py>;
 doap:repository  <http://alm.sdhcom.org/scm/fragment-service-provider>;
 foaf:depiction _:sdhagoraimg ;
 org:affiliation org:affiliation053 ;
+org:affiliation org:affiliation064 ;
 org:affiliation org:affiliation072 ;
 org:affiliation org:affiliation082 ;
 org:affiliation org:affiliation092 ;
@@ -542,6 +543,7 @@ org:hasMembership org:membership06 ;
 org:isAffiliated org:affiliation061 ;
 org:isAffiliated org:affiliation062 ;
 org:isAffiliated org:affiliation063 ;
+org:isAffiliated org:affiliation064 ;
 foaf:img _:person06avatar .
 
 _:person06avatar a foaf:Image ;
@@ -910,6 +912,11 @@ org:affiliation063 a org:Affiliation ;
 org:affiliate org:person06 ;
 org:affiliationWith org:ldp4j ;
 org:role org:softwareArchitect.
+
+org:affiliation064 a org:Affiliation ;
+org:affiliate org:person06 ;
+org:affiliationWith org:sdhagora ;
+org:role org:softwareDeveloper.
 
 #corcho
 org:affiliation071 a org:Affiliation ;
