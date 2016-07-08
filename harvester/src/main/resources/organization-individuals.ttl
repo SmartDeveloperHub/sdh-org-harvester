@@ -662,7 +662,7 @@ foaf:depicts <http://icons.iconarchive.com/icons/paomedia/small-n-flat/1024/user
 org:person14 a org:Person ;
 foaf:name "Ignacio Molina Cuquerella";
 foaf:nick "ignaciomolina" ;
-foaf:mbox "neldan@gmail.com" ;
+foaf:mbox "imolina@centeropenmiddleware.com" ;
 org:id "1015"^^xsd:string;
 org:memberOf org:com ;
 org:hasMembership org:membership14 ;
