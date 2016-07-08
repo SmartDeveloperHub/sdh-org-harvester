@@ -354,9 +354,9 @@ foaf:depicts <http://www.unixstickers.com/image/cache/data/stickers/jenkins/Jenk
 
 org:phoenix a org:Project ;
 org:id "project-phoenix";
-doap:name "phoenix";
-doap:description "phoenix plataform";
-org:createdOn "2015-10-05T19:14:23"^^xsd:dateTime ;
+doap:name "Phoenix";
+doap:description "Phoenix plataform";
+org:createdOn "2015-05-12T14:41:20"^^xsd:dateTime ;
 doap:repository  <http://alm.sdhcom.org/scm/phoenix> ;
 foaf:depiction _:phoeniximg  ;
 org:affiliation org:affiliation076 ;
