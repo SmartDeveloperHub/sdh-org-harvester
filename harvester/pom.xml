@@ -7,7 +7,7 @@
       Center for Open Middleware
         http://www.centeropenmiddleware.com/
     #-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=#
-      Copyright (C) 2015 Center for Open Middleware.
+      Copyright (C) 2015-2016 Center for Open Middleware.
     #-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=#
       Licensed under the Apache License, Version 2.0 (the "License");
       you may not use this file except in compliance with the License.
@@ -21,7 +21,7 @@
       See the License for the specific language governing permissions and
       limitations under the License.
     #-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=#
-      Artifact    : org.smartdeveloperhub.harvester.org:org-harvester-frontend:0.1.0
+      Artifact    : org.smartdeveloperhub.harvester.org:org-harvester-frontend:0.2.0
       Bundle      : org-harvester.war
     #-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=#
 
@@ -39,7 +39,7 @@
 	<parent>
 		<groupId>org.smartdeveloperhub.harvester.org</groupId>
 		<artifactId>org-harvester-aggregator</artifactId>
-		<version>0.1.0</version>
+		<version>0.2.0</version>
 		<relativePath>../pom.xml</relativePath>
 	</parent>
 
@@ -59,7 +59,7 @@
 	<!-- =================================================================== -->
 
 	<properties>
-		<ldp4j.version>0.2.0</ldp4j.version>
+		<ldp4j.version>0.2.1</ldp4j.version>
 		<jackson.version>2.4.4</jackson.version>
 	</properties>
 
